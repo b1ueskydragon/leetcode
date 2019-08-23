@@ -13,11 +13,11 @@ public class Solution {
     return res;
   }
 
-  private void dfs(int[] nums, int pos, List<Integer> chunk, List<List<Integer>> res) {
+  private void dfs(int[] nums, int depth, List<Integer> chunk, List<List<Integer>> res) {
     res.add(chunk);
-    for (int i = pos; i < nums.length; i++) {
+    for (int i = depth; i < nums.length; i++) {
       int curr = nums[i];
-      if (i > pos && curr == nums[i - 1]) continue; // not return
+      if (i > depth && curr == nums[i - 1]) continue; // not return
       List<Integer> newChunk = new ArrayList<>(chunk);
       newChunk.add(curr);
       dfs(nums, i + 1, newChunk, res);
