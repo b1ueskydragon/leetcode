@@ -11,7 +11,7 @@ public class Solution {
    * @return true if x is sub-sequence of entire
    */
   @VisibleForTesting
-  boolean isSubSeq(String entire, String x) {
+  boolean isSubSeq(String entire, String x) { // TODO improve or another
     int i = 0, j = 0;
     while (i < entire.length() && j < x.length()) {
       if (entire.charAt(i) == x.charAt(j)) j += 1;
@@ -23,7 +23,11 @@ public class Solution {
   public String findLongestWord(String s, List<String> d) {
     var longestWord = "";
     for (String word : d) {
-      // TODO
+      if (isSubSeq(s, word)) {
+        if (longestWord.length() < word.length() ||
+            longestWord.length() == word.length() &&
+                word.compareTo(longestWord) < 0) longestWord = word;
+      }
     }
     return longestWord;
   }
