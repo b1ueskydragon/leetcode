@@ -6,16 +6,22 @@ import java.util.List;
 
 public class Solution {
   /**
+   * TODO improve or another
+   *
+   * Note;
+   * ++ (post increment) is faster than += (assign)
+   * e. g.) 40ms -> 24ms
+   *
    * @param entire find from
    * @param x      target to find
    * @return true if x is sub-sequence of entire
    */
   @VisibleForTesting
-  boolean isSubSeq(String entire, String x) { // TODO improve or another
+  boolean isSubSeq(String entire, String x) {
     int i = 0, j = 0;
     while (i < entire.length() && j < x.length()) {
-      if (entire.charAt(i) == x.charAt(j)) j += 1;
-      i += 1;
+      if (entire.charAt(i) == x.charAt(j)) j++;
+      i++;
     }
     return j == x.length();
   }
