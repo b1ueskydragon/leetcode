@@ -7,10 +7,11 @@ import java.util.List;
 
 public class Solution01 {
 
-  private static int[][] dic;
+  @VisibleForTesting
+  int[][] dic;
 
-  // side-effect
-  private static void init(String s) {
+  @VisibleForTesting
+  void init(String s) {
     dic = new int[s.length() + 1][26]; // has sentinel
     for (int[] xs : dic) {
       Arrays.fill(xs, -1);
@@ -22,25 +23,13 @@ public class Solution01 {
     }
   }
 
-  // test init
-  // TODO make a spec
-  public static void main(String[] args) {
-    init("abc"); // another; "aaa"
-    for (int[] x : dic) {
-      for (int y : x) {
-        System.out.printf("%s, ", y);
-      }
-      System.out.println();
-    }
-  }
-
   @VisibleForTesting
   boolean isSubSeq(String word) {
     int pos = 0;
-    for (int i = 0; i < word.length(); i++) {
+    for (int i = 0; i < word.length(); i++) { // traverse word left to right
       int index = dic[pos][word.charAt(i) - 'a'];
       if (index == -1) return false;
-      pos = index + 1;
+      pos = index + 1; // skip to next dic index
     }
     return true;
   }
