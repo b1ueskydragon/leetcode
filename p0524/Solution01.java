@@ -1,17 +1,13 @@
 package leetcode.p0524;
 
-import com.google.common.annotations.VisibleForTesting;
-
 import java.util.Arrays;
 import java.util.List;
 
 public class Solution01 {
 
-  @VisibleForTesting
-  int[][] dic;
+  private static int[][] dic;
 
-  @VisibleForTesting
-  void init(String s) {
+  private static void init(String s) {
     dic = new int[s.length() + 1][26]; // has sentinel
     for (int[] xs : dic) {
       Arrays.fill(xs, -1);
@@ -23,8 +19,7 @@ public class Solution01 {
     }
   }
 
-  @VisibleForTesting
-  boolean isSubSeq(String word) {
+  private static boolean isSubSeq(String word) {
     int pos = 0;
     for (int i = 0; i < word.length(); i++) { // traverse word left to right
       int index = dic[pos][word.charAt(i) - 'a'];
