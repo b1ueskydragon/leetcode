@@ -1,13 +1,17 @@
 package leetcode.p0524;
 
+import com.google.common.annotations.VisibleForTesting;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class Solution01 {
 
-  private static int[][] dic;
+  @VisibleForTesting
+  static int[][] dic;
 
-  private static void init(String s) {
+  @VisibleForTesting
+  static void init(String s) {
     dic = new int[s.length() + 1][26]; // has sentinel
     for (int[] xs : dic) {
       Arrays.fill(xs, -1);
