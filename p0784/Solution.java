@@ -1,14 +1,13 @@
 package leetcode.p0784;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Solution {
   private static <T> List<List<T>> product2(List<T> xs, List<T> ys) {
-    return new ArrayList<>() {{
-      xs.forEach(x -> ys.forEach(y -> add(Arrays.asList(x, y))));
-    }};
+    return xs.stream().flatMap(x -> ys.stream().map(y -> Arrays.asList(x, y)))
+        .collect(Collectors.toList());
   }
 
 //  private <T> List<List<T>> product(List<List<T>> lists) {
