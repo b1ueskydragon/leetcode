@@ -4,6 +4,7 @@ import java.util.function.IntConsumer;
 
 class FizzBuzz {
   private int n;
+  private volatile int value = 1;
 
   public FizzBuzz(int n) {
     this.n = n;
@@ -11,40 +12,46 @@ class FizzBuzz {
 
   // printFizz.run() outputs "fizz".
   public void fizz(Runnable printFizz) throws InterruptedException {
-    System.out.println("fizz");
+    while (value <= n) {
+      int x = value;
+      if (x % 3 == 0 && x % 5 != 0) {
+        printFizz.run();
+        value++; // increment only fit to condition and after run
+      }
+    }
   }
 
   // printBuzz.run() outputs "buzz".
   public void buzz(Runnable printBuzz) throws InterruptedException {
-    System.out.println("buzz");
+    while (value <= n) {
+      int x = value;
+      if (x % 5 == 0 && x % 3 != 0) {
+        printBuzz.run();
+        value++; // increment only fit to condition and after run
+      }
+    }
   }
 
   // printFizzBuzz.run() outputs "fizzbuzz".
   public void fizzbuzz(Runnable printFizzBuzz) throws InterruptedException {
-    System.out.println("fizzbuzz");
+    while (value <= n) {
+      int x = value;
+      if (x % 15 == 0) {
+        printFizzBuzz.run();
+        value++; // increment only fit to condition and after run
+      }
+    }
   }
 
   // printNumber.accept(x) outputs "x", where x is an integer.
   public void number(IntConsumer printNumber) throws InterruptedException {
-    System.out.println(n);
-  }
-
-  // TODO Spec
-  public static void main(String[] args) throws Exception {
-    final var fizzBuzz = new FizzBuzz(15);
-
-    Thread printFizz = new Thread();
-    Thread printBuzz = new Thread();
-    Thread printFizzBuzz = new Thread();
-    IntConsumer printNumber = value -> new Thread();
-
-    fizzBuzz.fizz(printFizz);
-    fizzBuzz.buzz(printBuzz);
-    fizzBuzz.fizzbuzz(printFizzBuzz);
-    fizzBuzz.number(printNumber);
-
-    // expected
-    // 1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizzbuzz
+    while (value <= n) {
+      int x = value;
+      if (x % 3 != 0 && x % 5 != 0) {
+        printNumber.accept(x);
+        value++; // increment only fit to condition and after run
+      }
+    }
   }
 
 }
