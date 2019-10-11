@@ -18,6 +18,7 @@ class Foo {
   public void second(Runnable printSecond) throws InterruptedException {
     while (firstJobDone.get() == 0) { /* waiting */ }
     // printSecond.run() outputs "second". Do not change or remove this line.
+    firstJobDone.decrementAndGet();
     printSecond.run();
     secondJobDone.incrementAndGet();
   }
@@ -25,6 +26,7 @@ class Foo {
   public void third(Runnable printThird) throws InterruptedException {
     while (secondJobDone.get() == 0) { /* waiting */ }
     // printThird.run() outputs "third". Do not change or remove this line.
+    secondJobDone.decrementAndGet();
     printThird.run();
   }
 
