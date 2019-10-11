@@ -1,4 +1,4 @@
-package leetcode.p1114;
+package leetcode.p1114.solve;
 
 class Foo {
 
