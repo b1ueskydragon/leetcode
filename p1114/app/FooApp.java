@@ -1,4 +1,4 @@
-package leetcode.p1114.solve01.app;
+package leetcode.p1114.app;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
