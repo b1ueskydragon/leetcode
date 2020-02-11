@@ -4,14 +4,6 @@ package leetcode.p1161;
 import java.util.ArrayList;
 import java.util.List;
 
-class TreeNode {
-  int val;
-  TreeNode left;
-  TreeNode right;
-
-  TreeNode(int x) { this.val = x; }
-}
-
 class Solution {
   // TODO: use an Array.
   //  we don't need to use a list. since there is an limit range in the question ...
