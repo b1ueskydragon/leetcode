@@ -1,11 +1,10 @@
 package leetcode.p1161;
 
 class Solution01 {
-
   // make as global to stable status
-  private static int maxLevel = 1;
+  private int maxLevel = 1;
   // The number of nodes in the given tree is between 1 and 10^4
-  private static int[] nodes = new int[10000];
+  private int[] nodes = new int[10000];
 
   public int maxLevelSum(TreeNode root) {
     dfs(root, 1);
@@ -20,7 +19,7 @@ class Solution01 {
     return resLevel;
   }
 
-  private static void dfs(TreeNode root, int currLevel) {
+  private void dfs(TreeNode root, int currLevel) {
     if (root == null) return; // base
     maxLevel = (currLevel > maxLevel) ? currLevel : maxLevel; // global
     nodes[currLevel] += root.val;
