@@ -10,6 +10,10 @@ class Solution {
       if (subStr.charAt(i) == subStr.charAt(j)) {
         table[++j] = ++i; // increment first, since of the sentinel index.
       } else {
+        if (i > 0) {
+          i = table[i]; // rewind i if needed.
+          continue; // so, don't move j.
+        }
         table[++j] = table[i];
       }
     }
