@@ -14,7 +14,6 @@ import java.util.Queue;
  * You must use only standard operations of a queue
  * -- which means only push to back, peek/pop from front, size, and is empty operations are valid.
  */
-
 class MyStack {
 
   private final Queue<Integer> queueX;
@@ -31,26 +30,26 @@ class MyStack {
   /**
    * Push element x onto stack.
    */
-  public void push(int x) {
+  public void push(int x) { // Make the queue empty, and another one will have reversed order.
     if (queueX.isEmpty() && queueY.isEmpty()) {
       queueX.add(x);
       return;
     }
     if (!queueX.isEmpty() && queueY.isEmpty()) {
       queueY.add(x);
-      queueY.add(queueX.poll());
+      while (!queueX.isEmpty()) queueY.add(queueX.poll());
       return;
     }
     if (queueX.isEmpty() && !queueY.isEmpty()) {
       queueX.add(x);
-      queueX.add(queueY.poll());
+      while (!queueY.isEmpty()) queueX.add(queueY.poll());
     }
   }
 
   /**
    * Removes the element on top of the stack and returns that element.
    */
-  public int pop() {
+  public int pop() { // pop from the non empty queue.
     if (queueX.isEmpty() && !queueY.isEmpty()) return queueY.poll();
     else if (queueY.isEmpty() && !queueX.isEmpty()) return queueX.poll();
     else throw new RuntimeException("Stack is empty. ");
@@ -72,4 +71,3 @@ class MyStack {
     return queueX.isEmpty() && queueY.isEmpty();
   }
 }
-
