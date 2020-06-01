@@ -22,13 +22,11 @@ class TreeNode {
 public class Solution {
   public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
     if (t1 == null && t2 == null) return null;
-
-    Deque<TreeNode> retrieval1 = new LinkedList<>();
-    Deque<TreeNode> retrieval2 = new LinkedList<>();
+    final Deque<TreeNode> retrieval1 = new LinkedList<>();
+    final Deque<TreeNode> retrieval2 = new LinkedList<>();
     retrieval1.addLast(t1);
     retrieval2.addLast(t2);
-
-    Deque<Integer> merged = new LinkedList<>();
+    final Deque<Integer> merged = new LinkedList<>();
     while (!retrieval1.isEmpty() || !retrieval2.isEmpty()) {
       TreeNode r1 = null;
       TreeNode r2 = null;
@@ -38,29 +36,29 @@ public class Solution {
         merged.addLast(null);
         continue;
       }
-      if (r2 == null) {
-        merged.addLast(r1.val);
-        retrieval1.addLast(r1.left);
-        retrieval1.addLast(r1.right);
-        retrieval2.addLast(null);
-        retrieval2.addLast(null);
-      } else if (r1 == null) {
-        merged.addLast(r2.val);
-        retrieval2.addLast(r2.left);
-        retrieval2.addLast(r2.right);
-        retrieval1.addLast(null);
-        retrieval1.addLast(null);
-      } else {
-        merged.addLast(r1.val + r2.val);
-        retrieval1.addLast(r1.left);
-        retrieval1.addLast(r1.right);
-        retrieval2.addLast(r2.left);
-        retrieval2.addLast(r2.right);
+      int currVal = 0;
+      TreeNode r1Left, r1Right, r2Left, r2Right;
+      // just pointing null at first, not a instantiation of mutable object, so it's OK.
+      r1Left = r1Right = r2Left = r2Right = null;
+      if (r1 != null) {
+        r1Left = r1.left;
+        r1Right = r1.right;
+        currVal += r1.val;
       }
+      if (r2 != null) {
+        r2Left = r2.left;
+        r2Right = r2.right;
+        currVal += r2.val;
+      }
+      retrieval1.addLast(r1Left);
+      retrieval1.addLast(r1Right);
+      retrieval2.addLast(r2Left);
+      retrieval2.addLast(r2Right);
+      merged.addLast(currVal);
     }
 
-    TreeNode root = new TreeNode(merged.removeFirst());
-    Deque<TreeNode> marked = new LinkedList<>();
+    final TreeNode root = new TreeNode(merged.removeFirst());
+    final Deque<TreeNode> marked = new LinkedList<>();
     marked.addLast(root);
     while (!merged.isEmpty() && !marked.isEmpty()) {
       TreeNode curr = marked.removeFirst();
@@ -75,7 +73,6 @@ public class Solution {
         marked.addLast(curr.right);
       }
     }
-
     return root;
   }
 }
