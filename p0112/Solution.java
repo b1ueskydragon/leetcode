@@ -7,17 +7,14 @@ class Solution {
     if (root == null) {
       return false; // edge case.
     }
-    if (root.left == null && root.right == null) {
-      //System.out.printf("%d \n", root.val);
+    if (root.left == null && root.right == null) { // compare only when reached to the leaf.
       return sum == root.val;
     }
     if (root.left != null) { // acc only if exists
       root.left.val += root.val;
-      //System.out.printf("curr left acc: %d \n", root.left.val);
     }
     if (root.right != null) { // acc only if exists
       root.right.val += root.val;
-      //System.out.printf("curr right acc: %d \n", root.right.val);
     }
     return hasPathSum(root.left, sum) || hasPathSum(root.right, sum);
   }
