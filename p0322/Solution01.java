@@ -15,8 +15,10 @@ class Solution01 {
     }
     int finalMinCount = Integer.MAX_VALUE;
     for (int coin : coins) {
-      if (amount < coin) continue;
-      finalMinCount = Math.min(finalMinCount, currStageCount(memo, coins, amount - coin));
+      if (amount < coin) continue; // impossible amount to build (prevent index out of range).
+      int maybeMinCount = currStageCount(memo, coins, amount - coin);
+      if (maybeMinCount == -1) continue; // impossible amount to build (prevent TLE).
+      finalMinCount = Math.min(finalMinCount, maybeMinCount);
     }
     memo[amount] = (finalMinCount == Integer.MAX_VALUE) ? -1 : finalMinCount + 1;
     return memo[amount];
