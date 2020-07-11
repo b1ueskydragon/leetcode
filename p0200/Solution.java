@@ -14,7 +14,7 @@ class Solution {
     for (int x = 0; x < rowDim; x++) {
       for (int y = 0; y < colDim; y++) {
         if (grid[x][y] == '1' && !visited[x][y]) { // skip count if visited
-          bfs(grid, rowDim, colDim, x, y, visited);
+          visit(grid, rowDim, colDim, x, y, visited);
           islands++;
         }
       }
@@ -22,7 +22,8 @@ class Solution {
     return islands;
   }
 
-  private void bfs(char[][] grid, int rowDim, int colDim, int currX, int currY, boolean[][] visited) {
+  // color the visited spot to prevent duplicated count.
+  private void visit(char[][] grid, int rowDim, int colDim, int currX, int currY, boolean[][] visited) {
     final Deque<int[]> queue = new LinkedList<>();
     final int[] start = {currX, currY};
     queue.addLast(start);
