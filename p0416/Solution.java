@@ -21,7 +21,7 @@ class Solution {
     if (targetSum == 0) {
       return true;
     }
-    if (i == 0) { // not found but reached to leaves.
+    if (i == 0 || targetSum < 0) { // not found but reached to leaves. or targetSum is not positive.
       return false;
     }
     // early-return.
