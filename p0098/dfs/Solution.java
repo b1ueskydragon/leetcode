@@ -1,7 +1,4 @@
-package leetcode.p0098.dfs.genList;
-
-import java.util.ArrayList;
-import java.util.List;
+package leetcode.p0098.dfs;
 
 class TreeNode {
   int val;
@@ -20,24 +17,25 @@ class TreeNode {
 }
 
 class Solution {
-  final List<Integer> nodes = new ArrayList<>();
+  private Integer prev = null;
+  private boolean isValid = true;
 
   private void dfs(TreeNode node) {
     if (node == null) {
       return;
     }
+
     dfs(node.left);
-    nodes.add(node.val);
+    if (prev != null && prev >= node.val) {
+      isValid &= false;
+      return;
+    }
+    prev = node.val;
     dfs(node.right);
   }
 
   public boolean isValidBST(TreeNode root) {
     dfs(root);
-    int i = 1;
-    while (i < nodes.size()) {
-      if (nodes.get(i - 1) >= nodes.get(i)) return false;
-      i++;
-    }
-    return true;
+    return isValid;
   }
 }
