@@ -16,11 +16,6 @@ class Solution {
     final int g = rec2[2];
     final int h = rec2[3];
 
-    // includes
-    if (e <= a && f <= b && c <= g && d <= h) {
-      return true;
-    }
-
     // rec2 is on the right
     if (c <= e) {
       return false;
