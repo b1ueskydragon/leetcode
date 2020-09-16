@@ -1,4 +1,4 @@
-package leetcode.p0098.dfs;
+package leetcode.p0098.dfs.globalVar;
 
 class TreeNode {
   int val;
