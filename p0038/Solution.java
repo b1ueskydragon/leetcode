@@ -6,32 +6,31 @@ class Solution {
     if (n == 1) {
       return "1";
     }
-    int res = 1;
+    String res = "1";
     for (int i = 0; i < n - 1; i++) {
-      res = Integer.parseInt(numToCount(res));
+      res = numToCount(res);
     }
-    return String.valueOf(res);
+    return res;
   }
 
   // 11 -> 2 * 1
   // 21 -> 1 * 2, 1 * 1
-  private String numToCount(int num) {
+  private String numToCount(String numStr) {
     String res = "";
     int currCount = 1;
-    int prev = 0;
-    while (num > 0) {
-      int curr = num % 10;
+    char prev = '0';
+
+    for (char curr : numStr.toCharArray()) {
       if (curr == prev) {
         currCount += 1;
       } else {
-        if (prev != 0) res = String.valueOf(currCount) + prev + res;
+        if (prev != '0') res = res + String.valueOf(currCount) + prev;
         currCount = 1;
       }
       prev = curr;
-      num /= 10;
     }
-    res = String.valueOf(currCount) + prev + res;
+
+    res = res + String.valueOf(currCount) + prev;
     return res;
   }
 }
-
