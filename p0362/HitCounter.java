@@ -1,21 +1,22 @@
 package leetcode.p0362;
 
 
+import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * Design a hit counter which counts the number of hits received in the past 5 minutes.
+ * <p>
+ * Follow-up: What if our system has limited memory?
  */
 public class HitCounter {
 
   private static final int MAX_LIMIT_SEC = 300;
 
-  // it would save memory space, but timestamps will be removed.
-  private final Queue<Integer> hits = new LinkedList<>();
+  private final Deque<Integer> hits = new LinkedList<>();
 
   public void hit(int timestamp) {
-    hits.add(timestamp);
+    hits.addFirst(timestamp);
   }
 
   /**
@@ -23,13 +24,14 @@ public class HitCounter {
    * @return total hits
    */
   public int getHits(int upper) {
-    int total = 0;
     int lower = upper - MAX_LIMIT_SEC;
 
     while (!hits.isEmpty()) {
-      if (hits.poll() > lower) total++;
+      int hit = hits.peekLast();
+      if (hit > lower) break;
+      hits.pollLast();
     }
 
-    return total;
+    return hits.size();
   }
 }
