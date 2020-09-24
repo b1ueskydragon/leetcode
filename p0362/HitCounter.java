@@ -1,8 +1,8 @@
 package leetcode.p0362;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Design a hit counter which counts the number of hits received in the past 5 minutes.
@@ -11,7 +11,8 @@ public class HitCounter {
 
   private static final int MAX_LIMIT_SEC = 300;
 
-  private final List<Integer> hits = new ArrayList<>();
+  // it would save memory space, but timestamps will be removed.
+  private final Queue<Integer> hits = new LinkedList<>();
 
   public void hit(int timestamp) {
     hits.add(timestamp);
@@ -25,27 +26,10 @@ public class HitCounter {
     int total = 0;
     int lower = upper - MAX_LIMIT_SEC;
 
-    for (int hit : hits) {
-      if (lower < hit && hit <= upper) total += 1;
+    while (!hits.isEmpty()) {
+      if (hits.poll() > lower) total++;
     }
 
     return total;
   }
-
-  public static void main(String[] args) {
-    HitCounter counter = new HitCounter();
-
-    counter.hit(1);
-    counter.hit(2);
-    counter.hit(3);
-
-    System.out.println(counter.getHits(4) == 3);
-
-    counter.hit(300);
-
-    System.out.println(counter.getHits(300) == 4);
-
-    System.out.println(counter.getHits(301) == 3);
-  }
-
 }
