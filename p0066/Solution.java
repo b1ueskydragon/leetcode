@@ -1,26 +1,28 @@
 package leetcode.p0066;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.Arrays;
 
 class Solution {
   public int[] plusOne(int[] digits) {
     final int n = digits.length;
-    final Deque<Integer> queue = new LinkedList<>();
+    final int[] res = new int[n];
+
     int d = 1;
     for (int i = n - 1; i >= 0; i--) {
       int digit = digits[i];
       if (d + digit == 10) {
-        queue.addFirst(0);
+        res[i] = 0;
         d = 1;
         continue;
       }
-      queue.addFirst(d + digit);
+      res[i] = d + digit;
       d = 0;
     }
     if (d == 1) {
-      queue.addFirst(1);
+      final int[] newRes = Arrays.copyOf(res, n + 1);
+      newRes[0] = 1;
+      return newRes;
     }
-    return queue.stream().mapToInt(x -> x).toArray();
+    return res;
   }
 }
