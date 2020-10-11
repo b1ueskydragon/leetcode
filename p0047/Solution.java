@@ -31,11 +31,14 @@ class Solution {
       if (usedHead.contains(head)) {
         continue;
       }
+
+      // hash for current stage and it will be referred when the stage is revisited again (and make a different choice)
+      // it doesn't matter that add head in hash before or after the recursion
+      usedHead.add(head);
+
       swap(nums, headPos, i);
       permuteUnique(nums, headPos + 1, res);
       swap(nums, headPos, i); // revert
-
-      usedHead.add(head); // add after getting out from the recursion
     }
 
     return res;
