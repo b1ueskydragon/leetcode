@@ -5,6 +5,22 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+/**
+ * Has a different tree generation feature to backtracking one.
+ *
+ * bfs
+ *
+ *                 [ ]
+ *         [ab1]         [Ab1]   -- left node is same as parent (without variation), right node is a new node with taking variation
+ *      [ab1] [aB1]   [Ab1] [AB1]
+ *     [ab1] [aB1]   [Ab1] [AB1]
+ *
+ * backtracking
+ *                 [ ]
+ *            [a]       [A]     -- candidates of each stage. make a different choice after coming back from the each recursion
+ *          [b] [B]   [b] [B]
+ *         [1] [1]   [1] [1]
+ */
 class Solution {
   // bfs
   public List<String> letterCasePermutation(String S) {
