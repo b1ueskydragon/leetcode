@@ -1,4 +1,4 @@
-package leetcode.p0997;
+package leetcode.p0997.hashTable;
 
 import java.util.HashMap;
 import java.util.HashSet;

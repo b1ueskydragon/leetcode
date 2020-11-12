@@ -1,6 +1,7 @@
-package leetcode.p0997.dp;
+package leetcode.p0997.directedGraph;
 
 class Solution {
+  // Directed Graph. judge is the end point of whole points and it's the point which cannot proceed anymore.
   public int findJudge(int N, int[][] trust) {
     final int[] votes = new int[N + 1]; // votes per each person. index 0 is a sentinel.
 
