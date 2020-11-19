@@ -1,4 +1,4 @@
-package leetcode.p0024;
+package leetcode.p0024.loop1;
 
 
 class ListNode {
