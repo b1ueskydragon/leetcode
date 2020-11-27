@@ -1,4 +1,4 @@
-package leetcode.p0234;
+package leetcode.p0234.findMid;
 
 
 class ListNode {
