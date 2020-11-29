@@ -29,20 +29,13 @@ class Solution {
     ListNode a = head;
     ListNode b = head.next;
 
-    while (true) {
+    while (b != null) {
       prev.next = b;
+      a.next = b.next;
+      b.next = a;
 
-      if (b == null) {
-        prev.next = a;
+      if (a.next == null) {
         break;
-      }
-      if (b.next == null) {
-        a.next = null;
-        b.next = a;
-        break;
-      } else {
-        a.next = b.next;
-        b.next = a;
       }
 
       // prepare to next
