@@ -1,4 +1,4 @@
-package leetcode.p0965;
+package leetcode.p0965.dfs;
 
 
 class TreeNode {
