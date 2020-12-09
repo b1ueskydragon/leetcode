@@ -1,4 +1,4 @@
-package leetcode.p0237;
+package leetcode.p0237.alignLeftFromNode;
 
 
 class ListNode {
