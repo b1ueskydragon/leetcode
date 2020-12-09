@@ -16,8 +16,14 @@ class ListNode {
  */
 class Solution {
   public void deleteNode(ListNode node) {
+    // prev of node
+    ListNode prev = null;
     // align value to left
-    node.val = node.next.val;
-    node.next = node.next.next;
+    while (node.next != null) {
+      node.val = node.next.val;
+      prev = node;
+      node = node.next;
+    }
+    prev.next = null;
   }
 }
