@@ -1,4 +1,4 @@
-package leetcode.p0189.inPlace.partitialReversal;
+package leetcode.p0189.inPlace.partitialReversal.kn;
 
 class Solution {
   // O(k*n) time, O(1) space
