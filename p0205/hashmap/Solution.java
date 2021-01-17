@@ -1,4 +1,4 @@
-package leetcode.p205;
+package leetcode.p0205.hashmap;
 
 import java.util.HashMap;
 import java.util.Map;

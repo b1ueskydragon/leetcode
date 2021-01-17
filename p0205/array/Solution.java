@@ -1,6 +1,6 @@
-package leetcode.p205;
+package leetcode.p0205.array;
 
-class Solution01 {
+class Solution {
   public boolean isIsomorphic(String s, String t) {
     final int n = s.length();
     // only targeting a lowercase
