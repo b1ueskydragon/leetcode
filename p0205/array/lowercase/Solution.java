@@ -1,4 +1,4 @@
-package leetcode.p0205.array;
+package leetcode.p0205.array.lowercase;
 
 class Solution {
   public boolean isIsomorphic(String s, String t) {
