@@ -5,6 +5,7 @@ class Solution {
   // t.length == s.length.
   // s and t consist of any valid ascii character.
   public boolean isIsomorphic(String s, String t) {
+    // these additional arrays spend at most 1024 byte (space).
     final int[] xRange = new int[256];
     final int[] yRange = new int[256];
     final char[] xs = s.toCharArray();
