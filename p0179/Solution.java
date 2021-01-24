@@ -10,6 +10,7 @@ class Solution {
     if (nums[0] == 0) {
       return "0";
     }
+
     StringBuilder res = new StringBuilder();
     for (int num : nums) {
       res.append(num);
@@ -52,9 +53,26 @@ class Solution {
     if (a == b) {
       return false; // since should not move cursors if a and b are equivalent.
     }
-    StringBuilder as = new StringBuilder();
-    StringBuilder bs = new StringBuilder();
-    return as.append(a).append(b).toString().compareTo(bs.append(b).append(a).toString()) > -1;
+    int aDigit = getDigit(a);
+    int bDigit = getDigit(b);
+
+    long aLeft = (long) (a * Math.pow(10, bDigit) + b);
+    long bLeft = (long) (b * Math.pow(10, aDigit) + a);
+
+    return aLeft > bLeft;
+  }
+
+  private int getDigit(int num) {
+    if (num == 0) {
+      return 1;
+    }
+
+    int digit = 0;
+    while (num > 0) {
+      num /= 10;
+      digit++;
+    }
+    return digit;
   }
 
   private void swap(int[] nums, int i, int j) {
