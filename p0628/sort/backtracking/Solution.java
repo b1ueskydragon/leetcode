@@ -1,4 +1,4 @@
-package leetcode.p0628.backtracking;
+package leetcode.p0628.sort.backtracking;
 
 import java.util.Arrays;
 
