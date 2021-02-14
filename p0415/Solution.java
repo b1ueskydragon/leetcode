@@ -5,22 +5,25 @@ class Solution {
     int n1 = num1.length();
     int n2 = num2.length();
 
+    final StringBuilder sb2 = new StringBuilder(num2).reverse();
     while (n1 > n2) {
-      num2 = "0" + num2;
+      sb2.append("0");
       n2++;
     }
 
+    final StringBuilder sb1 = new StringBuilder(num1).reverse();
     while (n2 > n1) {
-      num1 = "0" + num1;
+      sb1.append("0");
       n1++;
     }
 
-    final char[] xs = num1.toCharArray();
-    final char[] ys = num2.toCharArray();
+    final char[] xs = sb1.toString().toCharArray();
+    final char[] ys = sb2.toString().toCharArray();
     final StringBuilder res = new StringBuilder();
 
     int cache = 0;
-    for (int i = n1 - 1; i >= 0; i--) {
+    // keeping reverse order
+    for (int i = 0; i < n1; i++) {
       int acc = (xs[i] + ys[i]) % 96;
       int base = ((acc >= 10) ? acc - 10 : acc) + cache;
 
