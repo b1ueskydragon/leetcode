@@ -12,16 +12,12 @@ class Solution {
       int x = (n1 >= 0) ? num1.charAt(n1) - 48 : 0;
       int y = (n2 >= 0) ? num2.charAt(n2) - 48 : 0;
       int acc = x + y;
-      int base = ((acc >= 10) ? acc - 10 : acc) + cache;
+      int base = (acc % 10) + cache;
 
-      // set a cache after the current base has been appended
-      if (base >= 10) {
-        res.append(base - 10);
-        cache = 1;
-      } else {
-        res.append(base);
-        cache = (acc >= 10) ? 1 : 0;
-      }
+      res.append(base % 10);
+      // update a cache after the current base has been appended
+      cache = (acc >= 10 || base >= 10) ? 1 : 0;
+
       n1--;
       n2--;
     }
