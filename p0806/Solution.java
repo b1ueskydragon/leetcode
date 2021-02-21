@@ -8,8 +8,10 @@ class Solution {
     int lines = 1;
     // per line
     int pixels = 0;
-    for (char c : s.toCharArray()) {
-      final int w = widths[c % 97];
+
+    int i = 0;
+    while (i < s.length()) {
+      final int w = widths[s.charAt(i++) % 97];
       if (pixels + w <= 100) {
         pixels += w;
         continue;
