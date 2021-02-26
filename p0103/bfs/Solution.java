@@ -31,7 +31,7 @@ class Solution {
     dq.addFirst(root);
     int level = 0;
     while (!dq.isEmpty()) {
-      final List<Integer> chunk = new ArrayList<>();
+      final LinkedList<Integer> chunk = new LinkedList<>();
       // constraint with current level's size, since some of the trees are not well-balanced
       final int capacity = dq.size();
       for (int i = 0; i < capacity; i++) {
@@ -47,9 +47,9 @@ class Solution {
         }
 
         if (level % 2 != 0) {
-          chunk.add(0, parent.val);
+          chunk.addFirst(parent.val);
         } else {
-          chunk.add(parent.val);
+          chunk.addLast(parent.val);
         }
       }
       level++;
