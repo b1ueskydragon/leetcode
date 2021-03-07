@@ -1,4 +1,4 @@
-package leetcode.p0811;
+package leetcode.p0811.splittedKey;
 
 import java.util.ArrayList;
 import java.util.HashMap;
