@@ -26,13 +26,7 @@ class Solution {
 
     return countMap.entrySet()
         .stream()
-        .map(entry -> {
-          final StringBuilder builder = new StringBuilder();
-          builder.append(entry.getValue());
-          builder.append(" ");
-          builder.append(entry.getKey());
-          return builder.toString();
-        })
+        .map(entry -> entry.getValue() + " " + entry.getKey())
         .collect(Collectors.toUnmodifiableList());
   }
 
