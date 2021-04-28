@@ -1,4 +1,4 @@
-package leetcode.p0234;
+package leetcode.p0234.fastAndSlow;
 
 class ListNode {
   int val;
