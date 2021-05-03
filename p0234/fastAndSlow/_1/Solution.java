@@ -19,21 +19,19 @@ class Solution {
     ListNode fast = head;
     ListNode slow = head;
     ListNode mid = null;
-    boolean hasEvenSize = true;
 
     while (fast != null && fast.next != null) {
-      if (fast.next.next == null) {
-        hasEvenSize = false;
-      }
       fast = fast.next.next;
       ListNode next = slow.next;
       slow.next = mid;
       mid = slow;
       slow = next;
-    }
 
-    if (hasEvenSize) {
-      slow = slow.next;
+      // odd size
+      if (fast != null && fast.next == null) {
+        slow = slow.next;
+        break;
+      }
     }
 
     while (slow != null && mid != null) {
