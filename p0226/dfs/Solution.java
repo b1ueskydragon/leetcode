@@ -1,4 +1,4 @@
-package leetcode.p0226;
+package leetcode.p0226.dfs;
 
 class TreeNode {
   int val;
