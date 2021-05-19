@@ -1,4 +1,4 @@
-package leetcode.p0226.dfs;
+package leetcode.p0226.dfs.recursive;
 
 class TreeNode {
   int val;
