@@ -17,6 +17,7 @@ class TreeNode {
 }
 
 class Solution {
+  // recursive solution is dependent on an application stack
   public TreeNode invertTree(TreeNode root) {
     if (root == null) {
       return null;
