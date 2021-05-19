@@ -19,15 +19,15 @@ class TreeNode {
 class Solution {
   public TreeNode invertTree(TreeNode root) {
     if (root == null) {
-      return root;
+      return null;
     }
 
-    TreeNode tmp = root.right;
-    root.right = root.left;
-    root.left = tmp;
+    TreeNode left = invertTree(root.left);
+    TreeNode right = invertTree(root.right);
 
-    invertTree(root.left);
-    invertTree(root.right);
+    // null and null exchange will occur when current root hasn't any children
+    root.right = left;
+    root.left = right;
 
     return root;
   }
