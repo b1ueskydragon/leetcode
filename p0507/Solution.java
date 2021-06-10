@@ -3,7 +3,7 @@ package leetcode.p0507;
 class Solution {
   public boolean checkPerfectNumber(int num) {
     int divisorSum = 0;
-    for (int k = 1; k <= Math.pow(num, 0.5); k++) {
+    for (int k = 1; k * k <= num; k++) {
       if (num % k != 0) {
         continue;
       }
