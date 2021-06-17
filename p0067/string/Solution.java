@@ -33,7 +33,7 @@ class Solution {
     }
 
     final String res = sb.toString();
-    return (res.equals("")) ? "0" : sb.toString();
+    return (res.equals("")) ? "0" : res;
   }
 
   private int getCurrentDigit(final String s,
