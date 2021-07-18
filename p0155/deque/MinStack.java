@@ -1,4 +1,4 @@
-package leetcode.p0155;
+package leetcode.p0155.deque;
 
 import java.util.LinkedList;
 
