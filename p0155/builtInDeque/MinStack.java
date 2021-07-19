@@ -1,49 +1,49 @@
-package leetcode.p0155.next;
+package leetcode.p0155.builtInDeque;
+
+import java.util.LinkedList;
 
 class MinStack {
 
-  private Node head;
+  private final LinkedList<Node> nodes;
+
+  private int min;
 
   /**
    * initialize your data structure here.
    */
   public MinStack() {
-    head = null;
+    nodes = new LinkedList<>();
+    min = Integer.MAX_VALUE;
   }
 
   public void push(int val) {
-    if (head == null) {
-      head = new Node(val, val, null);
-      return;
-    }
-    head = new Node(val, Math.min(val, head.min), head);
+    min = Math.min(min, val);
+    nodes.addLast(new Node(val, min));
   }
 
   public void pop() {
-    head = head.next;
+    nodes.removeLast();
+    min = (nodes.isEmpty()) ? Integer.MAX_VALUE : nodes.getLast().min;
   }
 
   public int top() {
-    return head.val;
+    return nodes.getLast().val;
   }
 
   public int getMin() {
-    return head.min;
+    return this.min;
   }
 
   static class Node {
     private int val;
     private int min; // min at the current stack stage
-    private Node next; // link right to left
 
-    private Node(int val, int min, Node next) {
+    private Node(int val, int min) {
       this.val = val;
       this.min = min;
-      this.next = next;
     }
   }
 }
-
 
 /**
  * Your MinStack object will be instantiated and called as such:
