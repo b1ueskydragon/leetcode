@@ -6,7 +6,7 @@ class Solution {
     final StringBuilder sb = new StringBuilder();
 
     int carry = 0; // from previous remaining
-    while (columnNumber > 26) {
+    while (columnNumber > 0) {
       int base = columnNumber % 26;
       if (base == 0) {
         base = 26;
@@ -18,10 +18,6 @@ class Solution {
       carry = 0;
     }
 
-    final int base = columnNumber + carry;
-    if (base > 0) {
-      sb.append((char) (base + 64));
-    }
     return sb.reverse().toString();
   }
 }
