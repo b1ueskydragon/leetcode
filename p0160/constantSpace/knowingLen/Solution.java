@@ -1,4 +1,4 @@
-package leetcode.p0160.constantSpace;
+package leetcode.p0160.constantSpace.knowingLen;
 
 class ListNode {
   int val;
