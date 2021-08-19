@@ -6,19 +6,11 @@ class Solution {
   //
   // Do it O(1) extra space complexity and O(n) runtime complexity.
   public int missingNumber(int[] nums) {
-    int actualSum = 0;
-    int max = 0;
-    int min = 10000;
+    final int n = nums.length;
+    int res = (n + 1) * n / 2;
     for (int num : nums) {
-      actualSum += num;
-      max = Math.max(max, num);
-      min = Math.min(min, num);
+      res -= num;
     }
-    if (min > 0) {
-      return 0;
-    }
-    final int expectedSum = max * (max - min + 1) / 2;
-    final int diff = expectedSum - actualSum;
-    return (diff > 0) ? diff : max + 1;
+    return res;
   }
 }
