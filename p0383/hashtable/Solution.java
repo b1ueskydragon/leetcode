@@ -1,11 +1,9 @@
 package leetcode.p0383.hashtable;
 
-import java.util.HashMap;
-import java.util.Map;
-
 class Solution {
+  // Params consist of lowercase English letters.
   public boolean canConstruct(String ransomNote, String magazine) {
-    final Map<Character, Integer> countTable = new HashMap<>();
+    final int[] countTable = new int[26];
     final int m = magazine.length();
     final int n = ransomNote.length();
 
@@ -14,20 +12,16 @@ class Solution {
     }
 
     for (int i = 0; i < m; i++) {
-      char x = magazine.charAt(i);
-      countTable.putIfAbsent(x, 0);
-      countTable.put(x, countTable.get(x) + 1);
+      final int x = magazine.charAt(i) - 'a';
+      countTable[x]++;
     }
 
     for (int i = 0; i < n; i++) {
-      char x = ransomNote.charAt(i);
-      if (!countTable.containsKey(x)) {
+      final int x = ransomNote.charAt(i) - 'a';
+      if (countTable[x] == 0) {
         return false;
       }
-      if (countTable.get(x) == 0) {
-        return false;
-      }
-      countTable.put(x, countTable.get(x) - 1);
+      countTable[x]--;
     }
 
     return true;
