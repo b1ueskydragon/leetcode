@@ -2,7 +2,7 @@ package leetcode.p0238.prefixProduct;
 
 class Solution {
   // without using the division op
-  // O(N) time, O(1) extra space (output array does not count as extra space)
+  // O(N) time, using O(N) extra space only for an output array
   public int[] productExceptSelf(int[] nums) {
     final int n = nums.length;
     final int[] res = new int[n];

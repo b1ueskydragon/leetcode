@@ -2,6 +2,7 @@ package leetcode.p0238.TLE;
 
 class Solution {
   // without using the division op
+  // O(k * N) time
   public int[] productExceptSelf(int[] nums) {
     final int n = nums.length;
 
