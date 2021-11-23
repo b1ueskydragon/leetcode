@@ -1,24 +1,29 @@
-package leetcode.p0520;
-
 class Solution {
   // Valid conditions
-  // - only word[0] is a capital
   // - capitals == length
   // - capitals == 0
+  // - only word[0] is a capital
   public boolean detectCapitalUse(String word) {
     final int N = word.length();
-    int capitals = 0;
-    for (int i = 1; i < N; i++) {
-      final int ord = word.charAt(i);
-      if (isCapital(ord)) {
-        capitals++;
-      }
-    }
+    if (N <= 1) return true;
+
     final int head = word.charAt(0);
-    if (isCapital(head)) {
-      return capitals + 1 == N || capitals == 0;
+    if (!isCapital(head)) {
+      for (int i = 1; i < N; i++) {
+        if (isCapital(word.charAt(i))) return false;
+      }
+      return true;
     }
-    return capitals == 0;
+    if (isCapital(word.charAt(1))) {
+      for (int i = 2; i < N; i++) {
+        if (!isCapital(word.charAt(i))) return false;
+      }
+      return true;
+    }
+    for (int i = 2; i < N; i++) {
+      if (isCapital(word.charAt(i))) return false;
+    }
+    return true;
   }
 
   private static boolean isCapital(int ord) {
