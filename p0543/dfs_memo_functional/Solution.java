@@ -12,12 +12,10 @@ class Solution {
       return new int[]{-1, -1};
     }
     final int[] calcLeft = calcMaxDiameter(node.left);
-    calcLeft[1]++;
     final int[] calcRight = calcMaxDiameter(node.right);
-    calcRight[1]++;
 
-    final int leftSoFar = calcLeft[1];
-    final int rightSoFar = calcRight[1];
+    final int leftSoFar = calcLeft[1] + 1;
+    final int rightSoFar = calcRight[1] + 1;
     final int maxSoFar = Math.max(calcLeft[0], calcRight[0]);
 
     final int maxDiameter = Math.max(maxSoFar, leftSoFar + rightSoFar);
