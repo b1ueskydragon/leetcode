@@ -1,7 +1,7 @@
 package leetcode.p0543.dfs_memo;
 
 class Solution {
-  private int maxDiameter = -1;
+  private int maxDiameter = -1; // side effect
 
   //  This path may or may not pass through the root.
   public int diameterOfBinaryTree(TreeNode root) {
