@@ -1,6 +1,5 @@
 package leetcode.p1980.straightforward;
 
-// TODO Backtracking
 class Solution {
   public String findDifferentBinaryString(String[] nums) {
     // nums containing n unique binary strings, n == nums.length
