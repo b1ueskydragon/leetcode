@@ -16,24 +16,27 @@ class Solution {
 
     for (int i = 1; i < nums.length; i++) {
       int curr = nums[i];
-      if (curr - prev != 1) { // care the case of prev=-2147483647, curr=2147483647
-        if (init == prev) {
-          res.add(String.valueOf(prev));
-        } else {
-          res.add(String.format("%s->%s", init, prev));
-        }
+      if (curr - prev != 1) {
+        append(res, init, prev);
         init = curr;
       }
       prev = curr;
     }
     // flush
-    if (init == prev) {
-      res.add(String.valueOf(prev));
-    } else {
-      res.add(String.format("%s->%s", init, prev));
-    }
-
+    append(res, init, prev);
     return res;
   }
-}
 
+  // allow a side effect
+  private static void append(List<String> list, int to, int from) {
+    if (to == from) {
+      list.add(String.valueOf(from));
+      return;
+    }
+    final StringBuilder sb = new StringBuilder();
+    sb.append(to);
+    sb.append("->");
+    sb.append(from);
+    list.add(sb.toString());
+  }
+}
