@@ -16,15 +16,14 @@ class Solution {
     //
     public int[] getSumAbsoluteDifferences(int[] nums) {
         final int n = nums.length;
-        final int[] prefixSum = new int[n];
-        prefixSum[0] = nums[0];
+        final int[] prefixSum = new int[n + 1]; // sentinel
         final int[] res = new int[n];
-        for (int i = 1; i < n; i++) {
-            prefixSum[i] = prefixSum[i - 1] + nums[i];
+        for (int i = 0; i < n; i++) {
+            prefixSum[i + 1] = prefixSum[i] + nums[i];
         }
         for (int i = 0; i < n; i++) {
-            res[i] = ((i == 0) ? 0 : i * nums[i] - prefixSum[i - 1])
-                    + prefixSum[n - 1] - prefixSum[i] - (n - i - 1) * nums[i];
+            res[i] = i * nums[i] - prefixSum[i]
+                    + prefixSum[n] - prefixSum[i + 1] - (n - i - 1) * nums[i];
         }
         return res;
     }
