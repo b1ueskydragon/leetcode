@@ -9,27 +9,22 @@ class Solution {
     //          = i * nums[i] - (nums[0] + nums[1] + ... + nums[i - 1])
     //          + (nums[i + 1] + nums[i + 2]] + ... + nums[n - 1]) - (n - i - 1) * nums[i]
     //
+    //          it can be replaced to prefix sum
+    //
+    //          = i * nums[i] - prefixSum[i - 1]
+    //          + prefixSum[n - 1] - prefixSum[i] - (n - i - 1) * nums[i]
+    //
     public int[] getSumAbsoluteDifferences(int[] nums) {
         final int n = nums.length;
-        final int[] pref = new int[n];
-        final int[] suff = new int[n];
+        final int[] prefixSum = new int[n];
+        prefixSum[0] = nums[0];
         final int[] res = new int[n];
-        // Prefix sum to get and accumulate each
-        // - (nums[0] + nums[1] + ... + nums[i - 1])
         for (int i = 1; i < n; i++) {
-            pref[i] = pref[i - 1] - nums[i - 1];
+            prefixSum[i] = prefixSum[i - 1] + nums[i];
         }
-        // Suffix sum to get and accumulate each
-        // + (nums[i + 1] + nums[i + 2]] + ... + nums[n - 1])
-        // same as
-        // + (nums[n - 1] + nums[n - 2] + ... + nums[i + 1])
-        for (int i = n - 2; i >= 0; i--) {
-            suff[i] = suff[i + 1] + nums[i + 1];
-        }
-        // Add both and also add remaining
-        // i * nums[i] - (n - i - 1) * nums[i]
         for (int i = 0; i < n; i++) {
-            res[i] = (2 * i - n + 1) * nums[i] + pref[i] + suff[i];
+            res[i] = ((i == 0) ? 0 : i * nums[i] - prefixSum[i - 1])
+                    + prefixSum[n - 1] - prefixSum[i] - (n - i - 1) * nums[i];
         }
         return res;
     }
