@@ -1,6 +1,6 @@
 package leetcode.p1123;
 
-public class TreeNode {
+class TreeNode {
   int val;
   TreeNode left;
   TreeNode right;
