@@ -7,29 +7,23 @@ class Solution {
         if (head == null || head.next == null) {
             return head;
         }
-
         // divide Phase
-        ListNode mid = splitAndGetMid(head);
+        ListNode midPrev = null;
+        ListNode mid = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            midPrev = mid;
+            mid = mid.next;
+            fast = fast.next.next;
+        }
+        // cut off the linkage between mid and midPrev
+        midPrev.next = null;
+
         ListNode left = sortList(head);
         ListNode right = sortList(mid);
 
         // conquer Phase
         return sortAndMerge(left, right);
-    }
-
-    // side effect to split a linkage
-    // this requires at least two nodes
-    private ListNode splitAndGetMid(ListNode head) {
-        ListNode midPrev = null;
-        ListNode mid = head;
-        while (head != null && head.next != null) {
-            midPrev = mid;
-            mid = mid.next;
-            head = head.next.next;
-        }
-        // cut off the linkage between mid and mid-previous to prevent cycle occurs
-        midPrev.next = null;
-        return mid;
     }
 
     // both a and b are sorted lists
