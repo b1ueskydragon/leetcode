@@ -17,15 +17,16 @@ class Solution {
         return sortAndMerge(left, right);
     }
 
-    // side-effect to split a linkage
+    // side effect to split a linkage
     // this requires at least two nodes
     private ListNode splitAndGetMid(ListNode head) {
         ListNode midPrev = null;
+        ListNode mid = head;
         while (head != null && head.next != null) {
-            midPrev = (midPrev == null) ? head : midPrev.next;
+            midPrev = mid;
+            mid = mid.next;
             head = head.next.next;
         }
-        ListNode mid = midPrev.next;
         // cut off the linkage between mid and mid-previous to prevent cycle occurs
         midPrev.next = null;
         return mid;
