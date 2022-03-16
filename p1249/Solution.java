@@ -1,6 +1,9 @@
 package leetcode.p1249;
 
 class Solution {
+    // Goal is reducing parentheses, and it doesn't matter which will be removed.
+    // Unless it is "", parentheses part can be in any form as long as they start '(' and close with ')'.
+    // Hence, if the number of parentheses can be kept, an additional stack is not needed to keep parentheses itself.
     public String minRemoveToMakeValid(String s) {
         final char[] cs = s.toCharArray();
         int open = 0, close = 0;
