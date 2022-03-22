@@ -10,16 +10,16 @@ class Solution {
                 // erase opening if closing follows and opening has a enough accumulation.
             else if (opening > 0) opening--;
         }
-        return count(opening);
+        return count(opening, 0);
     }
 
     // opening 1 => 1
     // opening 2 => 1
     // opening 3 => 1 + opening 1 ( e.g. ]]][[[ is equal to [] ][ [] )
     // opening 4 => 1 + opening 2 ( e.g. ]]]][[[[ is equal to [] ]][[ [] )
-    private static int count(int opening) {
-        if (opening == 0) return 0;
-        if (opening <= 2) return 1;
-        return 1 + count(opening - 2);
+    private static int count(int opening, int base) {
+        if (opening == 0) return base;
+        if (opening <= 2) return base + 1;
+        return count(opening - 2, 1 + base);
     }
 }
