@@ -1,4 +1,4 @@
-package leetcode.p0031;
+package leetcode.p0031.s202102;
 
 class Solution {
   public void nextPermutation(int[] nums) {
