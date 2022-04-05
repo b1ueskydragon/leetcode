@@ -26,11 +26,10 @@ class Solution {
 
         if (i == last) {
             // [1,2,3]
-            reverse(nums, i - 1, i);
+            swap(nums, i - 1, i);
         } else {
             reverse(nums, i, last);
         }
-
 
         // 2nd step swap, if needed.
         // target := i の一つ左 index and 次のそれより大きい要素の index
