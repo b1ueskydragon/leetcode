@@ -9,47 +9,49 @@ class Solution {
     // [5,3,1,2,4]
     //
     public void nextPermutation(int[] nums) {
-        if (nums.length < 2) return;
+        final int N = nums.length;
+        if (N < 2) return;
 
         // 1st step reverse
         // reverse range:= [右->左 方向で increment が続く要素の index, 末尾 index]
-        int last = nums.length - 1;
-        int i = last;
-        while (nums[i - 1] >= nums[i]) {
-            i--;
-            if (i == 0) {
-                // [3,2,1]
-                reverse(nums, 0, last);
-                return;
-            }
-        }
+        final int last = N - 1;
+        final int i = findLastIncrementIndex(nums, last);
 
-        if (i == last) {
-            // [1,2,3]
-            swap(nums, i - 1, i);
-        } else {
-            reverse(nums, i, last);
-        }
+        // [1,2,3]
+        if (i == last) swap(nums, i - 1, i);
+        else reverse(nums, i, last);
+
+        // [3,2,1] -> [1,2,3]
+        if (i == 0) return;
 
         // 2nd step swap, if needed.
         // target := i の一つ左 index and 次のそれより大きい要素の index
-        int head = i - 1;
-        while (nums[head] >= nums[i]) {
-            i++;
-            if (i == nums.length) {
-                // Second reverse is not needed.
-                return;
-            }
-        }
+        final int head = i - 1;
+        final int j = findFirstIncrementIndex(nums, N, head, i);
 
-        swap(nums, head, i);
+        // Second reverse is not needed.
+        if (j == N) return;
+
+        swap(nums, head, j);
+    }
+
+    private static int findLastIncrementIndex(int[] nums, int last) {
+        while (last > 0 &&
+                nums[last - 1] >= nums[last]) last--;
+        return last;
+    }
+
+    private static int findFirstIncrementIndex(int[] nums, final int limit, final int head, int start) {
+        while (start < limit &&
+                nums[head] >= nums[start]) start++;
+        return start;
     }
 
     private static void reverse(int[] nums, int l, int r) {
         while (l <= r) swap(nums, l++, r--);
     }
 
-    private static void swap(int[] nums, int i, int j) {
+    private static void swap(int[] nums, final int i, final int j) {
         int tmp = nums[i];
         nums[i] = nums[j];
         nums[j] = tmp;
