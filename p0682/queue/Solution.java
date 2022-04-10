@@ -1,4 +1,4 @@
-package leetcode.p0682;
+package leetcode.p0682.queue;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
