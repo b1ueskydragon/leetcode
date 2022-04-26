@@ -1,4 +1,4 @@
-package leetcode.p0485;
+package leetcode.p0485.count_one;
 
 class Solution {
     public int findMaxConsecutiveOnes(int[] nums) {
