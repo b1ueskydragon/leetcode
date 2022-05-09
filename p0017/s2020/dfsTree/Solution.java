@@ -1,4 +1,4 @@
-package leetcode.p0017.dfsTree;
+package leetcode.p0017.s2020.dfsTree;
 
 import java.util.ArrayList;
 import java.util.HashMap;

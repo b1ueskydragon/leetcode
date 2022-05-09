@@ -1,4 +1,4 @@
-package leetcode.p0017.backtracking;
+package leetcode.p0017.s2020.backtracking;
 
 import java.util.ArrayList;
 import java.util.HashMap;
