@@ -1,55 +1,45 @@
 package leetcode.p0017.s202205.backtracking;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 class Solution {
-    private static final Map<Character, List<String>> letterMap
+    private static final Map<Character, String[]> letterMap
             = Map.of(
-            '2', List.of("a", "b", "c"),
-            '3', List.of("d", "e", "f"),
-            '4', List.of("g", "h", "i"),
-            '5', List.of("j", "k", "l"),
-            '6', List.of("m", "n", "o"),
-            '7', List.of("p", "q", "r", "s"),
-            '8', List.of("t", "u", "v"),
-            '9', List.of("w", "x", "y", "z")
-    );
+            '2', new String[]{"a", "b", "c"},
+            '3', new String[]{"d", "e", "f"},
+            '4', new String[]{"g", "h", "i"},
+            '5', new String[]{"j", "k", "l"},
+            '6', new String[]{"m", "n", "o"},
+            '7', new String[]{"p", "q", "r", "s"},
+            '8', new String[]{"t", "u", "v"},
+            '9', new String[]{"w", "x", "y", "z"});
 
     public List<String> letterCombinations(String digits) {
         final int n = digits.length();
         if (n == 0) {
             return List.of();
         }
-        return letterCombinations(n, n - 1, getKeys(digits));
+        return letterCombinations(n - 1, digits);
     }
 
-    private List<String> letterCombinations(int n, int k, char[] digits) {
+    private List<String> letterCombinations(int k, String digits) {
+        String[] currLetter = letterMap.get(digits.charAt(k));
+        if (k == 0) {
+            return Arrays.asList(currLetter);
+        }
+        // a combination result of current stage
         // should be mutable
         List<String> res = new ArrayList<>();
-        if (k == 0) {
-            res.addAll(letterMap.get(digits[0]));
-            return res;
-        }
 
-        List<String> prevCombs = letterCombinations(n, k - 1, digits);
-        List<String> currLetter = letterMap.get(digits[k]);
+        List<String> prevCombs = letterCombinations(k - 1, digits);
         for (String p : prevCombs) {
             for (String s : currLetter) {
                 res.add(p + s);
             }
         }
-
         return res;
-    }
-
-    private static char[] getKeys(String digits) {
-        final int n = digits.length();
-        final char[] keys = new char[n];
-        for (int i = 0; i < n; i++) {
-            keys[i] = digits.charAt(i);
-        }
-        return keys;
     }
 }
