@@ -1,4 +1,4 @@
-package leetcode.p0200;
+package leetcode.p0200.s202007;
 
 import java.util.Deque;
 import java.util.LinkedList;
