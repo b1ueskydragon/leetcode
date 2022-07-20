@@ -5,35 +5,29 @@ import java.util.Deque;
 
 class Solution {
     // right, down, left, up
-    private final int[] vectorR = {0, 1, 0, -1};
-    private final int[] vectorC = {1, 0, -1, 0};
+    private static final int[] vectorR = {0, 1, 0, -1};
+    private static final int[] vectorC = {1, 0, -1, 0};
 
     public int maxAreaOfIsland(int[][] grid) {
         final int m = grid.length;
         final int n = grid[0].length;
-        final boolean[][] visited = new boolean[m][n];
         int maxIsland = 0;
 
         for (int r = 0; r < m; r++) {
             for (int c = 0; c < n; c++) {
-                if (visited[r][c]) {
+                if (grid[r][c] == 0) {
                     continue;
                 }
-                maxIsland = Math.max(maxIsland, getArea(grid, visited, m, n, r, c));
-                visited[r][c] = true;
+                maxIsland = Math.max(maxIsland, getArea(grid, m, n, r, c));
+                grid[r][c] = 0; // mark as visited
             }
         }
         return maxIsland;
     }
 
-    private int getArea(int[][] grid,
-                        boolean[][] visited,
-                        int m, int n,
-                        int r, int c) {
-        if (grid[r][c] == 0) {
-            return 0;
-        }
-
+    private static int getArea(int[][] grid,
+                               int m, int n,
+                               int r, int c) {
         final Deque<int[]> queue = new ArrayDeque<>();
         queue.addLast(new int[]{r, c});
         int island = 0;
@@ -43,9 +37,9 @@ class Solution {
             for (int i = 0; i < 4; i++) {
                 final int x = curr[0] + vectorR[i];
                 final int y = curr[1] + vectorC[i];
-                if (isValidPos(x, y, m, n) && !visited[x][y] && grid[x][y] == 1) {
+                if (isValidPos(x, y, m, n) && grid[x][y] == 1) {
                     queue.addLast(new int[]{x, y});
-                    visited[x][y] = true;
+                    grid[x][y] = 0; // mark as visited
                     island++;
                 }
             }
