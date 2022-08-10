@@ -1,4 +1,4 @@
-package leetcode.p0108.divide_and_conquer.recursive;
+package leetcode.p0108.divide_and_conquer.recursive.s202110;
 
 class TreeNode {
   int val;
