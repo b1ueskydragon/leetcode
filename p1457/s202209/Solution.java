@@ -16,6 +16,7 @@ class Solution {
             return 0;
         }
         // backTracking-ish (make a different choice after return to the root)
+        // to keep the current immutable path for each root
         final int[] path = Arrays.copyOf(prevPath, LIMIT);
         path[root.val]++;
 
