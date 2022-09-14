@@ -3,33 +3,30 @@ package leetcode.p1457.s202209;
 import java.util.Arrays;
 
 class Solution {
-    private int count = 0;
-
     // 1 <= node.val <= 9
+    private static final int LIMIT = 10;
+
     // isPalindromic: from the root node to leaf
     public int pseudoPalindromicPaths(TreeNode root) {
-        dfs(root, new int[10]);
-        return count;
+        return count(root, new int[LIMIT]);
     }
 
-    private void dfs(TreeNode root, int[] prevPath) {
+    private static int count(TreeNode root, int[] prevPath) {
         if (root == null) {
-            return;
+            return 0;
         }
-
         // backTracking-ish (make a different choice after return to the root)
-        final int[] path = Arrays.copyOf(prevPath, 10);
+        final int[] path = Arrays.copyOf(prevPath, LIMIT);
         path[root.val]++;
 
         // target of the check (reached to the leaf node)
         if (root.left == null && root.right == null) {
             if (isPalindromic(path)) {
-                count++;
+                return 1;
             }
         }
-
-        dfs(root.left, path);
-        dfs(root.right, path);
+        // left acc + right acc
+        return count(root.left, path) + count(root.right, path);
     }
 
     private static boolean isPalindromic(int[] path) {
