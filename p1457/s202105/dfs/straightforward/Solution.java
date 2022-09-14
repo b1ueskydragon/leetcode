@@ -1,4 +1,4 @@
-package leetcode.p1457.dfs.straightforward;
+package leetcode.p1457.s202105.dfs.straightforward;
 
 import java.util.Arrays;
 
