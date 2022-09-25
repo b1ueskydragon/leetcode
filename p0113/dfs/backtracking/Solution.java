@@ -9,10 +9,10 @@ class Solution {
         return pathSum(root, targetSum, new ArrayList<>(), new ArrayList<>());
     }
 
-    public List<List<Integer>> pathSum(TreeNode root,
-                                       int targetSum,
-                                       List<List<Integer>> paths,
-                                       List<Integer> path) {
+    private static List<List<Integer>> pathSum(TreeNode root,
+                                               int targetSum,
+                                               List<List<Integer>> paths,
+                                               List<Integer> path) {
         if (root == null) {
             return paths;
         }
@@ -24,10 +24,8 @@ class Solution {
         final List<Integer> currStagePath = new ArrayList<>(path);
         currStagePath.add(currStageVal);
 
-        if (root.left == null && root.right == null) {
-            if (targetSum == currStageVal) {
-                paths.add(currStagePath);
-            }
+        if (root.left == null && root.right == null && targetSum == currStageVal) {
+            paths.add(currStagePath);
             return paths;
         }
 
