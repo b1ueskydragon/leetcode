@@ -30,6 +30,10 @@ class Solution {
 
                     parent.right = new TreeNode(val);
                     parent.right.right = right;
+
+                    // should be a "continue" (not a "break" or a "return")
+                    // since all current depths' parent nodes should add new node
+                    continue;
                 }
 
                 if (left != null) {
