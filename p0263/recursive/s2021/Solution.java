@@ -1,4 +1,4 @@
-package leetcode.p0263.recursive;
+package leetcode.p0263.recursive.s2021;
 
 class Solution {
   public boolean isUgly(int n) {
