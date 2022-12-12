@@ -1,4 +1,4 @@
-package leetcode.p0070.dp.additionalSpace;
+package leetcode.p0070.s2021.dp.additionalSpace;
 
 class Solution {
   public int climbStairs(int n) {
