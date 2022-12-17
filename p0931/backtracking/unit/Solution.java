@@ -1,4 +1,4 @@
-package leetcode.p0931;
+package leetcode.p0931.backtracking.unit;
 
 // n == matrix.length == matrix[i].length
 // 1 <= n <= 100
