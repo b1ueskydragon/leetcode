@@ -1,3 +1,5 @@
+package leetcode.p0520.s2021;
+
 class Solution {
   // Valid conditions
   // - capitals == length
