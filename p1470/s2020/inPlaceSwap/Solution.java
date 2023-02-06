@@ -1,4 +1,4 @@
-package leetcode.p1470.inPlaceSwap;
+package leetcode.p1470.s2020.inPlaceSwap;
 
 class Solution {
   // nums.length == 2n
