@@ -1,4 +1,4 @@
-package leetcode.p0067.array;
+package leetcode.p0067.s2021.array;
 
 class Solution {
   public String addBinary(String a, String b) {

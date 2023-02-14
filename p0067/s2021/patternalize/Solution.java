@@ -1,4 +1,4 @@
-package leetcode.p0067.patternalize;
+package leetcode.p0067.s2021.patternalize;
 
 class Solution {
   // All patterns of a[i] + b[j] + carry and its original sum
