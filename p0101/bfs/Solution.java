@@ -1,8 +1,6 @@
 package leetcode.p0101.bfs;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Queue;
 
@@ -12,21 +10,21 @@ class Solution {
         queue.offer(root);
         while (!queue.isEmpty()) {
             final int count = queue.size();
-            final List<Integer> tmp = new ArrayList<>();
-            for (int i = 0; i < count; i++) {
+            final Integer[] tmp = new Integer[count * 2];
+            int i = 0;
+            for (int c = 0; c < count; c++) {
                 final var parent = queue.poll();
+                assert parent != null;
                 if (parent.left != null) {
                     queue.offer(parent.left);
-                    tmp.add(parent.left.val);
-                } else {
-                    tmp.add(null);
+                    tmp[i] = parent.left.val;
                 }
+                i++; // proceed i even if it's null
                 if (parent.right != null) {
                     queue.offer(parent.right);
-                    tmp.add(parent.right.val);
-                } else {
-                    tmp.add(null);
+                    tmp[i] = parent.right.val;
                 }
+                i++; // proceed i even if it's null
             }
             if (!isSymmetric(tmp)) {
                 return false;
@@ -35,10 +33,10 @@ class Solution {
         return true;
     }
 
-    private static boolean isSymmetric(List<Integer> list) {
-        int l = 0, r = list.size() - 1;
+    private static boolean isSymmetric(Integer[] xs) {
+        int l = 0, r = xs.length - 1;
         while (l <= r) {
-            if (!Objects.equals(list.get(l), list.get(r))) {
+            if (!Objects.equals(xs[l], xs[r])) {
                 return false;
             }
             l++;
