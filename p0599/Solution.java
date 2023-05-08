@@ -23,7 +23,7 @@ class Solution {
             if (!map.containsKey(key)) {
                 continue;
             }
-            final int candSum = map.get(key).get(0) + i;
+            final int candSum = map.get(key) + i;
             if (candSum == minSum) {
                 cands.add(key);
                 continue;
@@ -38,12 +38,10 @@ class Solution {
         return cands;
     }
 
-    private static Map<String, List<Integer>> buildIndexMap(String[] xs) {
-        final Map<String, List<Integer>> map = new HashMap<>();
+    private static Map<String, Integer> buildIndexMap(String[] xs) {
+        final Map<String, Integer> map = new HashMap<>();
         for (int i = 0; i < xs.length; i++) {
-            final List<Integer> list = new ArrayList<>();
-            list.add(i);
-            map.put(xs[i], list);
+            map.put(xs[i], i);
         }
         return map;
     }
