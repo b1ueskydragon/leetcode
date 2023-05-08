@@ -7,41 +7,44 @@ import java.util.Map;
 
 class Solution {
     public String[] findRestaurant(String[] list1, String[] list2) {
-        final Map<String, List<Integer>> map = new HashMap<>();
-        buildIndexMap(list1, map);
-        buildIndexMap(list2, map);
-        int minSum = Integer.MAX_VALUE;
-        List<String> cands = new ArrayList<>();
-        for (var entry : map.entrySet()) {
-            final List<Integer> indices = entry.getValue();
-            if (indices.size() < 2) {
-                continue;
-            }
-            final int cand = indices.get(0) + indices.get(1);
-            final String key = entry.getKey();
-            if (minSum == cand) {
-                cands.add(key);
-                continue;
-            }
-            if (minSum > cand) {
-                minSum = cand;
-                cands = new ArrayList<>();
-                cands.add(key);
-            }
+        if (list1.length < list2.length) {
+            return findRestaurant(list2, list1);
         }
-        return cands.toArray(new String[cands.size()]);
+        final var res = buildIndexList(list1, list2);
+        return res.toArray(new String[0]);
     }
 
-    private static void buildIndexMap(String[] xs, Map<String, List<Integer>> map) {
-        for (int i = 0; i < xs.length; i++) {
-            final String key = xs[i];
+    private static List<String> buildIndexList(String[] longerXs, String[] shorterXs) {
+        int minSum = Integer.MAX_VALUE;
+        List<String> cands = new ArrayList<>();
+        final var map = buildIndexMap(longerXs);
+        for (int i = 0; i < shorterXs.length; i++) {
+            final String key = shorterXs[i];
             if (!map.containsKey(key)) {
-                final List<Integer> indices = new ArrayList<>();
-                indices.add(i);
-                map.put(key, indices);
                 continue;
             }
-            map.get(key).add(i);
+            final int candSum = map.get(key).get(0) + i;
+            if (candSum == minSum) {
+                cands.add(key);
+                continue;
+            }
+            if (candSum < minSum) {
+                minSum = candSum;
+                cands = new ArrayList<>() {{
+                    add(key);
+                }};
+            }
         }
+        return cands;
+    }
+
+    private static Map<String, List<Integer>> buildIndexMap(String[] xs) {
+        final Map<String, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i < xs.length; i++) {
+            final List<Integer> list = new ArrayList<>();
+            list.add(i);
+            map.put(xs[i], list);
+        }
+        return map;
     }
 }
