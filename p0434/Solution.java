@@ -8,14 +8,13 @@ class Solution {
             return 0;
         }
         int cnt = 0;
-        final char[] chars = s.toCharArray();
-        char prev = chars[0];
-        for (int i = 1; i < chars.length; i++) {
-            final char curr = chars[i];
+        char prev = s.charAt(0);
+        for (int i = 1; i < s.length(); i++) {
+            final char curr = s.charAt(i);
             if (prev != SPACE && curr == SPACE) {
                 cnt++;
             }
-            prev = chars[i];
+            prev = curr;
         }
         return (prev != SPACE) ? cnt + 1 : cnt;
     }
