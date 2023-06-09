@@ -1,4 +1,4 @@
-package leetcode.p1318;
+package leetcode.p1318.array;
 
 // Beats 100%, O(N) Execution time
 // Using additional O(N) space
