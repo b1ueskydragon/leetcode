@@ -1,4 +1,4 @@
-package leetcode.p0228.straightforward;
+package leetcode.p0228.s2022;
 
 import java.util.ArrayList;
 import java.util.List;
