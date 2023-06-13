@@ -1,10 +1,8 @@
-package leetcode.p2352;
+package leetcode.p2352.hashCode;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-// for example, cannot pass the case [[2,1],[3,32]]
 class Solution {
     public int equalPairs(int[][] grid) {
         final Map<Integer, Integer> countMap = new HashMap<>();
@@ -15,7 +13,7 @@ class Solution {
             for (int j = 0; j < N; j++) {
                 array[k++] = grid[i][j];
             }
-            final int key = Arrays.hashCode(array);
+            final int key = hashCode(array);
             countMap.put(key, countMap.computeIfAbsent(key, ignore -> 0) + 1);
         }
         int pair = 0;
@@ -25,11 +23,21 @@ class Solution {
             for (int i = 0; i < N; i++) {
                 array[k++] = grid[i][j];
             }
-            final int key = Arrays.hashCode(array);
+            final int key = hashCode(array);
             if (countMap.containsKey(key)) {
                 pair += countMap.get(key);
             }
         }
         return pair;
+    }
+
+    private static int hashCode(int[] a) {
+        int result = 1;
+        for (int element : a) {
+            // 31 * i == (i << 5) - i
+            // constraints: max element is 100000 (17 binary digits)
+            result = (result << 17) - result + element;
+        }
+        return result;
     }
 }
