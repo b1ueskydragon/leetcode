@@ -1,4 +1,4 @@
-package leetcode.p0530.dfs;
+package leetcode.p0530.s2022.dfs;
 
 class Solution {
     private int prev = 10_001;
