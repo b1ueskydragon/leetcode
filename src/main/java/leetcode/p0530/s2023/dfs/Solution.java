@@ -14,6 +14,7 @@ class Solution {
         return minDiff;
     }
 
+    // call each other - just for fun
     private void dfs(TreeNode root) {
         if (root == null) {
             return;
