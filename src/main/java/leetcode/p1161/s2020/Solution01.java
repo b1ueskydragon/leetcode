@@ -1,4 +1,4 @@
-package leetcode.p1161;
+package leetcode.p1161.s2020;
 
 class Solution01 {
   // make as global to stable status
