@@ -8,6 +8,7 @@ import java.util.PriorityQueue;
 class Solution {
     // nums1 and nums2 both are sorted in ascending order
     // find k pairs with the smallest sums
+    // also see: merge k sorted list problem
     public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         // both nums1 and nums2 may include 100000 nums
         // 100000 ^ 2 will cause integer overflow
