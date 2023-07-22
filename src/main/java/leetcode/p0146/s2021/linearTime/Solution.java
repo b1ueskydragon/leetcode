@@ -1,4 +1,4 @@
-package leetcode.p0146.linearTime;
+package leetcode.p0146.s2021.linearTime;
 
 import java.util.Deque;
 import java.util.HashMap;

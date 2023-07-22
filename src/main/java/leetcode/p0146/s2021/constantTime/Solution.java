@@ -1,4 +1,4 @@
-package leetcode.p0146.constantTime;
+package leetcode.p0146.s2021.constantTime;
 
 import java.util.HashMap;
 import java.util.Map;
