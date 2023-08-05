@@ -1,10 +1,15 @@
-Array.prototype.last = function() {
+Array.prototype.last = function () {
     const n = this.length;
     return (n === 0) ? -1 : this[n - 1];
 };
 
-Array.prototype.last = function() {
+Array.prototype.last = function () {
     return this.length ? this.at(-1) : -1;
+};
+
+Array.prototype.last = function () {
+    // create new slice array
+    return this.length ? this.slice(-1)[0] : -1;
 };
 
 
