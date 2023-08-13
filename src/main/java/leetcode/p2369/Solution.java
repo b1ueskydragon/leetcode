@@ -4,34 +4,32 @@ class Solution {
     // Constraints
     // 2 <= nums.length <= 100_000
     public boolean validPartition(int[] nums) {
+        return validPartition(nums, 0, nums.length);
+    }
+
+    // j is exclusive end
+    private boolean validPartition(int[] nums, int i, int j) {
         // base case
-        if (nums.length <= 3) {
-            return isValidRule(nums);
+        if (j - i <= 3) {
+            return isValidRule(nums, i, j);
         }
         // recursive case
-        return (validPartition(split(nums, 0, 2)) && validPartition(split(nums, 2, nums.length)))
-                || (validPartition(split(nums, 0, 3)) && validPartition(split(nums, 3, nums.length)));
+        return (validPartition(nums, i, i + 2) && validPartition(nums, i + 2, j))
+                || (validPartition(nums, i, i + 3) && validPartition(nums, i + 3, j));
     }
 
-    private static boolean isValidRule(int[] nums) {
-        if (nums.length == 2) {
-            return nums[0] == nums[1];
+    // j is exclusive end
+    private static boolean isValidRule(int[] nums, int i, int j) {
+        if (j - i == 2) {
+            return nums[i] == nums[i + 1];
         }
-        if (nums.length == 3) {
-            if (nums[0] == nums[1] && nums[0] == nums[2]) {
-                return true;
+        if (j - i == 3) {
+            if (nums[i] == nums[i + 1]) {
+                return nums[i] == nums[i + 2];
+            } else if (nums[i] == nums[i + 1] - 1) {
+                return nums[i] == nums[i + 2] - 2;
             }
-            return nums[0] == nums[1] - 1 && nums[0] == nums[2] - 2;
         }
         return false;
-    }
-
-    private int[] split(int[] xs, int startIncl, int endExcl) {
-        final int[] newXs = new int[endExcl - startIncl];
-        int j = 0;
-        for (int i = startIncl; i < endExcl; i++) {
-            newXs[j++] = xs[i];
-        }
-        return newXs;
     }
 }
