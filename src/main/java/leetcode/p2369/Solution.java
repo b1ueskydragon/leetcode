@@ -1,9 +1,12 @@
 package leetcode.p2369;
 
 class Solution {
+    private Boolean[] isValid;
+
     // Constraints
     // 2 <= nums.length <= 100_000
     public boolean validPartition(int[] nums) {
+        isValid = new Boolean[nums.length];
         return validPartition(nums, 0, nums.length);
     }
 
@@ -13,9 +16,23 @@ class Solution {
         if (j - i <= 3) {
             return isValidRule(nums, i, j);
         }
+
         // recursive case
-        return (validPartition(nums, i, i + 2) && validPartition(nums, i + 2, j))
-                || (validPartition(nums, i, i + 3) && validPartition(nums, i + 3, j));
+        // memoization
+        if (isValid[i] != null) {
+            return isValid[i];
+        }
+
+        isValid[i] = validPartition(nums, i, i + 2);
+        isValid[i + 2] = validPartition(nums, i + 2, j);
+
+        if (isValid[i] && isValid[i + 2]) {
+            return true;
+        }
+
+        isValid[i] = validPartition(nums, i, i + 3);
+        isValid[i + 3] = validPartition(nums, i + 3, j);
+        return isValid[i] && isValid[i + 3];
     }
 
     // j is exclusive end
