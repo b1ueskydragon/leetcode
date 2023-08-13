@@ -23,15 +23,17 @@ class Solution {
             return isValid[i];
         }
 
-        isValid[i] = validPartition(nums, i, i + 2);
-        isValid[i + 2] = validPartition(nums, i + 2, j);
+        // split case 1
+        isValid[i] = validPartition(nums, i, i + 2); // head (2 elements)
+        isValid[i + 2] = validPartition(nums, i + 2, j); // tail (remaining)
 
         if (isValid[i] && isValid[i + 2]) {
             return true;
         }
 
-        isValid[i] = validPartition(nums, i, i + 3);
-        isValid[i + 3] = validPartition(nums, i + 3, j);
+        // split case 2
+        isValid[i] = validPartition(nums, i, i + 3); // head (3 elements)
+        isValid[i + 3] = validPartition(nums, i + 3, j); // tail (remaining)
         return isValid[i] && isValid[i + 3];
     }
 
@@ -47,6 +49,6 @@ class Solution {
                 return nums[i] == nums[i + 2] - 2;
             }
         }
-        return false;
+        return false; // less than 2 elements. not enough to build a valid partition
     }
 }
