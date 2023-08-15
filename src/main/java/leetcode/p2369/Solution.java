@@ -1,12 +1,13 @@
 package leetcode.p2369;
 
 class Solution {
-    private Boolean[] isValid;
+    // isValidFrom[i] := whether a valid partition exists starting from the index i
+    private Boolean[] isValidFrom;
 
     // Constraints
     // 2 <= nums.length <= 100_000
     public boolean validPartition(int[] nums) {
-        isValid = new Boolean[nums.length];
+        isValidFrom = new Boolean[nums.length];
         return validPartition(nums, 0, nums.length);
     }
 
@@ -19,22 +20,22 @@ class Solution {
 
         // recursive case
         // memoization
-        if (isValid[i] != null) {
-            return isValid[i];
+        if (isValidFrom[i] != null) {
+            return isValidFrom[i];
         }
 
         // split case 1
-        isValid[i] = validPartition(nums, i, i + 2); // head (2 elements)
-        isValid[i + 2] = validPartition(nums, i + 2, j); // tail (remaining)
+        isValidFrom[i] = validPartition(nums, i, i + 2); // head (2 elements)
+        isValidFrom[i + 2] = validPartition(nums, i + 2, j); // tail (remaining)
 
-        if (isValid[i] && isValid[i + 2]) {
+        if (isValidFrom[i] && isValidFrom[i + 2]) {
             return true;
         }
 
         // split case 2
-        isValid[i] = validPartition(nums, i, i + 3); // head (3 elements)
-        isValid[i + 3] = validPartition(nums, i + 3, j); // tail (remaining)
-        return isValid[i] && isValid[i + 3];
+        isValidFrom[i] = validPartition(nums, i, i + 3); // head (3 elements)
+        isValidFrom[i + 3] = validPartition(nums, i + 3, j); // tail (remaining)
+        return isValidFrom[i] && isValidFrom[i + 3];
     }
 
     // j is exclusive end
