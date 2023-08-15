@@ -1,4 +1,4 @@
-package leetcode.p0215.divideAndConquer;
+package leetcode.p0215.s2020.divideAndConquer;
 
 
 class Solution {

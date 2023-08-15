@@ -1,4 +1,4 @@
-package leetcode.p0215.priorityQueue;
+package leetcode.p0215.s2020.priorityQueue;
 
 import java.util.PriorityQueue;
 
