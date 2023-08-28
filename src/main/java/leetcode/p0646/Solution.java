@@ -3,31 +3,43 @@ package leetcode.p0646;
 import java.util.Arrays;
 
 class Solution {
-    private int maxCount = 0;
-
     public int findLongestChain(int[][] pairs) {
         sortInplace(pairs);
-        rec(pairs, 0, 0);
-        // increase afterwards since the start point is not included
-        return maxCount + 1;
+        final int[] countFrom = new int[pairs.length];
+        int maxChain = 0;
+        for (int i = 0; i < pairs.length; i++) {
+            maxChain = Math.max(maxChain, countChain(pairs, i, countFrom));
+        }
+        return maxChain;
     }
 
-    private void rec(int[][] sortedPairs, int start, int count) {
-        for (int i = start; i < sortedPairs.length; i++) {
-            final int[] pair = sortedPairs[i];
-            int j = i + 1;
-            while (j < sortedPairs.length) {
-                final int[] nextPair = sortedPairs[j];
-                if (pair[1] < nextPair[0]) {
-                    // going deeper
-                    // a counter which be held in each single recursion process
-                    // and hence count++ is a incorrect usage
-                    rec(sortedPairs, j, count + 1);
-                }
-                j++;
-            }
-            maxCount = (count < maxCount) ? maxCount : count;
+    // separate as a subroutine
+    // countFrom[i] := the number of chains starting from the index i (i is inclusive). i is from the sortedPairs
+    private int countChain(int[][] sortedPairs, int start, int[] countFrom) {
+        // base case
+        // the last pair (a leaf node) itself should be counted as 1
+        if (start == sortedPairs.length - 1) {
+            return 1;
         }
+        // memoization
+        // to prevent retrieve same tail path over and over
+        // the number of chains is already known from each starting point
+        if (countFrom[start] > 0) {
+            return countFrom[start];
+        }
+        for (int j = start + 1; j < sortedPairs.length; j++) {
+            final int pairRight = sortedPairs[start][1];
+            final int nextPairLeft = sortedPairs[j][0];
+            // the only condition which can build the chain
+            if (pairRight < nextPairLeft) {
+                // going deeper
+                // basically, retrieving all nodes is required
+                final int countTailChain = countChain(sortedPairs, j, countFrom);
+                // update to the latest count as the number of chains from the starting point, if needed
+                countFrom[start] = Math.max(countFrom[start], countTailChain + 1);
+            }
+        }
+        return countFrom[start];
     }
 
     private void sortInplace(int[][] pairs) {
