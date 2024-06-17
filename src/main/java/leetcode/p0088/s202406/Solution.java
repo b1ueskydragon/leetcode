@@ -16,20 +16,20 @@ class Solution {
         // swap is unnecessary
         // just repeat to fill in from the right end
         while (p >= 0 && q >= 0) {
-            while (p >= 0 && q >= 0 && nums1[p] <= nums2[q]) {
+            if (nums1[p] <= nums2[q]) {
                 nums1[r--] = nums2[q--];
-            }
-            while (p >= 0 && q >= 0 && nums1[p] >= nums2[q]) {
+            } else {
                 nums1[r--] = nums1[p--];
             }
         }
 
         // flush remaining
-        while (r >= 0 && q >= 0) {
-            nums1[r--] = nums2[q--];
-        }
-        while (r >= 0 && p >= 0) {
-            nums1[r--] = nums1[p--];
+        while (r >= 0) {
+            if (q >= 0) {
+                nums1[r--] = nums2[q--];
+            } else {
+                nums1[r--] = nums1[p--];
+            }
         }
     }
 }
