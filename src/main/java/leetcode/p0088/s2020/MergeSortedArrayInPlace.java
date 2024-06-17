@@ -1,4 +1,4 @@
-package leetcode.p0088;
+package leetcode.p0088.s2020;
 
 public class MergeSortedArrayInPlace {
   public void merge(int[] nums1, int m, int[] nums2, int n) {
