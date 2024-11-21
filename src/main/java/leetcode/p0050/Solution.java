@@ -102,7 +102,8 @@ class Solution {
 
     // Convert the recursion to the loop
     // Runtime: 0 ms, faster than 100.00%
-    // Memory Usage: 42.2 MB, less than 52.62%
+    // Memory Usage: 42.4 MB, less than 31.96%
+
     /**
      * @param x Base number (底)
      * @param n Exponent (指数)
@@ -122,17 +123,14 @@ class Solution {
         // using n!=0 instead n>0
         // since Integer.MIN_VALUE cannot be converted to positive properly
         while (n != 0) {
-            if (n % 2 == 0) {
-                n /= 2;
-                x *= x;
-                continue;
+            if (n % 2 != 0) {
+                k *= x; // store the extra factor from odd exponent
             }
             // For any odd n: (n-1)/2 is equivalent to n/2
             // Avoid doing n-1 to prevent overflow case of Integer.MIN_VALUE
             n /= 2; // store the extra multiplication in k
-            k *= x; // store the extra factor from odd exponent
             x *= x;
         }
-        return k;  // Return accumulated result (n is now 0)
+        return k; // Return accumulated result (n is now 0)
     }
 }
