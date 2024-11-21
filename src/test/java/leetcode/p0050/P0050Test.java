@@ -18,7 +18,8 @@ class P0050Test {
             "2.1, 7",
             "3, 4",
             "3, 5",
-            "-99, 2"
+            "-99, 2",
+            "1.00000, 2147483647",
     })
     void positiveN(double x, int n) {
         final var expected = Math.pow(x, n);
@@ -36,6 +37,7 @@ class P0050Test {
             "3, 4",
             "3, 5",
             "-99, 2",
+            "1.00000, 2147483647",
 
             // n is negative
             "2.00000, -2",
