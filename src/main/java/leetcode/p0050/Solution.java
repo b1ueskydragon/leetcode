@@ -102,37 +102,33 @@ class Solution {
 
     // Convert the recursion to the loop
     // Runtime: 0 ms, faster than 100.00%
-    // Memory Usage: 41.7 MB, less than 81.47%
+    // Memory Usage: 42.2 MB, less than 52.62%
     /**
      * @param x Base number (底)
      * @param n Exponent (指数)
      * @return Exponentiation of x to the power of n
      */
     double myPow4(double x, int n) {
-        // edge case (1)
-        if (x == -1) {
-            return (n % 2 == 0) ? 1 : -1;
-        }
         // Handle negative exponents by converting to positive
         // For any k>0: x^(-k) = (x^(-1))^k = (1/x)^k
         if (n < 0) {
             x = 1 / x;
-            // edge case (2)
-            // For any x!=-1: convert n to Integer.MAX_VALUE (approximate value) to prevent overflow
-            // since given n is an int not a double
-            n = (n == Integer.MIN_VALUE) ? Integer.MAX_VALUE : -n;
+            n = -n;
         }
         // Base accumulator for odd exponent cases
         // Even if n starts as even, it will eventually become 1,
         // and the final result will be accumulated here
         double k = 1;
-        while (n > 0) {
+        // using n!=0 instead n>0
+        // since Integer.MIN_VALUE cannot be converted to positive properly
+        while (n != 0) {
             if (n % 2 == 0) {
                 n /= 2;
                 x *= x;
                 continue;
             }
-            n -= 1; // subtract 1 to make it even
+            // For any odd n: (n-1)/2 is equivalent to n/2
+            // Avoid doing n-1 to prevent overflow case of Integer.MIN_VALUE
             n /= 2; // store the extra multiplication in k
             k *= x; // store the extra factor from odd exponent
             x *= x;
