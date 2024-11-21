@@ -55,5 +55,6 @@ class P0050Test {
         assertThat(instance.myPow3(x, n)).isCloseTo(expected, PER);
         assertThat(instance.myPow4(x, n)).isCloseTo(expected, PER);
         assertThat(instance.myPow5(x, n)).isCloseTo(expected, PER);
+        assertThat(instance.myPow6(x, n)).isCloseTo(expected, PER);
     }
 }

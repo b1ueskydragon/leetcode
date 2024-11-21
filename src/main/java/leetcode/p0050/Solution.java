@@ -102,7 +102,7 @@ class Solution {
 
     // Convert the recursion to the loop
     // Runtime: 0 ms, faster than 100.00%
-    // Memory Usage: 42.4 MB, less than 31.96%
+    // Memory Usage: 41.7 MB, less than 81.47%
 
     /**
      * @param x Base number (底)
@@ -110,6 +110,38 @@ class Solution {
      * @return Exponentiation of x to the power of n
      */
     double myPow4(double x, int n) {
+        // edge case (1)
+        if (x == -1) {
+            return (n % 2 == 0) ? 1 : -1;
+        }
+        // Handle negative exponents by converting to positive
+        // For any k>0: x^(-k) = (x^(-1))^k = (1/x)^k
+        if (n < 0) {
+            x = 1 / x;
+            // edge case (2)
+            // For any x!=-1: convert n to Integer.MAX_VALUE (approximate value) to prevent overflow
+            // since given n is an int not a double
+            n = (n == Integer.MIN_VALUE) ? Integer.MAX_VALUE : -n;
+        }
+        // Base accumulator for odd exponent cases
+        // Even if n starts as even, it will eventually become 1,
+        // and the final result will be accumulated here
+        double k = 1;
+        while (n > 0) {
+            if (n % 2 != 0) {
+                k *= x; // store the extra factor from odd exponent
+            }
+            // Whether n is even or odd, the digits can be properly shifted
+            // Case of negative n (includes edge case of Integer.MIN_VALUE) has already been excluded
+            n >>= 1;
+            x *= x;
+        }
+        return k; // Return accumulated result
+    }
+
+    // Runtime: 0 ms, faster than 100.00%
+    // Memory Usage: 42.4 MB, less than 31.96%
+    double myPow5(double x, int n) {
         // Handle negative exponents by converting to positive
         // For any k>0: x^(-k) = (x^(-1))^k = (1/x)^k
         if (n < 0) {
@@ -126,19 +158,21 @@ class Solution {
             if (n % 2 != 0) {
                 k *= x; // store the extra factor from odd exponent
             }
-            // For any odd n: (n-1)/2 is equivalent to n/2
-            // Avoid doing n-1 to prevent overflow case of Integer.MIN_VALUE
-            n /= 2; // store the extra multiplication in k
+            // For any odd n:
+            //  ・(n-1)/2 is equivalent to n/2
+            //  ・Avoid doing n-1 to prevent overflow case of Integer.MIN_VALUE
+            //  ・store the extra multiplication in k
+            n /= 2;
             x *= x;
         }
         return k; // Return accumulated result (n is now 0)
     }
 
-    // Replace to the bit-operation from #myPow4
+    // Replace to the bit-operation from #myPow5
     // Runtime: 0 ms, faster than 100.00%
     // Memory Usage: 42.3 MB, less than 45.46%
 
-    double myPow5(double x, int n) {
+    double myPow6(double x, int n) {
         if (n < 0) {
             x = 1 / x;
             n = -n;
