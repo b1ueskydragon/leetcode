@@ -29,6 +29,7 @@ class P0050Test {
 
     @ParameterizedTest
     @CsvSource({
+            // equivalent to #positiveN cases
             "2.00000, 10",
             "2.1000, 3",
             "2.1, 7",
@@ -39,10 +40,17 @@ class P0050Test {
             // n is negative
             "2.00000, -2",
             "4.00, -2",
-            "-99, -99"
+            "-99, -99",
+
+            // edge cases
+            // n cannot be converted to positive properly
+            "2.00000, -2147483648",
+            "-1.00000, -2147483648",
+            "1.00000, -2147483648"
     })
     void nCouldBeNegative(double x, int n) {
         final var expected = Math.pow(x, n);
         assertThat(instance.myPow3(x, n)).isCloseTo(expected, PER);
+        assertThat(instance.myPow4(x, n)).isCloseTo(expected, PER);
     }
 }
