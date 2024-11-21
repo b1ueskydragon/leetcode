@@ -133,4 +133,25 @@ class Solution {
         }
         return k; // Return accumulated result (n is now 0)
     }
+
+    // Replace to the bit-operation from #myPow4
+    // Runtime: 0 ms, faster than 100.00%
+    // Memory Usage: 42.3 MB, less than 45.46%
+
+    double myPow5(double x, int n) {
+        if (n < 0) {
+            x = 1 / x;
+            n = -n;
+        }
+        double k = 1;
+        while (n != 0) {
+            if ((n & 1) == 1) {
+                k *= x;
+            }
+            // Actually n >>= 1 works well, except the case of int n = Integer.MIN_VALUE
+            n >>>= 1;
+            x *= x;
+        }
+        return k;
+    }
 }

@@ -54,5 +54,6 @@ class P0050Test {
         final var expected = Math.pow(x, n);
         assertThat(instance.myPow3(x, n)).isCloseTo(expected, PER);
         assertThat(instance.myPow4(x, n)).isCloseTo(expected, PER);
+        assertThat(instance.myPow5(x, n)).isCloseTo(expected, PER);
     }
 }
