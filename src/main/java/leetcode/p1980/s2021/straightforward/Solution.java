@@ -1,4 +1,4 @@
-package leetcode.p1980.straightforward;
+package leetcode.p1980.s2021.straightforward;
 
 class Solution {
   public String findDifferentBinaryString(String[] nums) {

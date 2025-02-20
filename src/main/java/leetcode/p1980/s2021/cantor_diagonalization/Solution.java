@@ -1,4 +1,4 @@
-package leetcode.p1980.cantor_diagonalization;
+package leetcode.p1980.s2021.cantor_diagonalization;
 
 class Solution {
   // n unique binary strings each of length n
