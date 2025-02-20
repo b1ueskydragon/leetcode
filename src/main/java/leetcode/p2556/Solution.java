@@ -27,13 +27,16 @@ class Solution {
                 }
             }
         }
-        // return false means paths are cannot be disconnected
+        // return false menas paths are cannot be disconnected
         // in other words, at least one path can reach to grid[m-1][n-1]
         return false;
     }
 
     private void updateReachability(int[][] grid, int i, int j, boolean[][] cache) {
-        // ↑ と → しかないので (一方通行. バックしない) cache による already visit check は不要のはず
+        // already visited
+        if (cache[i][j]) {
+            return;
+        }
         // grid[i-1][j] == 1 or grid[i][j-1] == 1 の場合のみ次に行ける (深く入って来れる)
         if (grid[i][j] == 1) {
             cache[i][j] = true;
@@ -46,4 +49,3 @@ class Solution {
         }
     }
 }
-
