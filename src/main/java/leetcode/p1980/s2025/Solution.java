@@ -38,7 +38,10 @@ public class Solution {
         int res = 0;
         int level = 0;
         for (int i = n - 1; i >= 0; i--) {
-            int bit = Character.getNumericValue(binaryStr.charAt(i));
+            // (int) '0' == 48
+            // '0' - 48 = 0
+            // '1' - 48 = 1
+            int bit = binaryStr.charAt(i) - '0';
             res += (bit * (1 << level));
             level++;
         }
