@@ -1,6 +1,5 @@
 package leetcode.p1261;
 
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 
@@ -49,24 +48,5 @@ class FindElements {
         }
         // 一つでも見つかれば true なので OR
         return findDepth(root.left, target, found) || findDepth(root.right, target, found);
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
     }
 }
