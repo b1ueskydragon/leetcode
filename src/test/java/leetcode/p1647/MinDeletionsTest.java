@@ -25,6 +25,7 @@ class MinDeletionsTest {
             "aaaabbbbccccddddeeefffgghhij, 18",
             // ソート済み基準, 必ずしも frequency が -1 ずつ降順しない case
             "accdcdadddbaadbc, 1",
+            "abcdefghijklmnopqrstuvwxwz, 23"
     })
     void testMinDeletions(String s, int minDeletion) {
         assertThat(underTest.minDeletions(s)).isEqualTo(minDeletion);

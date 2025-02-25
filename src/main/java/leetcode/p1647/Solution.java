@@ -1,6 +1,5 @@
 package leetcode.p1647;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,16 +12,16 @@ class Solution {
         for (char c : s.toCharArray()) {
             freqMap[c - 'a']++;
         }
-        Arrays.sort(freqMap);
         Set<Integer> exists = new HashSet<>();
         int gap = 0;
-        // sorted 基準, as-is 後方の zero 続きは無視, 例えば
-        // as-is [4, 4, 4, 4, 3, 3, 2, 2, 1, 1] なら
-        // to-be [4, 3, 2, 1, 0, 0, 0, 0, 0, 0],
-        // as-is [6, 4, 4, 2] なら
-        // to-be [6, 4, 3, 2]
-        // つまり accumulate each gaps
-        for (int i = 25; i >= 0; i--) {
+        // e.g.
+        // 便宜上 sort しているが sort 不要, as-is 後方の 0 は省略している
+        // when as-is [4, 4, 4, 4, 3, 3, 2, 2, 1, 1]
+        // then to-be [4, 3, 2, 1, 0, 0, 0, 0, 0, 0],
+        // when as-is [6, 4, 4, 2]
+        // then to-be [6, 4, 3, 2]
+        // so, accumulate each gaps between as-is and to-be
+        for (int i = 0; i < 26; i++) {
             int currFreq = freqMap[i];
             while (exists.contains(currFreq)) {
                 if (currFreq == 0) {
