@@ -3,6 +3,10 @@ package leetcode.p0901;
 import java.util.ArrayDeque;
 
 /**
+ * The span of the stock's price in one day is the maximum number of consecutive days
+ * (starting from that day and going backward)
+ * for which the stock price was less than or equal to the price of that day
+ * <p>
  * Your StockSpanner object will be instantiated and called as such:
  * StockSpanner obj = new StockSpanner();
  * int param_1 = obj.next(price);
