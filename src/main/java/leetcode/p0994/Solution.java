@@ -5,6 +5,7 @@ import java.util.ArrayDeque;
 class Solution {
     // 情報伝播の発生源に注目
     // 最初から start point (伝播の始まり) を queue 入れておく必要がある
+    // 「最短時間」系の BFS は「最初にどこを queue に入れるか」が重要
     // また全部の swap 数をカウントするわけではなく, 伝播した level の数で十分
     public int orangesRotting(int[][] grid) {
         final ArrayDeque<Node> queue = new ArrayDeque<>();
