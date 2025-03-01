@@ -5,16 +5,21 @@ import java.util.ArrayDeque;
 class Solution {
     // 情報伝播の発生源に注目
     // 最初から start point (伝播の始まり) を queue 入れておく必要がある
-    // 「最短時間」系の BFS は「最初にどこを queue に入れるか」が重要
     // また全部の swap 数をカウントするわけではなく, 伝播した level の数で十分
     public int orangesRotting(int[][] grid) {
         final ArrayDeque<Node> queue = new ArrayDeque<>();
         final int m = grid.length;
         final int n = grid[0].length;
+
+        int freshOranges = 0;
+
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 2) {
                     queue.addLast(Node.of(i, j, 0)); // 最初の発信源なので level 0
+                }
+                if (grid[i][j] == 1) {
+                    freshOranges++; // for return -1 check afterwards
                 }
             }
         }
@@ -33,6 +38,7 @@ class Solution {
                 // up
                 if (grid[i - 1][j] == 1) {
                     grid[i - 1][j] = 2;
+                    freshOranges--;
                     queue.addLast(Node.of(i - 1, j, level + 1));
                 }
             }
@@ -40,6 +46,7 @@ class Solution {
                 // left
                 if (grid[i][j - 1] == 1) {
                     grid[i][j - 1] = 2;
+                    freshOranges--;
                     queue.addLast(Node.of(i, j - 1, level + 1));
                 }
             }
@@ -47,6 +54,7 @@ class Solution {
                 // down
                 if (grid[i + 1][j] == 1) {
                     grid[i + 1][j] = 2;
+                    freshOranges--;
                     queue.addLast(Node.of(i + 1, j, level + 1));
                 }
             }
@@ -54,6 +62,7 @@ class Solution {
                 // right
                 if (grid[i][j + 1] == 1) {
                     grid[i][j + 1] = 2;
+                    freshOranges--;
                     queue.addLast(Node.of(i, j + 1, level + 1));
                 }
             }
@@ -61,15 +70,7 @@ class Solution {
             theLastLevel = level;
         }
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (grid[i][j] == 1) {
-                    return -1;
-                }
-            }
-        }
-
-        return theLastLevel;
+        return freshOranges > 0 ? -1 : theLastLevel;
     }
 
     private static class Node {
@@ -86,10 +87,5 @@ class Solution {
         static Node of(int i, int j, int level) {
             return new Node(i, j, level);
         }
-
-        // @Override
-        // public String toString() {
-        //     return "[" + i + ", " + j + "]";
-        // }
     }
 }
