@@ -11,16 +11,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 class FindMissingAndRepeatedValuesTest {
 
     private Solution underTest;
+    private SolutionV2 underTestV2;
 
     @BeforeEach
     void setUp() {
         underTest = new Solution();
+        underTestV2 = new SolutionV2();
     }
 
+    // All solution instances won't modify given `grid` directly
     @ParameterizedTest
     @MethodSource
     void testFindMissingAndRepeatedValues(int[][] grid, int[] repeatingAndMissing) {
         assertThat(underTest.findMissingAndRepeatedValues(grid)).isEqualTo(repeatingAndMissing);
+        assertThat(underTestV2.findMissingAndRepeatedValues(grid)).isEqualTo(repeatingAndMissing);
     }
 
     static Stream<Arguments> testFindMissingAndRepeatedValues() {
