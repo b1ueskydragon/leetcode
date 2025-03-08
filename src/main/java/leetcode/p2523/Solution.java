@@ -2,12 +2,17 @@ package leetcode.p2523;
 
 class Solution {
     public int[] closestPrimes(int left, int right) {
-        // Constraints: 1 <= num <= 1_000_000 (Note: In practice, max 1_000 loops are enough due to sqrt optimization...)
+        // Constraints: 1 <= num <= 1_000_000
+        // Still need to store prime status for all numbers in range [0, right]
+        // Space complexity remains O(n) despite the time optimization
         final boolean[] isPrime = new boolean[right + 1];
         for (int i = 2; i < right + 1; i++) {
             isPrime[i] = true;
         }
-        for (int i = 2; i <= right; i++) {
+        // Optimize by only checking factors up to sqrt
+        // Any larger factor would make a composite number that's already been marked
+        // Using i*i <= right instead of i <= Math.sqrt(right) to avoid floating-point operations
+        for (int i = 2; i * i <= right; i++) {
             if (!isPrime[i]) {
                 continue;
             }
@@ -34,6 +39,6 @@ class Solution {
             prevPrime = num;
         }
 
-        return (a == -1 || b == -1) ? new int[] { -1, -1 } : new int[] { a, b };
+        return (a == -1 || b == -1) ? new int[]{-1, -1} : new int[]{a, b};
     }
 }
