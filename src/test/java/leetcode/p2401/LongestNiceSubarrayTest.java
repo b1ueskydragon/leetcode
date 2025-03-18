@@ -10,16 +10,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class LongestNiceSubarrayTest {
 
+    private Solution.V2 v2;
     private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
+        v2 = new Solution.V2();
         v1 = new Solution.V1();
     }
 
+    // Both v2 and v1 never modify the given array `nums`
     @ParameterizedTest
     @MethodSource
     void testLongestNiceSubarray(int[] nums, int theLongestDistance) {
+        assertThat(v2.longestNiceSubarray(nums)).isEqualTo(theLongestDistance);
         assertThat(v1.longestNiceSubarray(nums)).isEqualTo(theLongestDistance);
     }
 
