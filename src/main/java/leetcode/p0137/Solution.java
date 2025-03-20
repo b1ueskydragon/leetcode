@@ -32,25 +32,23 @@ class Solution {
             // to handle negative number as a negative number.
             // e.g.,
             // 11111111 11111111 11111111 11111011 should be treated as -5
-            // not as a positive long type nubmer.
+            // not as a positive long type number.
             // Note:
             // O(32 * N) is O(N).
             for (int i = 0; i < 32; i++) {
-                // Remove the right-most bit, shift left again,
-                // get a `diff` with a original num by using XOR.
-                bits[i] += (num ^ ((num >> 1) << 1));
+                // Get the least significant bit
+                bits[i] += (num & 1);
                 num >>= 1;
             }
         }
         // Find and collect positions that the bit counts are not a multiple of 3.
         int acc = 0;
-        int k = 0;
-        for (int bit : bits) {
-            // The leftmost place represents the rightmost bit
-            if (bit % 3 != 0) {
-                acc += (1 << k);
+        for (int i = 0; i < 32; i++) {
+            // The leftmost place represents the rightmost bit.
+            if (bits[i] % 3 != 0) {
+                // Embedding bits to each position.
+                acc |= (1 << i);
             }
-            k++;
         }
         return acc;
     }
