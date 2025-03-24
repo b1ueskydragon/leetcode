@@ -24,8 +24,8 @@ class Solution {
 
         // Recipe -> The number of dependencies (non-supply ingredients) should be resolved
         // Note:
-        // - in-degree=0 represents `This recipe not depended on others at all`.
-        // - Still we need to breakdown some ingredients but just count-up as 1. We can breakdown it later.
+        // - in-degree=0 represents `This RECIPE not depended on others at all`.
+        // - Still we need to break down some ingredients but just count-up as 1. We can break down it later.
         final int[] inDegree = new int[n];
 
         // Non-supply ingredient -> Recipes
@@ -45,6 +45,9 @@ class Solution {
 
         // Start with recipes that only need base supplies.
         // We will keep indices in here.
+        // Note:
+        // Being added to the queue means the RECIPE is now creatable
+        // (= all of its dependencies have been resolved).
         final Deque<Integer> queue = new ArrayDeque<>();
         for (int i = 0; i < n; i++) {
             if (inDegree[i] == 0) {
