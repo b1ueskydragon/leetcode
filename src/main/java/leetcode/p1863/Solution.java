@@ -29,4 +29,27 @@ class Solution {
             }
         }
     }
+
+    static class V2 {
+
+        // Constraints: nums.length <= 20
+        // We can use backtracking, but we don't need to generate all subsets
+
+        public int subsetXORSum(int[] nums) {
+            return xor(0, nums, 0);
+        }
+
+        private int xor(int i, int[] nums, int currentXor) {
+            // Reached to a leaf level
+            if (i == nums.length) {
+                return currentXor;
+            }
+            // Binary decision tree DFS
+            // Scenario: Pick (add) the current node
+            int inclCurr = xor(i + 1, nums, currentXor ^ nums[i]);
+            // Scenario: Skip the current node
+            int exclCurr = xor(i + 1, nums, currentXor);
+            return inclCurr + exclCurr;
+        }
+    }
 }

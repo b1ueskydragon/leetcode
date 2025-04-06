@@ -12,16 +12,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SubsetXORSumTest {
 
     private Solution.V1 v1;
+    private Solution.V2 v2;
 
     @BeforeEach
     void setUp() {
         v1 = new Solution.V1();
+        v2 = new Solution.V2();
     }
 
+    // All solution instances won't modify given `nums` directly
     @ParameterizedTest
     @MethodSource
     void testSubsetXORSum(int[] nums, int result) {
         assertThat(v1.subsetXORSum(nums)).isEqualTo(result);
+        assertThat(v2.subsetXORSum(nums)).isEqualTo(result);
     }
 
     static Stream<Arguments> testSubsetXORSum() {
