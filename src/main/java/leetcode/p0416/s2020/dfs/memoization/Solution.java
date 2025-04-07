@@ -1,4 +1,4 @@
-package leetcode.p0416.dfs.memoization;
+package leetcode.p0416.s2020.dfs.memoization;
 
 import java.util.HashMap;
 import java.util.Map;

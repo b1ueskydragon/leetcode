@@ -1,4 +1,4 @@
-package leetcode.p0416.dp.array2D;
+package leetcode.p0416.s2020.dp.array2D;
 
 // Containing only positive integers.
 class Solution {

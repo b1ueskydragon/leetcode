@@ -1,4 +1,4 @@
-package leetcode.p0416.dp.array1D;
+package leetcode.p0416.s2020.dp.array1D;
 
 /**
  * Same idea based on
