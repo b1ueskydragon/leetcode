@@ -1,4 +1,4 @@
-package leetcode.p1123;
+package leetcode.p1123.s2020;
 
 class TreeNode {
   int val;
