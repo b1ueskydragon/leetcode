@@ -1,4 +1,4 @@
-package leetcode.p0038;
+package leetcode.p0038.s2020;
 
 class Solution {
   // 1 <= n <= 30
