@@ -1,4 +1,4 @@
-package leetcode.p1399.dp;
+package leetcode.p1399.s2021;
 
 class Solution {
   public int countLargestGroup(int n) {
