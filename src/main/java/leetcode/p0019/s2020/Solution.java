@@ -1,4 +1,4 @@
-package leetcode.p0019;
+package leetcode.p0019.s2020;
 
 class ListNode {
   int val;
