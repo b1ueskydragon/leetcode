@@ -24,7 +24,7 @@ class Solution {
             }
             freq.put(fruits[r], freq.getOrDefault(fruits[r], 0) + 1);
 
-            // If not valid, shirink the window and remove the frequency
+            // If not valid, shrink the window and remove the frequency
             if (uniqueKeys > LIMIT) {
                 freq.put(fruits[l], freq.get(fruits[l]) - 1);
                 // fruits[l] was a unique type in current window
