@@ -8,13 +8,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ZigZagConvertTest {
 
-    private Solution.V1 underTest;
+    private Solution.V2 v2;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution.V1();
+        v2 = new Solution.V2();
+        v1 = new Solution.V1();
     }
 
+    // Both v2 and v1 never modify the given params
     @ParameterizedTest
     @CsvSource({
             "PAYPALISHIRING, 4, PINALSIGYAHRPI",
@@ -24,7 +27,8 @@ class ZigZagConvertTest {
             "AB, 2, AB"
     })
     void testConvert(String s, int numRows, String result) {
-        assertThat(underTest.convert(s, numRows)).isEqualTo(result);
+        assertThat(v2.convert(s, numRows)).isEqualTo(result);
+        assertThat(v1.convert(s, numRows)).isEqualTo(result);
     }
 
 }
