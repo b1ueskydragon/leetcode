@@ -8,11 +8,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ZigZagConvertTest {
 
-    private Solution underTest;
+    private Solution.V1 underTest;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        underTest = new Solution.V1();
     }
 
     @ParameterizedTest
