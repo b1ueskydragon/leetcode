@@ -1,4 +1,4 @@
-package leetcode.p1920.linear_space;
+package leetcode.p1920.s2021;
 
 class Solution {
   // O(N) space.
