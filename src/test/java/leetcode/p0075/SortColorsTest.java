@@ -11,18 +11,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SortColorsTest {
 
     private Solution.V1 v1;
+    private Solution.V2 v2;
 
     @BeforeEach
     void setUp() {
         v1 = new Solution.V1();
+        v2 = new Solution.V2();
     }
 
     // This will modify given array `nums`
     @ParameterizedTest
     @MethodSource
     void testSortColors(int[] nums, int[] modified) {
-        v1.sortColors(nums);
-        assertThat(nums).isEqualTo(modified);
+        int[] copiedV1 = nums.clone();
+        v1.sortColors(copiedV1);
+        assertThat(copiedV1).isEqualTo(modified);
+
+        int[] copiedV2 = nums.clone();
+        v2.sortColors(copiedV2);
+        assertThat(copiedV2).isEqualTo(modified);
     }
 
     static Stream<Arguments> testSortColors() {
