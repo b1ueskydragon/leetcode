@@ -10,18 +10,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SortColorsTest {
 
-    private Solution underTest;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v1 = new Solution.V1();
     }
 
     // This will modify given array `nums`
     @ParameterizedTest
     @MethodSource
     void testSortColors(int[] nums, int[] modified) {
-        underTest.sortColors(nums);
+        v1.sortColors(nums);
         assertThat(nums).isEqualTo(modified);
     }
 
