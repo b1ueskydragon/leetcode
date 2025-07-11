@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Deque;
+import java.util.LinkedList;
 
 class Solution {
 
@@ -60,6 +61,45 @@ class Solution {
                 queue.addLast(merged);
                 merge(merged, tail, queue);
             }
+        }
+
+    }
+
+    static class V2 {
+
+        public int[][] merge(int[][] intervals) {
+            if (intervals.length < 2) {
+                return intervals;
+            }
+            Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+            final var mergedList = mergeAsList(intervals);
+            final int[][] mergedArray = new int[mergedList.size()][2];
+            int i = 0;
+            for (int[] xs : mergedList) {
+                mergedArray[i++] = xs;
+            }
+            return mergedArray;
+        }
+
+        private LinkedList<int[]> mergeAsList(int[][] sorted) {
+            final var result = new LinkedList<int[]>();
+            final int n = sorted.length;
+            int[] head = sorted[0];
+            result.add(head);
+            for (int i = 1; i < n; i++) {
+                int[] next = sorted[i];
+                if (head[1] < next[0]) {
+                    result.add(next);
+                } else {
+                    final int[] merged = new int[]{head[0], Math.max(head[1], next[1])};
+                    // remove obsolete merged array, since it already be merged into the new one
+                    result.pollLast();
+                    result.add(merged);
+                }
+                head = result.peekLast();
+            }
+
+            return result;
         }
 
     }
