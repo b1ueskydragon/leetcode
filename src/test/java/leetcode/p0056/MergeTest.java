@@ -10,18 +10,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MergeTest {
 
-    private Solution underTest;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v1 = new Solution.V1();
     }
 
     // Note: The production code may modify original `intervals` in-place
     @ParameterizedTest
-    @MethodSource
-    void testMerge(int[][] intervals, int[][] expected) {
-        assertThat(underTest.merge(intervals)).isEqualTo(expected);
+    @MethodSource("testMerge")
+    void testV1(int[][] intervals, int[][] expected) {
+        assertThat(v1.merge(intervals)).isEqualTo(expected);
     }
 
     static Stream<Arguments> testMerge() {
