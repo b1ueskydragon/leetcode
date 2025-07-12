@@ -12,11 +12,13 @@ class MergeTest {
 
     private Solution.V1 v1;
     private Solution.V2 v2;
+    private Solution.V3 v3;
 
     @BeforeEach
     void setUp() {
         v1 = new Solution.V1();
         v2 = new Solution.V2();
+        v3 = new Solution.V3();
     }
 
     // Note: The production code may modify original `intervals` in-place
@@ -31,6 +33,13 @@ class MergeTest {
     @MethodSource("testMerge")
     void testV2(int[][] intervals, int[][] expected) {
         assertThat(v2.merge(intervals)).isEqualTo(expected);
+    }
+
+    // Note: The production code may modify original `intervals` in-place
+    @ParameterizedTest
+    @MethodSource("testMerge")
+    void testV3(int[][] intervals, int[][] expected) {
+        assertThat(v3.merge(intervals)).isEqualTo(expected);
     }
 
     static Stream<Arguments> testMerge() {

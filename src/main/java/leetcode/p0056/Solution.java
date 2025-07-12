@@ -1,10 +1,12 @@
 package leetcode.p0056;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 
 class Solution {
 
@@ -99,6 +101,44 @@ class Solution {
                 head = result.peekLast();
             }
 
+            return result;
+        }
+
+    }
+
+    static class V3 {
+
+        public int[][] merge(int[][] intervals) {
+            Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+            final var merged = replaceAndMerge(intervals);
+            final int[][] mergedArray = new int[merged.size()][2];
+            int i = 0;
+            for (int[] xs : merged) {
+                mergedArray[i++] = xs;
+            }
+            return mergedArray;
+        }
+
+        // This will modify an original array
+        private List<int[]> replaceAndMerge(int[][] sorted) {
+            final var result = new ArrayList<int[]>();
+            // Since `result` will only append `head`
+            // this will be modified
+            int[] head = sorted[0];
+            for (int i = 1; i < sorted.length; i++) {
+                int[] second = sorted[i];
+                if (head[1] < second[0]) {
+                    result.add(head);
+                    head = second;
+                } else {
+                    // can merge
+                    // replace `head` to the new merged one
+                    // we need to keep current place at this point,
+                    // since still we may modify `head` further in the next loop
+                    head[1] = Math.max(head[1], second[1]);
+                }
+            }
+            result.add(head);
             return result;
         }
 
