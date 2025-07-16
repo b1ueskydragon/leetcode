@@ -10,17 +10,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SearchRangeTest {
 
-    private Solution underTest;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v1 = new Solution.V1();
     }
 
     @ParameterizedTest
-    @MethodSource
-    void testSearchRange(int[] nums, int target, int[] expected) {
-        assertThat(underTest.searchRange(nums, target)).isEqualTo(expected);
+    @MethodSource("testSearchRange")
+    void testV1(int[] nums, int target, int[] expected) {
+        assertThat(v1.searchRange(nums, target)).isEqualTo(expected);
     }
 
     static Stream<Arguments> testSearchRange() {
