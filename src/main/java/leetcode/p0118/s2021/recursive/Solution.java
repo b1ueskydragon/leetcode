@@ -1,4 +1,4 @@
-package leetcode.p0118.recursive;
+package leetcode.p0118.s2021.recursive;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package leetcode.p0118.dpLoop;
+package leetcode.p0118.s2021.dpLoop;
 
 import java.util.ArrayList;
 import java.util.List;
