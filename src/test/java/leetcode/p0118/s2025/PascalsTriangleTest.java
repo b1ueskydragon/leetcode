@@ -12,17 +12,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class PascalsTriangleTest {
 
-    private Solution underTest;
+    private Solution.V1 v1;
+    private Solution.V2 v2;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v1 = new Solution.V1();
+        v2 = new Solution.V2();
     }
 
     @ParameterizedTest
-    @MethodSource
-    void testGenerate(int numRows, List<List<Integer>> expected) {
-        assertThat(underTest.generate(numRows)).isEqualTo(expected);
+    @MethodSource("testGenerate")
+    void testV1(int numRows, List<List<Integer>> expected) {
+        assertThat(v1.generate(numRows)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("testGenerate")
+    void testV2(int numRows, List<List<Integer>> expected) {
+        assertThat(v2.generate(numRows)).isEqualTo(expected);
     }
 
     static Stream<Arguments> testGenerate() {
