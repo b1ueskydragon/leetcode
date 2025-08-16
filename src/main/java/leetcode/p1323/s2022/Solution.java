@@ -1,4 +1,4 @@
-package leetcode.p1323;
+package leetcode.p1323.s2022;
 
 // Beats 100% time execution
 class Solution {
