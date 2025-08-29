@@ -11,18 +11,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SortMatrixTest {
 
-    private Solution underTest;
+    private Solution.V2 v2;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v2 = new Solution.V2();
+        v1 = new Solution.V1();
     }
 
     // in-place, `matrix` will be modified
     @ParameterizedTest
     @MethodSource("testSource")
-    void testSortMatrix(int[][] matrix, int[][] expected) {
-        assertThat(underTest.sortMatrix(matrix)).isEqualTo(expected);
+    void testV2(int[][] matrix, int[][] expected) {
+        assertThat(v2.sortMatrix(matrix)).isEqualTo(expected);
+    }
+
+    // in-place, `matrix` will be modified
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV1(int[][] matrix, int[][] expected) {
+        assertThat(v1.sortMatrix(matrix)).isEqualTo(expected);
     }
 
     static Stream<Arguments> testSource() {
