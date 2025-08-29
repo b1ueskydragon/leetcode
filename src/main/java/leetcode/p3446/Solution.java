@@ -1,7 +1,6 @@
 package leetcode.p3446;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -31,26 +30,30 @@ class Solution {
                     // Collect and sort
                     final int offset = i - j;
                     final int size = n - Math.abs(offset);
-                    // To use #reverseOrder, using type Integer
-                    final Integer[] tmp = new Integer[size];
-                    // Use new pointer to not proceed i, j themselves
+                    final int[] tmp = new int[size];
+                    // Using new pointers to not proceed i, j themselves
                     int x = i;
                     int y = j;
                     for (int k = 0; k < size; k++) {
                         tmp[k] = grid[x++][y++];
                     }
 
-                    if (offset < 0) {
-                        Arrays.sort(tmp);
-                    } else {
-                        Arrays.sort(tmp, Collections.reverseOrder());
-                    }
+                    Arrays.sort(tmp);
 
                     // Restore
+                    // Using new pointers to not proceed i, j themselves
                     x = i;
                     y = j;
-                    for (int k = 0; k < size; k++) {
-                        grid[x++][y++] = tmp[k];
+                    if (offset < 0) {
+                        // Ascending order
+                        for (int k = 0; k < size; k++) {
+                            grid[x++][y++] = tmp[k];
+                        }
+                    } else {
+                        // Descending order
+                        for (int k = size - 1; k >= 0; k--) {
+                            grid[x++][y++] = tmp[k];
+                        }
                     }
                 }
             }
