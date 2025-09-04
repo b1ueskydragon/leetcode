@@ -8,11 +8,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class FindClosestTest {
 
-    private Solution v1;
+    private Solution.V2 v2;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        v1 = new Solution();
+        v2 = new Solution.V2();
+        v1 = new Solution.V1();
     }
 
     @ParameterizedTest
@@ -22,6 +24,7 @@ class FindClosestTest {
             "1, 5, 3, 0"
     })
     void findClosest(int x, int y, int z, int expected) {
+        assertThat(v2.findClosest(x, y, z)).isEqualTo(expected);
         assertThat(v1.findClosest(x, y, z)).isEqualTo(expected);
     }
 
