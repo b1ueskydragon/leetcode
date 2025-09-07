@@ -11,17 +11,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SumZeroTest {
 
-    private Solution underTest;
+    private Solution.V2 v2;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v2 = new Solution.V2();
+        v1 = new Solution.V1();
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void testSumZero(int value, int[] expected) {
-        assertThat(underTest.sumZero(value)).containsExactlyInAnyOrder(expected);
+    void testV2(int value, int[] expected) {
+        assertThat(v2.sumZero(value)).containsExactlyInAnyOrder(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV1(int value, int[] expected) {
+        assertThat(v1.sumZero(value)).containsExactlyInAnyOrder(expected);
     }
 
     static Stream<Arguments> testSource() {
