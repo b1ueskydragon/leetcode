@@ -8,13 +8,22 @@ class Solution {
     // The result is the minimum number of people to teach.
     // Index starts with 1.
     public int minimumTeachings(int n, int[][] languages, int[][] friendships) {
+        // Pre-compute
+        final int people = languages.length;
+        final boolean[][] knows = new boolean[people + 1][n + 1];
+        for (int i = 0; i < people; i++) {
+            for (int l : languages[i]) {
+                knows[i + 1][l] = true;
+            }
+        }
+
         // Need to teach
+        // Keep people unique
         final Set<Integer> candidates = new HashSet<>();
         for (int[] tuple : friendships) {
             final int u = tuple[0];
             final int v = tuple[1];
-
-            if (hasCommon(languages[u - 1], languages[v - 1])) {
+            if (hasCommon(knows, n, u, v)) {
                 continue;
             }
             candidates.add(u);
@@ -47,13 +56,10 @@ class Solution {
         return needToLearn - maxF;
     }
 
-    private static boolean hasCommon(int[] xs, int[] ys) {
-        final boolean[] exists = new boolean[501];
-        for (int x : xs) {
-            exists[x] = true;
-        }
-        for (int y : ys) {
-            if (exists[y]) {
+    private static boolean hasCommon(boolean[][] knows, int n, int person1, int person2) {
+        // Scan languages
+        for (int i = 1; i <= n; i++) {
+            if (knows[person1][i] && knows[person2][i]) {
                 return true;
             }
         }
