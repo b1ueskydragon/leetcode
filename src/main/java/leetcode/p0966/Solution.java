@@ -11,9 +11,20 @@ class Solution {
     // 1 <= wordlist.length, queries.length <= 5000
     // 1 <= wordlist[i].length, queries[i].length <= 7
 
-    private static final int OFFSET = 'a' - 'A';
+    private static final boolean[] VOWELS = new boolean[123];
 
-    private static final Set<Character> VOWELS = Set.of('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U');
+    static {
+        VOWELS['a'] = true;
+        VOWELS['e'] = true;
+        VOWELS['i'] = true;
+        VOWELS['o'] = true;
+        VOWELS['u'] = true;
+        VOWELS['A'] = true;
+        VOWELS['E'] = true;
+        VOWELS['I'] = true;
+        VOWELS['O'] = true;
+        VOWELS['U'] = true;
+    }
 
     public String[] spellchecker(String[] wordlist, String[] queries) {
 
@@ -30,7 +41,7 @@ class Solution {
         // Mapping of key -> the first matched rule
         final Map<String, String> pairs = new HashMap<>();
         for (String word : wordlist) {
-            final String key = buildKey(word);
+            final String key = word.toLowerCase();
             // For the primary check
             // Put the first case only
             pairs.putIfAbsent(key, word);
@@ -50,7 +61,7 @@ class Solution {
             }
 
             // Primary check
-            final String key = buildKey(query);
+            final String key = query.toLowerCase();
             if (pairs.get(key) != null) {
                 res[i] = pairs.get(key);
                 continue;
@@ -70,22 +81,13 @@ class Solution {
         return res;
     }
 
-    // To a lower case string
-    private static String buildKey(String s) {
-        final var sb = new StringBuilder();
-        for (char c : s.toCharArray()) {
-            sb.append((char) ((c < 97) ? c + OFFSET : c));
-        }
-        return sb.toString();
-    }
-
     // Mask vowels
     // Keys should be converted to the lower case string in advance
     private static String maskKey(String key) {
-        final var sb = new StringBuilder();
-        for (char c : key.toCharArray()) {
-            sb.append(VOWELS.contains(c) ? '*' : c);
+        final char[] cs = key.toCharArray();
+        for (int i = 0; i < cs.length; i++) {
+            cs[i] = VOWELS[cs[i]] ? '*' : cs[i];
         }
-        return sb.toString();
+        return new String(cs);
     }
 }
