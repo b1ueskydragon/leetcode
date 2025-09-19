@@ -18,7 +18,7 @@ class TaskManager {
     private final int[] taskToUser = new int[100_001];
     private final boolean[] isRemovedTask = new boolean[100_001];
     // A sort of revision
-    private final int[] taskToVersion = new int[200_001];
+    private final int[] taskToVersion = new int[100_001];
 
     private static class Task {
         int taskId;
