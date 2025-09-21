@@ -33,10 +33,7 @@ class Router {
             return false;
         }
         if (capacity == dq.size()) {
-            final int[] head = dq.pollFirst();
-            added.remove(buildKey(head[0], head[1], head[2]));
-            // update the destination head of destMap.get(destination)
-            destHead.put(head[1], destHead.getOrDefault(head[1], 0) + 1);
+            forwardPacket();
         }
         added.add(key);
         dq.addLast(new int[]{source, destination, timestamp});
@@ -52,6 +49,7 @@ class Router {
         }
         final int[] head = dq.pollFirst();
         added.remove(buildKey(head[0], head[1], head[2]));
+        // update the destination head of destMap.get(destination)
         destHead.put(head[1], destHead.getOrDefault(head[1], 0) + 1);
         return head;
     }
