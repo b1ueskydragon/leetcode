@@ -22,10 +22,6 @@ class FoodRatings {
             this.name = name;
             this.version = version;
         }
-
-        // public String toString() {
-        //     return String.format("%s/%s/v%s", rate, name ,version);
-        // }
     }
 
     public FoodRatings(String[] foods, String[] cuisines, int[] ratings) {
@@ -36,7 +32,7 @@ class FoodRatings {
             String cuisine = cuisines[i];
             foodToCuisine.put(foodName, cuisine);
             cuisineToFood.computeIfAbsent(cuisine,
-                            k -> new PriorityQueue<Food>((f1, f2) -> (f1.rate == f2.rate) ? f1.name.compareTo(f2.name) : f2.rate - f1.rate))
+                            k -> new PriorityQueue<>((f1, f2) -> (f1.rate == f2.rate) ? f1.name.compareTo(f2.name) : f2.rate - f1.rate))
                     .offer(new Food(ratings[i], foodName, 0));
             foodRevision.put(foodName, 0);
         }
