@@ -11,17 +11,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CompareVersionTest {
 
-    private Solution underTest;
+    private Solution.V2 v2;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v2 = new Solution.V2();
+        v1 = new Solution.V1();
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void testCompareVersion(String version1, String version2, int expected) {
-        assertThat(underTest.compareVersion(version1, version2)).isEqualTo(expected);
+    void testV2(String version1, String version2, int expected) {
+        assertThat(v2.compareVersion(version1, version2)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV1(String version1, String version2, int expected) {
+        assertThat(v1.compareVersion(version1, version2)).isEqualTo(expected);
     }
 
     static Stream<Arguments> testSource() {
