@@ -16,11 +16,11 @@ class Solution {
             prevDp[0] = dp[0] = triangle.get(0).get(0);
             for (int r = 1; r < n; r++) {
                 final List<Integer> row = triangle.get(r);
-                final int rowN = row.size();
-                for (int i = 0; i < rowN; i++) {
+                // rth row size is r + 1
+                for (int i = 0; i < r + 1; i++) {
                     if (i == 0) {
                         dp[i] = prevDp[i] + row.get(i);
-                    } else if (i == rowN - 1) {
+                    } else if (i == r) {
                         dp[i] = prevDp[i - 1] + row.get(i);
                     } else {
                         dp[i] = Math.min(prevDp[i - 1], prevDp[i]) + row.get(i);
