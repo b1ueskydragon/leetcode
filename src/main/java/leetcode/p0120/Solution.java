@@ -26,9 +26,7 @@ class Solution {
                         dp[i] = Math.min(prevDp[i - 1], prevDp[i]) + row.get(i);
                     }
                 }
-                for (int i = 0; i < n; i++) {
-                    prevDp[i] = dp[i];
-                }
+                System.arraycopy(dp, 0, prevDp, 0, n);
             }
 
             int min = dp[0];
