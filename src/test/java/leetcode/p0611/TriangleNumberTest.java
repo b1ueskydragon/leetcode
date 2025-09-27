@@ -11,17 +11,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class TriangleNumberTest {
 
-    private Solution underTest;
+    private Solution.V2 v2;
+    private Solution.V1 v1;
 
     @BeforeEach
     public void setUp() {
-        underTest = new Solution();
+        v2 = new Solution.V2();
+        v1 = new Solution.V1();
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void testTriangleNumber(int[] nums, int expected) {
-        assertThat(underTest.triangleNumber(nums)).isEqualTo(expected);
+    void testV2(int[] nums, int expected) {
+        assertThat(v2.triangleNumber(nums)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV1(int[] nums, int expected) {
+        assertThat(v1.triangleNumber(nums)).isEqualTo(expected);
     }
 
     static Stream<Arguments> testSource() {
