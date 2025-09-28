@@ -12,13 +12,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MinimumTotalTest {
 
+    private Solution.V3 v3;
     private Solution.V2 v2;
     private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
+        v3 = new Solution.V3();
         v2 = new Solution.V2();
         v1 = new Solution.V1();
+    }
+
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV3(List<List<Integer>> triangle, int expected) {
+        assertThat(v3.minimumTotal(triangle)).isEqualTo(expected);
     }
 
     @ParameterizedTest

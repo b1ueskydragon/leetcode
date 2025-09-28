@@ -5,6 +5,43 @@ import java.util.List;
 
 class Solution {
 
+    static class V3 {
+
+        // If you are on index i on the current row, you may move to either index i or index i + 1 on the next row.
+        // O(n) extra space, where n is the total number of rows in the triangle.
+        public int minimumTotal(List<List<Integer>> triangle) {
+            final int n = triangle.size();
+            final int[] dp = new int[n];
+            dp[0] = triangle.get(0).get(0);
+            for (int r = 1; r < n; r++) {
+                // rth row size is r + 1
+                final List<Integer> row = triangle.get(r);
+                // Update from right to left,
+                // e.g., Update order or [[a0], [b0,b1], [c0,c1,c2]]
+                // row=0, a0 (initialize)
+                // row=1, b1 -> b0
+                // row=2, c2 -> c1 -> c0
+                for (int i = r; i >= 0; i--) {
+                    if (i == r) {
+                        dp[i] = dp[i - 1] + row.get(i);
+                    } else if (i == 0) {
+                        dp[i] = dp[i] + row.get(i);
+                    } else {
+                        dp[i] = Math.min(dp[i - 1], dp[i]) + row.get(i);
+                    }
+                }
+            }
+
+            int min = dp[0];
+            for (int acc : dp) {
+                min = Math.min(acc, min);
+            }
+
+            return min;
+        }
+
+    }
+
     static class V2 {
 
         // If you are on index i on the current row, you may move to either index i or index i + 1 on the next row.
