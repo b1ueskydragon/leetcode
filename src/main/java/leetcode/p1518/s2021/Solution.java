@@ -1,4 +1,4 @@
-package leetcode.p1518;
+package leetcode.p1518.s2021;
 
 class Solution {
   public int numWaterBottles(int numBottles, int numExchange) {
