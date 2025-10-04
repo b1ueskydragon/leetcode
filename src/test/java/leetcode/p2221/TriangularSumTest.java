@@ -11,17 +11,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class TriangularSumTest {
 
-    private Solution underTest;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v1 = new Solution.V1();
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
     void testTriangularSum(int[] nums, int expected) {
-        assertThat(underTest.triangularSum(nums)).isEqualTo(expected);
+        assertThat(v1.triangularSum(nums)).isEqualTo(expected);
     }
 
     static Stream<Arguments> testSource() {
