@@ -2,28 +2,22 @@ package leetcode.p0011;
 
 class Solution {
     public int maxArea(int[] height) {
-        final int n = height.length;
-        int l = 0;
-        int r = n - 1;
-        int maxSize = getSize(0, n - 1, height);
-        // move the point of the lower bar
-        // since the direction still has a possibility to meet a higher bar
-        while (l < r) {
-            maxSize = Math.max(maxSize, getSize(l, r, height));
-            if (height[l] < height[r]) {
-                l++;
+        // find the max (distance x shorter height)
+        int i = 0;
+        int j = height.length - 1;
+        // 10^5 * 10^4 < Integer.MAX_VALUE
+        int maxArea = 0;
+        while (i < j) {
+            maxArea = Math.max(maxArea, (j - i) * Math.min(height[i], height[j]));
+            // When heights are equal ... move i or j either is fine.
+            // Even if the exploration path differs, the optimal result is still guaranteed,
+            // due to the longer side is always fixed.
+            if (height[i] < height[j]) {
+                i++;
             } else {
-                // Note:
-                // Simply, moving the right point when both points represent same height
-                // However, moving the left point would be also fine,
-                // since the size's height is determined by the lower height
-                r--;
+                j--;
             }
         }
-        return maxSize;
-    }
-
-    private int getSize(int l, int r, int[] height) {
-        return (r - l) * Math.min(height[l], height[r]);
+        return maxArea;
     }
 }
