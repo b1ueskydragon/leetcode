@@ -11,17 +11,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MaximumTotalDamageTest {
 
-    private Solution underTest;
+    private Solution.V1 v1;
+    private Solution.V2 v2;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v1 = new Solution.V1();
+        v2 = new Solution.V2();
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void testMaximumTotalDamage(int[] power, long expected) {
-        assertThat(underTest.maximumTotalDamage(power)).isEqualTo(expected);
+    void testV1(int[] power, long expected) {
+        assertThat(v1.maximumTotalDamage(power)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV2(int[] power, long expected) {
+        assertThat(v2.maximumTotalDamage(power)).isEqualTo(expected);
     }
 
     static Stream<Arguments> testSource() {
