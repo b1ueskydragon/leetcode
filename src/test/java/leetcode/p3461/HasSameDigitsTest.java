@@ -11,11 +11,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class HasSameDigitsTest {
 
+    private Solution.V2 v2;
     private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
+        v2 = new Solution.V2();
         v1 = new Solution.V1();
+    }
+
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV2(String s, boolean expected) {
+        assertThat(v2.hasSameDigits(s)).isEqualTo(expected);
     }
 
     @ParameterizedTest
