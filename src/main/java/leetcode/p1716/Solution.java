@@ -15,9 +15,10 @@ class Solution {
         // c + c + 7 + c + 7 + 7 + ...
         // = (c + 7 * 0) + (c + 7 * 1) + (c + 7 * 2) + ...
         // = Σ(i=1 to q) (c + 7 * (i - 1))
-        for (int i = 1; i <= q; i++) {
-            res += c + (7 * (i - 1));
-        }
+        // = q * c + 7 * (Σ(i=1 to q) (i - 1))
+        // = q * c + 7 * q(q-1)/2
+        res = q * c + 7 * q * (q - 1) / 2;
+
         final int r = n % 7;
         // e.g.,
         // n=20
