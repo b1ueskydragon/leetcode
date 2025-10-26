@@ -11,17 +11,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class NextBeautifulNumberTest {
 
-    private Solution underTest;
+    private Solution.V2 v2;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v2 = new Solution.V2();
+        v1 = new Solution.V1();
+
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void testNextBeautifulNumber(int n, int expected) {
-        assertThat(underTest.nextBeautifulNumber(n)).isEqualTo(expected);
+    void testV2(int n, int expected) {
+        assertThat(v2.nextBeautifulNumber(n)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV1(int n, int expected) {
+        assertThat(v1.nextBeautifulNumber(n)).isEqualTo(expected);
     }
 
     static Stream<Arguments> testSource() {
