@@ -1,7 +1,5 @@
 package leetcode.p3318;
 
-import java.util.PriorityQueue;
-
 class Solution {
     private static final int LIMIT = 51;
 
@@ -20,9 +18,9 @@ class Solution {
         }
 
         while (r < n) {
-            res[j++] = computeSectionSum(freq, x);
+            res[j++] = computeSectionSum(freq, k, x);
 
-            // Prepare to the next windonw
+            // Prepare to the next window
             int prevL = r - k + 1;
             freq[nums[prevL]]--;
             r++;
@@ -34,17 +32,22 @@ class Solution {
         return res;
     }
 
-    private static int computeSectionSum(final int[] freq, final int x) {
-        final var pq = new PriorityQueue<int[]>((a, b) -> b[1] == a[1] ? b[0] - a[0] : b[1] - a[1]);
-        for (int i = 1; i < LIMIT; i++) {
-            pq.offer(new int[]{i, freq[i]});
-        }
-
+    private static int computeSectionSum(final int[] freq, final int k, final int x) {
         int sectionSum = 0;
-        for (int i = 0; i < x; i++) {
-            final int[] p = pq.poll();
-            // number * frequencies
-            sectionSum += p[0] * p[1];
+        int count = x;
+        // The max possible frequency of k-length subarray is k
+        for (int f = k; f >= 0; f--) {
+            // Tied: Larger number is prioritized
+            for (int v = LIMIT - 1; v >= 0; v--) {
+                // If found, accumulate it
+                if (freq[v] == f) {
+                    sectionSum += v * f;
+                    count--;
+                }
+                if (count == 0) {
+                    return sectionSum;
+                }
+            }
         }
         return sectionSum;
     }
