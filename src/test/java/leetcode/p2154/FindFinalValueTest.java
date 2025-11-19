@@ -11,11 +11,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class FindFinalValueTest {
 
-    private Solution v1;
+    private Solution.V2 v2;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        v1 = new Solution();
+        v2 = new Solution.V2();
+        v1 = new Solution.V1();
+    }
+
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV2(int[] nums, int original, int missing) {
+        assertThat(v2.findFinalValue(nums, original)).isEqualTo(missing);
     }
 
     @ParameterizedTest
