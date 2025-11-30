@@ -1,4 +1,4 @@
-package leetcode.p0238.division;
+package leetcode.p0238.s2021.division;
 
 class Solution {
   // using the division op

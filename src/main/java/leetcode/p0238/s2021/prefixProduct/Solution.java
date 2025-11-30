@@ -1,4 +1,4 @@
-package leetcode.p0238.prefixProduct;
+package leetcode.p0238.s2021.prefixProduct;
 
 class Solution {
   // without using the division op
