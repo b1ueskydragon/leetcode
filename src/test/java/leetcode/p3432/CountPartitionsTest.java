@@ -11,17 +11,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CountPartitionsTest {
 
-    private Solution underTest;
+    private Solution.V2 v2;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v2 = new Solution.V2();
+        v1 = new Solution.V1();
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void countPartitions(int[] nums, int count) {
-        assertThat(underTest.countPartitions(nums)).isEqualTo(count);
+    void testV2(int[] nums, int count) {
+        assertThat(v1.countPartitions(nums)).isEqualTo(count);
+    }
+
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV1(int[] nums, int count) {
+        assertThat(v1.countPartitions(nums)).isEqualTo(count);
     }
 
     static Stream<Arguments> testSource() {
