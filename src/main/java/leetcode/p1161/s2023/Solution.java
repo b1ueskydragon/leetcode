@@ -1,5 +1,7 @@
 package leetcode.p1161.s2023;
 
+import leetcode.common.TreeNode;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 
@@ -39,24 +41,5 @@ class Solution {
             level++;
         }
         return cand;
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
     }
 }

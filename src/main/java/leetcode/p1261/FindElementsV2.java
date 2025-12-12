@@ -1,5 +1,7 @@
 package leetcode.p1261;
 
+import leetcode.common.TreeNode;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashSet;

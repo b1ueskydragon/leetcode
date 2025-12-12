@@ -1,22 +1,8 @@
 package leetcode.p1457.s202105.dfs.straightforward;
 
+import leetcode.common.TreeNode;
+
 import java.util.Arrays;
-
-class TreeNode {
-  int val;
-  TreeNode left;
-  TreeNode right;
-
-  TreeNode() {}
-
-  TreeNode(int val) { this.val = val; }
-
-  TreeNode(int val, TreeNode left, TreeNode right) {
-    this.val = val;
-    this.left = left;
-    this.right = right;
-  }
-}
 
 class Solution {
   public int pseudoPalindromicPaths(TreeNode root) {

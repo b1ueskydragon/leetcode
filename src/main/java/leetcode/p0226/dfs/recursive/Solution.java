@@ -1,20 +1,6 @@
 package leetcode.p0226.dfs.recursive;
 
-class TreeNode {
-  int val;
-  TreeNode left;
-  TreeNode right;
-
-  TreeNode() {}
-
-  TreeNode(int val) { this.val = val; }
-
-  TreeNode(int val, TreeNode left, TreeNode right) {
-    this.val = val;
-    this.left = left;
-    this.right = right;
-  }
-}
+import leetcode.common.TreeNode;
 
 class Solution {
   // recursive solution is dependent on an application stack

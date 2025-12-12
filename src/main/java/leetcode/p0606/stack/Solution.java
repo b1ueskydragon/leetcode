@@ -1,24 +1,10 @@
 package leetcode.p0606.stack;
 
+import leetcode.common.TreeNode;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
-
-class TreeNode {
-  int val;
-  TreeNode left;
-  TreeNode right;
-
-  TreeNode() {}
-
-  TreeNode(int val) { this.val = val; }
-
-  TreeNode(int val, TreeNode left, TreeNode right) {
-    this.val = val;
-    this.left = left;
-    this.right = right;
-  }
-}
 
 class Solution {
   public String tree2str(TreeNode t) {

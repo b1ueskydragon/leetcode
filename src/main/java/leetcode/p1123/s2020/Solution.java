@@ -1,5 +1,7 @@
 package leetcode.p1123.s2020;
 
+import leetcode.common.TreeNode;
+
 class Solution {
   public TreeNode lcaDeepestLeaves(TreeNode root) {
     return getLca(root, 0).getNode();

@@ -1,5 +1,7 @@
 package leetcode.p0897;
 
+import leetcode.common.TreeNode;
+
 class Solution {
     // Separated from recursion processing.
     private static TreeNode newRoot = new TreeNode();
@@ -21,24 +23,5 @@ class Solution {
         newRoot.right = new TreeNode(root.val);
         newRoot = newRoot.right;
         inOrderTraversal(root.right);
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
     }
 }

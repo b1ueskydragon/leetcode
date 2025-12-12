@@ -1,14 +1,6 @@
 package leetcode.p0236;
 
-class TreeNode {
-  int val;
-  TreeNode left;
-  TreeNode right;
-
-  TreeNode(int x) {
-    val = x;
-  }
-}
+import leetcode.common.TreeNode;
 
 /**
  * Recursion

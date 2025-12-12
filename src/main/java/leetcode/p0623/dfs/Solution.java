@@ -1,5 +1,7 @@
 package leetcode.p0623.dfs;
 
+import leetcode.common.TreeNode;
+
 class Solution {
     public TreeNode addOneRow(TreeNode root, int val, int depth) {
         return addOneRow(root, val, depth, false);
@@ -29,24 +31,5 @@ class Solution {
             root.right = addOneRow(root.right, val, depth - 1, true);
         }
         return root;
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
     }
 }

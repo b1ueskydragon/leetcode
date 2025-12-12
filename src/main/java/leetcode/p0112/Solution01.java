@@ -1,5 +1,7 @@
 package leetcode.p0112;
 
+import leetcode.common.TreeNode;
+
 class Solution01 {
   // Sum up root-to-leaf.
   // A leaf is a node with no children.

@@ -1,6 +1,8 @@
 package leetcode.p0530.s2023.dfs;
 
 
+import leetcode.common.TreeNode;
+
 class Solution {
     // values are unique
     // constraint: 0 <= val <= 100_000
@@ -23,24 +25,5 @@ class Solution {
         minDiff = Math.min(minDiff, Math.abs(root.val - prevVal));
         prevVal = root.val;
         getMinimumDifference(root.right);
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
     }
 }

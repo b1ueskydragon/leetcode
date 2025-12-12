@@ -1,6 +1,8 @@
 
 package leetcode.p1161.s2020;
 
+import leetcode.common.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 

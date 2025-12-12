@@ -1,5 +1,7 @@
 package leetcode.p0543.dfs_memo;
 
+import leetcode.common.TreeNode;
+
 class Solution {
   private int maxDiameter = -1; // side effect
 
@@ -19,21 +21,5 @@ class Solution {
     maxDiameter = Math.max(maxDiameter, leftSoFar + rightSoFar);
 
     return Math.max(leftSoFar, rightSoFar);
-  }
-}
-
-class TreeNode {
-  int val;
-  TreeNode left;
-  TreeNode right;
-
-  TreeNode() {}
-
-  TreeNode(int val) {this.val = val;}
-
-  TreeNode(int val, TreeNode left, TreeNode right) {
-    this.val = val;
-    this.left = left;
-    this.right = right;
   }
 }

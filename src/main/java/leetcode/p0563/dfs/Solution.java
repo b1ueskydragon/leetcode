@@ -1,5 +1,7 @@
 package leetcode.p0563.dfs;
 
+import leetcode.common.TreeNode;
+
 class Solution {
     private int tilt;
 
@@ -20,24 +22,5 @@ class Solution {
         tilt += Math.abs(leftSum - rightSum);
 
         return leftSum + rightSum + root.val;
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
     }
 }

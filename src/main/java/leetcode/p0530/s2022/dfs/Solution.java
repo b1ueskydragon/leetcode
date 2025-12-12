@@ -1,5 +1,7 @@
 package leetcode.p0530.s2022.dfs;
 
+import leetcode.common.TreeNode;
+
 class Solution {
     private int prev = 10_001;
     private int minDiff = 10_001;
@@ -18,24 +20,5 @@ class Solution {
         getMinimumDifference(root.right);
 
         return minDiff;
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
     }
 }

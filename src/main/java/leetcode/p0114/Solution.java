@@ -1,15 +1,6 @@
 package leetcode.p0114;
 
-// binary tree node
-class TreeNode {
-  final int val;
-  TreeNode left;
-  TreeNode right;
-
-  TreeNode(int x) {
-    this.val = x;
-  }
-}
+import leetcode.common.TreeNode;
 
 class Solution {
   private TreeNode prevRoot;

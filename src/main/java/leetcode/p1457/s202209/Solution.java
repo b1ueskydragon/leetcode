@@ -1,5 +1,7 @@
 package leetcode.p1457.s202209;
 
+import leetcode.common.TreeNode;
+
 import java.util.Arrays;
 
 class Solution {
@@ -38,24 +40,5 @@ class Solution {
             }
         }
         return odds <= 1;
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
     }
 }

@@ -1,5 +1,7 @@
 package leetcode.p0543.dfs_memo_functional;
 
+import leetcode.common.TreeNode;
+
 class Solution {
   //  This path may or may not pass through the root.
   public int diameterOfBinaryTree(TreeNode root) {
@@ -24,18 +26,3 @@ class Solution {
   }
 }
 
-class TreeNode {
-  int val;
-  TreeNode left;
-  TreeNode right;
-
-  TreeNode() {}
-
-  TreeNode(int val) {this.val = val;}
-
-  TreeNode(int val, TreeNode left, TreeNode right) {
-    this.val = val;
-    this.left = left;
-    this.right = right;
-  }
-}

@@ -1,5 +1,7 @@
 package leetcode.p1123.s2025;
 
+import leetcode.common.TreeNode;
+
 class Solution {
     // Note:
     // Only one deepest leaf -> The leaf itself is a LCA

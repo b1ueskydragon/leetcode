@@ -1,5 +1,7 @@
 package leetcode.p0101.dfs;
 
+import leetcode.common.TreeNode;
+
 class Solution {
     public boolean isSymmetric(TreeNode root) {
         return isSymmetric(root, root);
@@ -16,21 +18,3 @@ class Solution {
     }
 }
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}

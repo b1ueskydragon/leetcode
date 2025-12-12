@@ -1,6 +1,8 @@
 package leetcode.p0337;
 
 import java.util.stream.Stream;
+
+import leetcode.common.TreeNode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

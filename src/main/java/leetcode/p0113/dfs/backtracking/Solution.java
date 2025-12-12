@@ -1,5 +1,7 @@
 package leetcode.p0113.dfs.backtracking;
 
+import leetcode.common.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,24 +35,5 @@ class Solution {
         pathSum(root.right, targetSum - currStageVal, paths, currStagePath);
 
         return paths;
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
     }
 }

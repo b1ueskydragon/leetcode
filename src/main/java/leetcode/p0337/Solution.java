@@ -1,5 +1,7 @@
 package leetcode.p0337;
 
+import leetcode.common.TreeNode;
+
 class Solution {
     public int rob(TreeNode root) {
         Status status = dfs(root);

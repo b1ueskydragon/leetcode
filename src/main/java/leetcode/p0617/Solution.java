@@ -1,5 +1,7 @@
 package leetcode.p0617;
 
+import leetcode.common.TreeNode;
+
 import java.util.Deque;
 import java.util.LinkedList;
 

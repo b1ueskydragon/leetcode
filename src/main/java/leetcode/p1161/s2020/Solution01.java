@@ -1,5 +1,7 @@
 package leetcode.p1161.s2020;
 
+import leetcode.common.TreeNode;
+
 class Solution01 {
   // make as global to stable status
   private int maxLevel = 1;
