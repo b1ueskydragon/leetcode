@@ -1,4 +1,4 @@
-package leetcode.p0103.bfs;
+package leetcode.p0103;
 
 import leetcode.common.TreeNode;
 
@@ -7,7 +7,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
-class Solution {
+class Solution2021 {
   public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
     final List<List<Integer>> res = new ArrayList<>();
     if (root == null) {
