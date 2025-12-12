@@ -3,7 +3,7 @@ package leetcode.p0628.another;
 /**
  * just find a maximum product.
  */
-public class MaximumProduct {
+class MaximumProduct {
   public int maximumProduct(int[] nums) {
     // both caches should keep the biggest absolute value
     int[] posCache = new int[nums.length + 1];

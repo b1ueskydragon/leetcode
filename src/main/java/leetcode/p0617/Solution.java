@@ -6,7 +6,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 // create a new merged tree.
-public class Solution {
+class Solution {
   public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
     if (t1 == null && t2 == null) return null;
     final Deque<TreeNode> retrieval1 = new LinkedList<>();

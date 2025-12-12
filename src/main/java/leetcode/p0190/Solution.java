@@ -1,6 +1,6 @@
 package leetcode.p0190;
 
-public class Solution {
+class Solution {
   // you need treat n as an unsigned value
   // n is 32 bits unsigned integer
   // ... not (1 << 32) - 1 - n

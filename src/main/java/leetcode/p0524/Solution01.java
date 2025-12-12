@@ -3,7 +3,7 @@ package leetcode.p0524;
 import java.util.Arrays;
 import java.util.List;
 
-public class Solution01 {
+class Solution01 {
 
   private static int[][] dic;
 

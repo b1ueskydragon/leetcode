@@ -3,7 +3,7 @@ package leetcode.p0160.constantSpace.knowingLen;
 
 import leetcode.common.ListNode;
 
-public class Solution {
+class Solution {
   public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
     ListNode a = headA;
     ListNode b = headB;

@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * <p>
  * Follow-up: What if our system has limited memory?
  */
-public class HitCounter {
+class HitCounter {
 
   private static final int MAX_LIMIT_SEC = 300;
 

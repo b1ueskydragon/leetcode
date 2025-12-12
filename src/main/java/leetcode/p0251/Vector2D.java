@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Vector2D implements Iterator<Integer> {
+class Vector2D implements Iterator<Integer> {
 
   private final List<List<Integer>> vec2d;
   private final List<Integer> rowPointers = new ArrayList<>();

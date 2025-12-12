@@ -2,7 +2,7 @@ package leetcode.p1195.app;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class FizzBuzzApp {
+class FizzBuzzApp {
 
   private static final FizzBuzz instance = new FizzBuzz(30);
 

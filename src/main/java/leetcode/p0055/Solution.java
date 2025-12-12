@@ -1,6 +1,6 @@
 package leetcode.p0055;
 
-public class Solution {
+class Solution {
   public boolean canJump(int[] nums) {
     int goal = nums.length - 1; // dynamic goal.
     // think from the goal (count backwards).

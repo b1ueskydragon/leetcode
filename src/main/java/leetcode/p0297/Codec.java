@@ -5,7 +5,7 @@ import leetcode.common.TreeNode;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class Codec {
+class Codec {
   // Encodes a tree to a single string.
   public String serialize(TreeNode root) {
     final String nullStr = "n";

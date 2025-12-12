@@ -1,6 +1,6 @@
 package leetcode.p0088.s2020;
 
-public class MergeSortedArrayInPlace {
+class MergeSortedArrayInPlace {
   public void merge(int[] nums1, int m, int[] nums2, int n) {
     while (m > 0 && n > 0) {
       // copy the largest value at that point to the rightmost side.

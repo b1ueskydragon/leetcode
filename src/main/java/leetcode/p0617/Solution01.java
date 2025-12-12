@@ -3,7 +3,7 @@ package leetcode.p0617;
 import leetcode.common.TreeNode;
 
 // change the tree in-place
-public class Solution01 {
+class Solution01 {
   public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
     if (t1 == null) return t2;
     if (t2 == null) return t1;

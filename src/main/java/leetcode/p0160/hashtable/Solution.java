@@ -5,7 +5,7 @@ import leetcode.common.ListNode;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Solution {
+class Solution {
   // Straight-forward, O(N) space, O(N) time.
   public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
     final Set<ListNode> checked = new HashSet<>();

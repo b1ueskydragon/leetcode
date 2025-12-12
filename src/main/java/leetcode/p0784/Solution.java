@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** backtracking */
-public class Solution {
+class Solution {
   private static void permutation(String S, char[] chunk, int pos, List<String> res) {
     if (pos == S.length()) { // pos to on the end
       res.add(String.valueOf(chunk));

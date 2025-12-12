@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Runtime 3 ms (36.03%), Memory 41.35 MB (87.34%)
  */
-public class Solution {
+class Solution {
     // max 16-bit
     // n == nums.length
     // 1 <= n <= 16

@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * Arranged to enable local execution
  */
-public class FooApp {
+class FooApp {
 
   private static final Foo foo = new Foo();
 

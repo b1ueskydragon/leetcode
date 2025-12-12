@@ -2,7 +2,7 @@ package leetcode.p0524;
 
 import java.util.List;
 
-public class Solution {
+class Solution {
   /**
    * TODO improve or another
    *
