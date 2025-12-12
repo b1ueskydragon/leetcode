@@ -1,14 +1,7 @@
 package leetcode.p0160.constantSpace.knowingLen;
 
-class ListNode {
-  int val;
-  ListNode next;
 
-  ListNode(int x) {
-    val = x;
-    next = null;
-  }
-}
+import leetcode.common.ListNode;
 
 public class Solution {
   public ListNode getIntersectionNode(ListNode headA, ListNode headB) {

@@ -1,5 +1,7 @@
 package leetcode.p0019.s2025;
 
+import leetcode.common.ListNode;
+
 class Solution {
 
     static class V2 {

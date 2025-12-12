@@ -1,5 +1,7 @@
 package leetcode.p0148.mergeSort;
 
+import leetcode.common.ListNode;
+
 class Solution {
     // merge sort (Top down)
     // repeat merging sorted list a and sorted list b
@@ -45,22 +47,5 @@ class Solution {
         p.next = (a != null) ? a : b;
 
         return head.next;
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
     }
 }

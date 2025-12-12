@@ -1,11 +1,6 @@
 package leetcode.p0237.alignOnceAndSkip;
 
-class ListNode {
-  int val;
-  ListNode next;
-
-  ListNode(int x) { val = x; }
-}
+import leetcode.common.ListNode;
 
 /**
  * You will not be given access to the head of the list,

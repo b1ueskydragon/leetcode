@@ -1,19 +1,6 @@
 package leetcode.p0203;
 
-// Definition for singly-linked list.
-class ListNode {
-  int val;
-  ListNode next;
-
-  ListNode() {}
-
-  ListNode(int val) { this.val = val; }
-
-  ListNode(int val, ListNode next) {
-    this.val = val;
-    this.next = next;
-  }
-}
+import leetcode.common.ListNode;
 
 // O(N) Time O(1) Space (only two pointers are used).
 class Solution {

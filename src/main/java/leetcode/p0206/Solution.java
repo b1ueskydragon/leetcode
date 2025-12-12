@@ -1,11 +1,6 @@
 package leetcode.p0206;
 
-class ListNode {
-  int val;
-  ListNode next;
-
-  ListNode(int x) { val = x; }
-}
+import leetcode.common.ListNode;
 
 class Solution {
   // head, res, prev, tmp .. they're just pointers.

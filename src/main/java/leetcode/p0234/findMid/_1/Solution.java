@@ -1,18 +1,6 @@
 package leetcode.p0234.findMid._1;
 
-class ListNode {
-  int val;
-  ListNode next;
-
-  ListNode() {}
-
-  ListNode(int val) { this.val = val; }
-
-  ListNode(int val, ListNode next) {
-    this.val = val;
-    this.next = next;
-  }
-}
+import leetcode.common.ListNode;
 
 class Solution {
   public boolean isPalindrome(ListNode head) {

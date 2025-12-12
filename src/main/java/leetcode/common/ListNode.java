@@ -1,28 +1,30 @@
-package leetcode.p3217;
+package leetcode.common;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Singly-linked List.
+ */
 public class ListNode {
-    int val;
+    public int val;
+    public ListNode next;
 
-    ListNode next;
+    public ListNode() { /* no-op */ }
 
-    ListNode() {
-    }
-
-    ListNode(int val) {
+    public ListNode(int val) {
         this.val = val;
     }
 
-    ListNode(int val, ListNode next) {
+    public ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
     }
 
-    /// For test codes ... ///
-
+    /**
+     * For test codes.
+     */
     @Override
     public boolean equals(Object other) {
         if (this == other) {
@@ -38,11 +40,17 @@ public class ListNode {
                 Objects.equals(this.next, otherNode.next);
     }
 
+    /**
+     * For test codes.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(this.val, this.next);
     }
 
+    /**
+     * For test codes.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("ListNode{");
@@ -62,6 +70,9 @@ public class ListNode {
         return sb.append('}').toString();
     }
 
+    /**
+     * For test codes.
+     */
     public static ListNode factory(int... vals) {
         if (vals.length == 0) {
             return null;
@@ -74,5 +85,4 @@ public class ListNode {
         }
         return res.next;
     }
-
 }

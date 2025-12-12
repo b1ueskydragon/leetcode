@@ -1,13 +1,6 @@
 package leetcode.p0019.s2020;
 
-class ListNode {
-  int val;
-  ListNode next;
-
-  ListNode(int x) {
-    val = x;
-  }
-}
+import leetcode.common.ListNode;
 
 class Solution {
   public ListNode removeNthFromEnd(ListNode head, int n) {

@@ -1,5 +1,7 @@
 package leetcode.p3217;
 
+import leetcode.common.ListNode;
+
 import java.util.HashSet;
 import java.util.Set;
 
