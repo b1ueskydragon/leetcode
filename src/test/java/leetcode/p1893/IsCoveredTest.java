@@ -11,17 +11,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class IsCoveredTest {
 
-    private Solution underTest;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v1 = new Solution.V1();
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void isCovered(int[][] ranges, int left, int right, boolean expected) {
-        assertThat(underTest.isCovered(ranges, left, right)).isEqualTo(expected);
+    void testV1(int[][] ranges, int left, int right, boolean expected) {
+        assertThat(v1.isCovered(ranges, left, right)).isEqualTo(expected);
     }
 
     static Stream<Arguments> testSource() {
