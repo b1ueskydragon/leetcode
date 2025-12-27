@@ -2,6 +2,38 @@ package leetcode.p1893;
 
 class Solution {
 
+    static class V2 {
+
+        public boolean isCovered(int[][] ranges, int left, int right) {
+            // Mark boundaries start as 1, end + 1 as -1,
+            // then compute prefix-sum
+            // e.g.,
+            // [[1,10],[10,20]]
+            // 0 1 0 0 0 0 0 0 0 0 1 -1 0 0 0 0 0 0 0 0 0 -1
+            // 0 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 0
+            // [[1,10],[11,20]]
+            // 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1
+            // 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0
+
+            final int[] diff = new int[52];
+            for (int[] range : ranges) {
+                // Consider overlapped boundaries
+                diff[range[0]] += 1;
+                diff[range[1] + 1] += -1;
+            }
+            for (int i = 1; i < diff.length; i++) {
+                diff[i] += diff[i - 1];
+            }
+            for (int i = left; i <= right; i++) {
+                if (diff[i] == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+    }
+
     static class V1 {
 
         public boolean isCovered(int[][] ranges, int left, int right) {
