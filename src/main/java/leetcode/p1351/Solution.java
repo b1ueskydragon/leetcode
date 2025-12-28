@@ -2,6 +2,30 @@ package leetcode.p1351;
 
 class Solution {
 
+    static class V2 {
+
+        // Perform it in O(n + m)
+        public int countNegatives(int[][] grid) {
+            final int n = grid.length;
+            final int m = grid[0].length;
+            int count = 0;
+            // From bottom-left to top-right (stair-like).
+            int i = n - 1;
+            int j = 0;
+            while (i >= 0 && j < m) {
+                if (grid[i][j] < 0) {
+                    // Boundary found.
+                    count += m - j;
+                    i--;
+                } else {
+                    j++;
+                }
+            }
+            return count;
+        }
+
+    }
+
     static class V1 {
 
         public int countNegatives(int[][] grid) {
