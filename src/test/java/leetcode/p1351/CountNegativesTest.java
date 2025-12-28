@@ -11,17 +11,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CountNegativesTest {
 
-    private Solution underTest;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v1 = new Solution.V1();
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void testCountNegatives(int[][] ranges, int count) {
-        assertThat(underTest.countNegatives(ranges)).isEqualTo(count);
+    void testV1(int[][] ranges, int count) {
+        assertThat(v1.countNegatives(ranges)).isEqualTo(count);
     }
 
     static Stream<Arguments> testSource() {
