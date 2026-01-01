@@ -2,7 +2,7 @@ package leetcode.p0066;
 
 import java.util.Arrays;
 
-class Solution2020 {
+class Solution2020 implements Solution {
   public int[] plusOne(int[] digits) {
     final int n = digits.length;
     final int[] res = new int[n];
