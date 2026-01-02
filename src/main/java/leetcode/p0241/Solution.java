@@ -44,7 +44,8 @@ class Solution {
         return switch (op) {
             case '+' -> l + r;
             case '-' -> l - r;
-            default -> l * r;
+            case '*' -> l * r;
+            default -> throw new IllegalStateException("Invalid input");
         };
     }
 }
