@@ -14,7 +14,7 @@ class Solution {
     //   1行目が aba pattern なのは 6通り (場合の数が 3x2x1)
     // 4x6 + 5x6 = 54通り
 
-    // constraint より abc, aba しかあり得ないので
+    // constraint より abc pattern, aba pattern しかあり得ないので
     // abc pattern を state 0, aba pattern を state 1 と定義する
 
     public int numOfWays(int n) {
