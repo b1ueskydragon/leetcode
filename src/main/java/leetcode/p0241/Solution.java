@@ -1,14 +1,23 @@
 package leetcode.p0241;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class Solution {
+
+    private final Map<String, List<Integer>> memo = new HashMap<>();
+
     public List<Integer> diffWaysToCompute(String expression) {
         return rec(expression);
     }
 
     private List<Integer> rec(String expression) {
+        if (memo.get(expression) != null) {
+            return memo.get(expression);
+        }
+
         final int n = expression.length();
         List<Integer> splitPoints = new ArrayList<>();
         for (int i = 0; i < n; i++) {
@@ -22,6 +31,7 @@ class Solution {
             // base case
             List<Integer> base = new ArrayList<>();
             base.add(Integer.parseInt(expression));
+            memo.put(expression, base);
             return base;
         }
 
@@ -37,6 +47,7 @@ class Solution {
                 }
             }
         }
+        memo.put(expression, res);
         return res;
     }
 
