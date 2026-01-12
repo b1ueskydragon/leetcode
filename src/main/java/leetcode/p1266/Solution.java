@@ -13,45 +13,53 @@ class Solution {
             int c1 = curr[0];
             int c2 = curr[1];
 
-            // (1)
-            while (p1 < c1 && p2 < c2) {
-                p1++;
-                p2++;
-                count++;
-            }
-            while (p1 > c1 && p2 > c2) {
-                p1--;
-                p2--;
-                count++;
-            }
-            while (p1 < c1 && p2 > c2) {
-                p1++;
-                p2--;
-                count++;
-            }
-            while (p1 > c1 && p2 < c2) {
-                p1--;
-                p2++;
-                count++;
-            }
+            int diff1 = Math.abs(c1 - p1);
+            int diff2 = Math.abs(c2 - p2);
+            // e.g.,
+            // (1,1) -> (3,4)
+            // (1,1) -> (2,2) -> (3,3) -> (3,4)
+            // 結局大きい方に合わせられる.
+            count += Math.max(diff1, diff2);
 
-            // (2)
-            while (p1 == c1 && p2 > c2) {
-                p2--;
-                count++;
-            }
-            while (p1 == c1 && p2 < c2) {
-                p2++;
-                count++;
-            }
-            while (p1 > c1 && p2 == c2) {
-                p1--;
-                count++;
-            }
-            while (p1 < c1 && p2 == c2) {
-                p1++;
-                count++;
-            }
+            // // (1)
+            // while (p1 < c1 && p2 < c2) {
+            //     p1++;
+            //     p2++;
+            //     count++;
+            // }
+            // while (p1 > c1 && p2 > c2) {
+            //     p1--;
+            //     p2--;
+            //     count++;
+            // }
+            // while (p1 < c1 && p2 > c2) {
+            //     p1++;
+            //     p2--;
+            //     count++;
+            // }
+            // while (p1 > c1 && p2 < c2) {
+            //     p1--;
+            //     p2++;
+            //     count++;
+            // }
+
+            // // (2)
+            // while (p1 == c1 && p2 > c2) {
+            //     p2--;
+            //     count++;
+            // }
+            // while (p1 == c1 && p2 < c2) {
+            //     p2++;
+            //     count++;
+            // }
+            // while (p1 > c1 && p2 == c2) {
+            //     p1--;
+            //     count++;
+            // }
+            // while (p1 < c1 && p2 == c2) {
+            //     p1++;
+            //     count++;
+            // }
 
             p1 = c1;
             p2 = c2;
