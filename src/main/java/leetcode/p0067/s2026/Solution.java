@@ -15,24 +15,25 @@ class Solution {
 
         for (int i = m - 1; i >= 0; i--) {
             int sum = carry + parse(a.charAt(i + offset)) + parse(b.charAt(i));
-            if (sum > 1) {
-                sb.append(sum - 2);
-                carry = 1;
-            } else {
-                sb.append(sum);
-                carry = 0;
-            }
+            // sum ∈ {3, 2, 1, 0}
+            // appendable ∈ {1, 0}
+            // 3 & 1 == 1
+            // 2 & 1 == 0
+            // 1 & 1 == 1
+            // 0 & 1 == 0
+            sb.append(sum & 1);
+            // carry ∈ {1, 0}
+            // 3 >> 1 == 1
+            // 2 >> 1 == 1
+            // 1 >> 1 == 0
+            // 0 >> 1 == 0
+            carry = sum >> 1;
         }
 
         for (int i = offset - 1; i >= 0; i--) {
             int sum = carry + parse(a.charAt(i));
-            if (sum > 1) {
-                sb.append(sum - 2);
-                carry = 1;
-            } else {
-                sb.append(sum);
-                carry = 0;
-            }
+            sb.append(sum & 1);
+            carry = sum >> 1;
         }
 
         if (carry > 0) {
