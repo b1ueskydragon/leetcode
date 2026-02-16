@@ -1,4 +1,4 @@
-package leetcode.p0190;
+package leetcode.p0190.s2020;
 
 class Solution {
   // you need treat n as an unsigned value
