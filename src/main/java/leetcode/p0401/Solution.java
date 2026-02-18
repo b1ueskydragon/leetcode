@@ -9,11 +9,25 @@ class Solution {
 
         public List<String> readBinaryWatch(int turnedOn) {
             final List<String> ans = new ArrayList<>();
-            for (int h = 0; h < 12; h++) {
-                for (int m = 0; m < 60; m++) {
-                    if (bitCount(h) + bitCount(m) == turnedOn) {
-                        ans.add(String.format("%d:%02d", h, m));
-                    }
+            // Merge h bits and m bits.
+            // MSB を除く先頭 4 bits = h
+            // 末尾 6 bits = m
+            // 1 0000 000000
+            // 2^10 patterns.
+            for (int bits = 0; bits < (1 << 10); bits++) {
+                // Head bits 1 0000
+                // Shift down to remove tail 6 bits.
+                final int h = bits >> 6;
+
+                // Tail bits 000000
+                //   1 0000 010011
+                // & 0 0000 111111
+                // ------------------
+                //   0 0000 010011 (Extract 1 bit from tail 6 bits)
+                final int m = bits & ((1 << 6) - 1);
+
+                if (h < 12 && m < 60 && bitCount(bits) == turnedOn) {
+                    ans.add(String.format("%d:%02d", h, m));
                 }
             }
             return ans;
@@ -22,7 +36,7 @@ class Solution {
         private static int bitCount(int num) {
             int bits = 0;
             while (num > 0) {
-                if ((num & 1)== 1) {
+                if ((num & 1) == 1) {
                     bits++;
                 }
                 num >>>= 1;
@@ -69,16 +83,16 @@ class Solution {
         // limit 個を選ぶ.
         // ただ, 要素が全てユニークで選んだあと足すので, 順序なし, 重複なしになる.
         private static List<Integer> generate(
-        // Fundamental parameters to build a permutation.
-        int shiftCount,
-        List<Integer> result,
-        int acc,
-        int limit,
-        // Parameters for an effective filtering (実質 combination になる).
-        int pickedCount,
-        int from,
-        int sumLimit
-    ) {
+                // Fundamental parameters to build a permutation.
+                int shiftCount,
+                List<Integer> result,
+                int acc,
+                int limit,
+                // Parameters for an effective filtering (実質 combination になる).
+                int pickedCount,
+                int from,
+                int sumLimit
+        ) {
             if (acc >= sumLimit) {
                 return result;
             }
