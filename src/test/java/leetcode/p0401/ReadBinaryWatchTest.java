@@ -12,17 +12,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ReadBinaryWatchTest {
 
-    private Solution underTest;
+    private Solution.V1 v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v1 = new Solution.V1();
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void testReadBinaryWatch(int turnedOn, List<String> expected) {
-        assertThat(underTest.readBinaryWatch(turnedOn)).isEqualTo(expected);
+    void testV1(int turnedOn, List<String> expected) {
+        assertThat(v1.readBinaryWatch(turnedOn)).isEqualTo(expected);
     }
 
     static Stream<Arguments> testSource() {
