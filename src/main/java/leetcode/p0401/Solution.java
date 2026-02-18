@@ -5,6 +5,33 @@ import java.util.List;
 
 class Solution {
 
+    static class V2 {
+
+        public List<String> readBinaryWatch(int turnedOn) {
+            final List<String> ans = new ArrayList<>();
+            for (int h = 0; h < 12; h++) {
+                for (int m = 0; m < 60; m++) {
+                    if (bitCount(h) + bitCount(m) == turnedOn) {
+                        ans.add(String.format("%d:%02d", h, m));
+                    }
+                }
+            }
+            return ans;
+        }
+
+        private static int bitCount(int num) {
+            int bits = 0;
+            while (num > 0) {
+                if ((num & 1)== 1) {
+                    bits++;
+                }
+                num >>>= 1;
+            }
+            return bits;
+        }
+
+    }
+
     static class V1 {
 
         // hour < 12

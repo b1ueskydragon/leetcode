@@ -13,10 +13,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ReadBinaryWatchTest {
 
     private Solution.V1 v1;
+    private Solution.V2 v2;
 
     @BeforeEach
     void setUp() {
         v1 = new Solution.V1();
+        v2 = new Solution.V2();
     }
 
     @ParameterizedTest
@@ -24,6 +26,13 @@ class ReadBinaryWatchTest {
     void testV1(int turnedOn, List<String> expected) {
         assertThat(v1.readBinaryWatch(turnedOn)).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV2(int turnedOn, List<String> expected) {
+        assertThat(v2.readBinaryWatch(turnedOn)).containsExactlyInAnyOrderElementsOf(expected);
+    }
+
 
     static Stream<Arguments> testSource() {
         return Stream.of(
