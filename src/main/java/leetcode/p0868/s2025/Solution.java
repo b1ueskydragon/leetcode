@@ -1,4 +1,4 @@
-package leetcode.p0868;
+package leetcode.p0868.s2025;
 
 class Solution {
     public int binaryGap(int n) {
