@@ -1,4 +1,4 @@
-package leetcode.p1022.dfs.stack;
+package leetcode.p1022.s2021;
 
 import leetcode.common.TreeNode;
 
