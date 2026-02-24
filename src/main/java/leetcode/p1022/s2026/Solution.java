@@ -14,13 +14,13 @@ class Solution {
         if (root == null) {
             return;
         }
-        // acc を再利用しないので毎回式を再計算して渡す必要がある.
-        dfs(root.left, (acc << 1) + root.val);
-        dfs(root.right, (acc << 1) + root.val);
-
-        // Sum up only when we reached to the leaf.
+        acc = (acc << 1) + root.val;
+        dfs(root.left, acc);
+        dfs(root.right, acc);
+        // right recursion まで抜けたら一度 acc 完成.
+        // 作った acc のなかで, sum up only when we reached to the leaf.
         if (root.left == null && root.right == null) {
-            sum += (acc << 1) + root.val;
+            sum += acc;
         }
     }
 }
