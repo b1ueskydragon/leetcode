@@ -3,24 +3,25 @@ package leetcode.p1022.s2026;
 import leetcode.common.TreeNode;
 
 class Solution {
-    private int sum = 0;
 
     public int sumRootToLeaf(TreeNode root) {
-        dfs(root, 0);
-        return sum;
+        return dfs(root, 0);
     }
 
-    private void dfs(TreeNode root, int acc) {
+    private int dfs(TreeNode root, int acc) {
         if (root == null) {
-            return;
+            return 0;
         }
         acc = (acc << 1) + root.val;
-        dfs(root.left, acc);
-        dfs(root.right, acc);
+        int left = dfs(root.left, acc);
+        int right = dfs(root.right, acc);
         // right recursion まで抜けたら一度 acc 完成.
         // 作った acc のなかで, sum up only when we reached to the leaf.
         if (root.left == null && root.right == null) {
-            sum += acc;
+            return acc;
         }
+        // Other nodes aggregate valid left + valid right
+        // to propagate the total sum up to the root.
+        return left + right;
     }
 }
