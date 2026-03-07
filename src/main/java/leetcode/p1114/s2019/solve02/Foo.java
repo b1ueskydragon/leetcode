@@ -1,4 +1,4 @@
-package leetcode.p1114.solve02;
+package leetcode.p1114.s2019.solve02;
 
 import java.util.concurrent.Semaphore;
 

@@ -1,4 +1,4 @@
-package leetcode.p1114.solve01;
+package leetcode.p1114.s2019.solve01;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
