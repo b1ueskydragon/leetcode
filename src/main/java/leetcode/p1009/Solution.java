@@ -17,15 +17,23 @@ class Solution {
         //   11111...1 01000
         // & 000000..0 11111
         //             01000
-        return c & ((1 << bitLength(n)) - 1);
+        return c & mask(n);
     }
 
-    private int bitLength(int n) {
-        int len = 0;
-        while (n > 0) {
-            n >>>= 1;
-            len++;
-        }
-        return len;
+    // e.g.,
+    // n = 10101
+    //    10101
+    //  |  1010
+    //    11111
+    private int mask(int n) {
+        // Propagate MSB (the highest set bit) to the right.
+        // Repeating shifts by 1, 2, 4, 8, and 16 is enough
+        // to cover all lower 31 bits in a 32-bit int.
+        n |= (n >> 1);
+        n |= (n >> 2);
+        n |= (n >> 4);
+        n |= (n >> 8);
+        n |= (n >> 16);
+        return n;
     }
 }
