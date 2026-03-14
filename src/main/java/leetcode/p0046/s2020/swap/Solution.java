@@ -1,4 +1,4 @@
-package leetcode.p0046.swap;
+package leetcode.p0046.s2020.swap;
 
 import java.util.ArrayList;
 import java.util.List;

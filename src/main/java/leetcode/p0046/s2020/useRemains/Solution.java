@@ -1,4 +1,4 @@
-package leetcode.p0046.useRemains;
+package leetcode.p0046.s2020.useRemains;
 
 import java.util.ArrayList;
 import java.util.List;
