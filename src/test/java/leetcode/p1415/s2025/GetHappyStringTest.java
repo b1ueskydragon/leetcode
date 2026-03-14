@@ -1,4 +1,4 @@
-package leetcode.p1415;
+package leetcode.p1415.s2025;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
