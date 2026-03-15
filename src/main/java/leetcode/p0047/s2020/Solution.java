@@ -1,4 +1,4 @@
-package leetcode.p0047;
+package leetcode.p0047.s2020;
 
 import java.util.ArrayList;
 import java.util.HashSet;
