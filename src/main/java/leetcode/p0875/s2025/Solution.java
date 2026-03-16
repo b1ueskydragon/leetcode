@@ -1,4 +1,4 @@
-package leetcode.p0875;
+package leetcode.p0875.s2025;
 
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
