@@ -54,8 +54,8 @@ class Solution {
                     break;
                 }
                 int width = n - r;
-                // prev vs curr
-                int height = Math.min(currRow[r + 1], currRow[r]);
+                // Already sorted, next is always less than equal to current.
+                int height = currRow[r];
                 maxSize = Math.max(maxSize, width * height);
             }
             best = Math.max(best, maxSize);
