@@ -2,7 +2,14 @@ package leetcode.p3070;
 
 class Solution {
     // Must contain the top-left grid.
+    // 1000 * 1000 * 1000 < Integer.MAX_VALUE
     public int countSubmatrices(int[][] grid, int k) {
+        // Prefix sum from the top-left.
+        if (grid[0][0] > k) {
+            // Cannot build anymore.
+            return 0;
+        }
+
         // e.g.,
         // given:
         // 7  2  9
@@ -16,25 +23,36 @@ class Solution {
         //
         // Since the top-left (0, 0) must be included,
         // the number of submatrices should be same as a simple grid count.
-        int count = 0;
+
+        int count = 1; // includes (0, 0).
+
         final int m = grid.length;
         final int n = grid[0].length;
-        // Prefix sum from the top-left.
-        // 1000 * 1000 * 1000 < Integer.MAX_VALUE
-        int[][] prefixSum = new int[m][n];
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i == 0 && j == 0) {
-                    prefixSum[i][j] = grid[i][j];
-                } else if (i == 0) {
-                    prefixSum[i][j] = grid[i][j] + prefixSum[i][j - 1];
-                } else if (j == 0) {
-                    prefixSum[i][j] = grid[i][j] + prefixSum[i - 1][j];
-                } else {
-                    prefixSum[i][j] = grid[i][j] + prefixSum[i - 1][j] + prefixSum[i][j - 1] - prefixSum[i - 1][j - 1];
-                }
-                if (prefixSum[i][j] <= k) {
+        int rowLimit = m - 1;
+        int colLimit = n - 1;
+
+        for (int i = 1; i < m; i++) {
+            grid[i][0] += grid[i - 1][0];
+            if (grid[i][0] > k) {
+                rowLimit = i - 1;
+                break;
+            }
+            count++;
+        }
+        for (int j = 1; j < n; j++) {
+            grid[0][j] += grid[0][j - 1];
+            if (grid[0][j] > k) {
+                colLimit = j - 1;
+                break;
+            }
+            count++;
+        }
+
+        for (int i = 1; i <= rowLimit; i++) {
+            for (int j = 1; j <= colLimit; j++) {
+                grid[i][j] += grid[i - 1][j] + grid[i][j - 1] - grid[i - 1][j - 1];
+                if (grid[i][j] <= k) {
                     count++;
                 }
             }
