@@ -9,113 +9,36 @@ class Solution {
         final int m = grid.length;
         final int n = grid[0].length;
         // 探索方向 →, ↓
-        // dp[i][j] = {p, n}
-        // max non-negative value なので neg の場合も絶対値の大きいものを優先
-        final Long[][][] dp = new Long[m][n][2];
-
-        // 0 を positive として格納するので, 最適解が negative のみの時検出が不可能.
-        // 最適解が negative のみの時, 0 が一つ以上混ざっていると最適解は必ず 0.
-        boolean zeroExists = false;
+        // dp[i][j] = {max, min}.
+        // {prev, neg} としてではなく {max, min} で捉えるので, 0 はどちらにも含まれ得る.
+        // negative product の場合, 絶対値が大きい (符号あり値として min) 方を選んでおきたい.
+        final long[][][] dp = new long[m][n][2];
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 final long v = grid[i][j];
-                if (v == 0) {
-                    zeroExists = true;
-                }
                 if (i == 0 && j == 0) {
-                    if (v >= 0) {
-                        dp[i][j][0] = v;
-                    } else {
-                        dp[i][j][1] = v;
-                    }
+                    dp[i][j][0] = v;
+                    dp[i][j][1] = v;
                 } else if (i == 0) {
                     // row=0 prev 左しか選択肢がないので 1D-array 埋めする.
-                    final Long[] left = dp[i][j - 1];
-                    if (left[0] != null) {
-                        final long v2 = left[0] * v;
-                        if (v2 >= 0) {
-                            dp[i][j][0] = v2;
-                        } else {
-                            dp[i][j][1] = v2;
-                        }
-                    }
-                    if (left[1] != null) {
-                        final long v2 = left[1] * v;
-                        if (v2 >= 0) {
-                            dp[i][j][0] = dp[i][j][0] == null ? v2 : Math.max(dp[i][j][0], v2);
-                        } else {
-                            dp[i][j][1] = dp[i][j][1] == null ? v2 : Math.min(dp[i][j][1], v2);
-                        }
-                    }
+                    final long[] left = dp[i][j - 1];
+                    dp[i][j][0] = Math.max(left[0] * v, left[1] * v);
+                    dp[i][j][1] = Math.min(left[0] * v, left[1] * v);
                 } else if (j == 0) {
                     // col=0 prev 上しか選択肢がないので 1D-array 埋めする.
-                    final Long[] up = dp[i - 1][j];
-                    if (up[0] != null) {
-                        final long v2 = up[0] * v;
-                        if (v2 >= 0) {
-                            dp[i][j][0] = v2;
-                        } else {
-                            dp[i][j][1] = v2;
-                        }
-                    }
-                    if (up[1] != null) {
-                        final long v2 = up[1] * v;
-                        if (v2 >= 0) {
-                            dp[i][j][0] = dp[i][j][0] == null ? v2 : Math.max(dp[i][j][0], v2);
-                        } else {
-                            dp[i][j][1] = dp[i][j][1] == null ? v2 : Math.min(dp[i][j][1], v2);
-                        }
-                    }
+                    final long[] up = dp[i - 1][j];
+                    dp[i][j][0] = Math.max(up[0] * v, up[1] * v);
+                    dp[i][j][1] = Math.min(up[0] * v, up[1] * v);
                 } else {
-                    // start~end 途切れてはいけないので,
-                    // 自分自身 (v) と上か下かどちらかは踏む必要がある.
-                    final Long[] up = dp[i - 1][j];
-                    final Long[] left = dp[i][j - 1];
-                    // p * p = p
-                    // n * n = p
-                    // p * n = n
-                    // n * p = n
-                    if (up[0] != null) {
-                        final long v2 = up[0] * v;
-                        if (v2 >= 0) {
-                            dp[i][j][0] = v2;
-                        } else {
-                            dp[i][j][1] = v2;
-                        }
-                    }
-                    if (up[1] != null) {
-                        final long v2 = up[1] * v;
-                        if (v2 >= 0) {
-                            dp[i][j][0] = dp[i][j][0] == null ? v2 : Math.max(v2, dp[i][j][0]);
-                        } else {
-                            // 絶対値が大きい方.
-                            dp[i][j][1] = dp[i][j][1] == null ? v2 : Math.min(v2, dp[i][j][1]);
-                        }
-                    }
-                    if (left[0] != null) {
-                        final long v2 = left[0] * v;
-                        if (v2 >= 0) {
-                            dp[i][j][0] = dp[i][j][0] == null ? v2 : Math.max(v2, dp[i][j][0]);
-                        } else {
-                            dp[i][j][1] = dp[i][j][1] == null ? v2 : Math.min(v2, dp[i][j][1]);
-                        }
-                    }
-                    if (left[1] != null) {
-                        final long v2 = left[1] * v;
-                        if (v2 >= 0) {
-                            dp[i][j][0] = dp[i][j][0] == null ? v2 : Math.max(v2, dp[i][j][0]);
-                        } else {
-                            dp[i][j][1] = dp[i][j][1] == null ? v2 : Math.min(v2, dp[i][j][1]);
-                        }
-                    }
+                    final long[] left = dp[i][j - 1];
+                    final long[] up = dp[i - 1][j];
+                    dp[i][j][0] = Math.max(Math.max(Math.max(left[0] * v, left[1] * v), up[0] * v), up[1] * v);
+                    dp[i][j][1] = Math.min(Math.min(Math.min(left[0] * v, left[1] * v), up[0] * v), up[1] * v);
                 }
             }
         }
-
-        if (dp[m - 1][n - 1][0] == null) {
-            return zeroExists ? 0 : -1;
-        }
-        return (int) (dp[m - 1][n - 1][0] % 1000000007);
+        final long maxProduct = dp[m - 1][n - 1][0];
+        return maxProduct < 0 ? -1 : (int) (maxProduct % 1000000007);
     }
 }
