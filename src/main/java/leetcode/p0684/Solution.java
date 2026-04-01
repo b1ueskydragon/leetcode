@@ -37,11 +37,15 @@ class Solution {
         return null; // not reachable due to the constraint.
     }
 
-    // ここでは path compression は行っていないので, find のたびに高速化にはならない.
+    // find + path compression.
     private int find(int node, int[] parents) {
-        while (parents[node] != node) {
-            node = parents[node]; // 自分の parent の parent の parent の ...
+        if (parents[node] == node) {
+            // (1) find a root.
+            return node;
         }
-        return node; // ancestor (so far).
+        int root = find(parents[node], parents);
+        // (2) After return, link the current node directly to the root (update the parent to the root).
+        parents[node] = root;
+        return root;
     }
 }
