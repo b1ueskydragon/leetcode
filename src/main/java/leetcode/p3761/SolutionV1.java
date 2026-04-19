@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class SolutionV1 {
+class SolutionV1 implements Solution {
     // 方向性がある.
     // 120 -> 21 OK
     // 21 <- 120 NG

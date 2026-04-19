@@ -3,7 +3,7 @@ package leetcode.p3761;
 import java.util.HashMap;
 import java.util.Map;
 
-class SolutionV2 {
+class SolutionV2 implements Solution {
     // 方向性がある.
     // 120 -> 21 OK
     // 21 <- 120 NG

@@ -11,8 +11,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MinMirrorPairDistanceTest {
 
-    private SolutionV1 v1;
-    private SolutionV2 v2;
+    private Solution v1;
+    private Solution v2;
 
     @BeforeEach
     void setUp() {
