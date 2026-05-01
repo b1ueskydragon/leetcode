@@ -11,7 +11,8 @@ class Solution {
     public int maxPathScore(int[][] grid, int k) {
         final int m = grid.length;
         final int n = grid[0].length;
-        final int NaN = -2000; // 適当な大きさの invalid 値.
+        // max 比較で必ず選ばれない (足し算しても大きな負数のままでいられる) 適当な大きさの invalid 値.
+        final int NaN = Integer.MIN_VALUE;
         // [i][j][cost] = max score
         final int[][][] dp = new int[m][n][1001];
         for (int i = 0; i < m; i++) {
@@ -21,45 +22,37 @@ class Solution {
                 }
             }
         }
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                final int v = grid[i][j];
-                if (i == 0 && j == 0) {
-                    dp[i][j][0] = 0;
-                } else if (i == 0) {
-                    for (int cost = 0; getCost(v) + cost <= k; cost++) {
-                        if (dp[i][j - 1][cost] == NaN) {
-                            continue;
-                        }
-                        dp[i][j][getCost(v) + cost] = v + dp[i][j - 1][cost];
-                    }
-                } else if (j == 0) {
-                    for (int cost = 0; getCost(v) + cost <= k; cost++) {
-                        if (dp[i - 1][j][cost] == NaN) {
-                            continue;
-                        }
-                        dp[i][j][getCost(v) + cost] = v + dp[i - 1][j][cost];
-                    }
-                } else {
-                    final int[] lefts = dp[i][j - 1];
-                    final int[] ups = dp[i - 1][j];
-                    for (int cost = 0; getCost(v) + cost <= k; cost++) {
-                        if (dp[i][j - 1][cost] == NaN) {
-                            continue;
-                        }
-                        dp[i][j][getCost(v) + cost] =
-                                Math.max(dp[i][j][getCost(v) + cost], v + dp[i][j - 1][cost]);
-                    }
+        dp[0][0][0] = 0;
 
-                    for (int cost = 0; getCost(v) + cost <= k; cost++) {
-                        if (dp[i - 1][j][cost] == NaN) {
-                            continue;
-                        }
-                        dp[i][j][getCost(v) + cost] =
-                                Math.max(dp[i][j][getCost(v) + cost], v + dp[i - 1][j][cost]);
-                    }
+        // Simply accumulating.
+        // first row/column must accumulate previous results.
+        int costSoFar = 0;
+        for (int j = 1; j < n; j++) {
+            final int v = grid[0][j];
+            if (getCost(v) + costSoFar > k) {
+                break;
+            }
+            dp[0][j][getCost(v) + costSoFar] = v + dp[0][j - 1][costSoFar];
+            costSoFar += getCost(v);
+        }
+        costSoFar = 0;
+        for (int i = 1; i < m; i++) {
+            final int v = grid[i][0];
+            if (getCost(v) + costSoFar > k) {
+                break;
+            }
+            dp[i][0][getCost(v) + costSoFar] = v + dp[i - 1][0][costSoFar];
+            costSoFar += getCost(v);
+        }
+
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                final int v = grid[i][j]; // v itself is a score
+                for (int cost = 0; getCost(v) + cost <= k; cost++) {
+                    dp[i][j][getCost(v) + cost] = Math.max(dp[i][j][getCost(v) + cost], v + dp[i][j - 1][cost]);
+                    dp[i][j][getCost(v) + cost] = Math.max(dp[i][j][getCost(v) + cost], v + dp[i - 1][j][cost]);
+
                 }
-
             }
         }
 
