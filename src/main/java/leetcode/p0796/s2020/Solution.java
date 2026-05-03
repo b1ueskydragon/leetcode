@@ -1,4 +1,4 @@
-package leetcode.p0796;
+package leetcode.p0796.s2020;
 
 import java.util.ArrayList;
 import java.util.List;
