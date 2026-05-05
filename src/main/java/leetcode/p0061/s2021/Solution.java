@@ -1,4 +1,4 @@
-package leetcode.p0061;
+package leetcode.p0061.s2021;
 
 import leetcode.common.ListNode;
 
