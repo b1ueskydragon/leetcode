@@ -1,4 +1,4 @@
-package leetcode.p0153.binarySearch;
+package leetcode.p0153.s2020;
 
 // An array sorted in ascending order is rotated at some pivot.
 // No duplicate exists in the array.
