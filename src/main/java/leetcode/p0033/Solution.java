@@ -1,6 +1,6 @@
 package leetcode.p0033;
 
-public interface Solution {
+interface Solution {
 
     int search(int[] nums, int target);
 
