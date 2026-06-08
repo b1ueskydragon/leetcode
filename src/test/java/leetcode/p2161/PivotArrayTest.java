@@ -10,17 +10,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class PivotArrayTest {
 
-    private Solution underTest;
+    private Solution s2025;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        s2025 = new Solution2025();
     }
 
     @ParameterizedTest
     @MethodSource
     void testPivotArray(int[] nums, int pivot, int[] rearranged) {
-        assertThat(underTest.pivotArray(nums, pivot)).isEqualTo(rearranged);
+        assertThat(s2025.pivotArray(nums, pivot)).isEqualTo(rearranged);
     }
 
     static Stream<Arguments> testPivotArray() {
