@@ -13,17 +13,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class PairSumTest {
 
-    private Solution underTest;
+    private Solution v1;
+    private Solution v2;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        v1 = new SolutionV1();
+        v2 = new SolutionV2();
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void testPairSum(ListNode head, int maxSumPair) {
-        assertThat(underTest.pairSum(head)).isEqualTo(maxSumPair);
+    void testV1(ListNode head, int maxSumPair) {
+        assertThat(v1.pairSum(head)).isEqualTo(maxSumPair);
+    }
+
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV2(ListNode head, int maxSumPair) {
+        assertThat(v2.pairSum(head)).isEqualTo(maxSumPair);
     }
 
     static Stream<Arguments> testSource() {
