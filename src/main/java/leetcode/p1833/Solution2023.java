@@ -1,8 +1,8 @@
-package leetcode.p1833.priority_queue;
+package leetcode.p1833;
 
 import java.util.PriorityQueue;
 
-class Solution {
+class Solution2023 implements Solution {
     public int maxIceCream(int[] costs, int coins) {
         // choose as many small costs as possible
         final PriorityQueue<Integer> pq = new PriorityQueue<>();
