@@ -19,21 +19,21 @@ class Solution {
         // ---> 4, 16, 4
         final int limit = 1_000_000_000;
         final Map<Long, Integer> freq = new HashMap<>();
-        int seedLimit = 1;
         for (int num : nums) {
-            seedLimit = Math.max(seedLimit, num);
             long n = num * 1L;
             freq.putIfAbsent(n, 0);
             freq.put(n, freq.get(n) + 1);
         }
-        seedLimit = (int) Math.sqrt(seedLimit);
         // seed=1 is an edge case.
         // 1,1,1,1,1,...,1
         int ones = freq.getOrDefault(1L, 0);
         // Since there must be only one terminal num, the answer is always odd.
         ones = (ones & 1) == 0 ? ones - 1 : ones;
         int max = Math.max(ones, 1);
-        for (long seed = 2; seed <= seedLimit; seed++) {
+        for (long seed : freq.keySet()) {
+            if (seed == 1L) {
+                continue;
+            }
             if (freq.getOrDefault(seed, 0) < 2) {
                 continue;
             }
