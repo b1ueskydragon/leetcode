@@ -8,11 +8,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class NumberOfSubstringsTest {
 
-    private Solution underTest;
+    private Solution s2026;
+    private Solution s2025;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution();
+        s2026 = new Solution2026();
+        s2025 = new Solution2025();
     }
 
     @ParameterizedTest
@@ -21,10 +23,13 @@ class NumberOfSubstringsTest {
             "aaabca, 7",
             "aabcabc, 14",
             "abc, 1",
-            "abcaaaaaaaaaaaaaaaabca, 75"
+            "abcaaaaaaaaaaaaaaaabca, 75",
+            "aaaabbbbcccccbbbbbbbbbaaac, 117",
+            "aab, 0"
     })
     void testNumberOfSubStrings(String s, int result) {
-        assertThat(underTest.numberOfSubstrings(s)).isEqualTo(result);
+        assertThat(s2026.numberOfSubstrings(s)).isEqualTo(result);
+        assertThat(s2025.numberOfSubstrings(s)).isEqualTo(result);
     }
 
 }
