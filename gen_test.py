@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 import sys
+from pathlib import Path
 
 template = """\
+package leetcode.{package};
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -33,15 +36,35 @@ class {name}Test {{
 }}
 """
 
-# e.g.,
-# python3 gen_test.py Foo > FooTest.java
+# e.g.
+# python3 gen_test.py p9999 Foo
 def main():
-    if len(sys.argv) != 2:
-        print("Usage: python3 gen_test.py <ClassName>", file=sys.stderr)
+    if len(sys.argv) != 3:
+        print(
+            "Usage: python3 gen_test.py <package> <ClassName>",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
-    name = sys.argv[1]
-    print(template.format(name=name))
+    package = sys.argv[1]
+    name = sys.argv[2]
+
+    output_dir = Path("src/test/java/leetcode") / package
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    output_file = output_dir / f"{name}Test.java"
+
+    if output_file.exists():
+        print(f"Error: {output_file} already exists.", file=sys.stderr)
+        sys.exit(1)
+
+    output_file.write_text(
+        template.format(package=package, name=name),
+        encoding="utf-8",
+    )
+
+    print(f"Generated: {output_file}")
+
 
 if __name__ == "__main__":
     main()
