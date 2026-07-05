@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class Solution {
+class SolutionV1 {
     public int minScore(int n, int[][] roads) {
         // graph[from] = [(to_1, cost_1), ... , (to_n, cost_n)]
         @SuppressWarnings("unchecked")
