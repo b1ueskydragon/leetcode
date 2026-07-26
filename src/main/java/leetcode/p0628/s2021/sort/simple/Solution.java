@@ -1,4 +1,4 @@
-package leetcode.p0628.sort.simple;
+package leetcode.p0628.s2021.sort.simple;
 
 import java.util.Arrays;
 

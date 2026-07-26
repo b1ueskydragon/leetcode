@@ -1,4 +1,4 @@
-package leetcode.p0628.dp;
+package leetcode.p0628.s2021.dp;
 
 class Solution {
   public int maximumProduct(int[] nums) {

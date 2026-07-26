@@ -1,4 +1,4 @@
-package leetcode.p0628.another;
+package leetcode.p0628.s2021.another;
 
 /**
  * just find a maximum product.
