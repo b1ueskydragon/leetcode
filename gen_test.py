@@ -37,7 +37,7 @@ class {name}Test {{
 """
 
 # e.g.
-# python3 gen_test.py p9999 Foo
+# python3 gen_test.py p9999 foo
 def main():
     if len(sys.argv) != 3:
         print(
@@ -48,6 +48,7 @@ def main():
 
     package = sys.argv[1]
     name = sys.argv[2]
+    name = name[0].upper() + name[1:] if name else name
 
     output_dir = Path("src/test/java/leetcode") / package
     output_dir.mkdir(parents=True, exist_ok=True)
