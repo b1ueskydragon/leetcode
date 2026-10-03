@@ -12,17 +12,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class GenerateParenthesisTest {
 
-    private Solution underTest;
+    private Solution v1;
 
     @BeforeEach
     void setUp() {
-        underTest = new Solution2026();
+        v1 = new Solution2026V1();
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void testGenerateParenthesis(int n, List<String> generated) {
-        assertThat(underTest.generateParenthesis(n)).containsExactlyInAnyOrderElementsOf(generated);
+    void testV1(int n, List<String> generated) {
+        assertThat(v1.generateParenthesis(n)).containsExactlyInAnyOrderElementsOf(generated);
     }
 
     static Stream<Arguments> testSource() {

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-class Solution2026 implements Solution {
+class Solution2026V1 implements Solution {
     private final Map<Integer, List<String>> cache = new HashMap<>();
 
     public List<String> generateParenthesis(int n) {
