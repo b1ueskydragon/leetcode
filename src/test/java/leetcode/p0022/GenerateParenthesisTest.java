@@ -13,16 +13,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 class GenerateParenthesisTest {
 
     private Solution v1;
+    private Solution v2;
 
     @BeforeEach
     void setUp() {
         v1 = new Solution2026V1();
+        v2 = new Solution2026V2();
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
     void testV1(int n, List<String> generated) {
         assertThat(v1.generateParenthesis(n)).containsExactlyInAnyOrderElementsOf(generated);
+    }
+
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV2(int n, List<String> generated) {
+        assertThat(v2.generateParenthesis(n)).containsExactlyInAnyOrderElementsOf(generated);
     }
 
     static Stream<Arguments> testSource() {
