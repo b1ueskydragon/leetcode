@@ -1,4 +1,4 @@
-package leetcode.p0022.bfs;
+package leetcode.p0022.s2020.bfs;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package leetcode.p0022.dfs;
+package leetcode.p0022.s2020.dfs;
 
 import java.util.ArrayList;
 import java.util.List;
