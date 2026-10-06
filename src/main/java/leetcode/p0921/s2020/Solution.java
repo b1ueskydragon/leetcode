@@ -1,4 +1,4 @@
-package leetcode.p0921.stack;
+package leetcode.p0921.s2020;
 
 import java.util.Stack;
 
