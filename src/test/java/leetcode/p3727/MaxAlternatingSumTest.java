@@ -12,16 +12,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MaxAlternatingSumTest {
 
     private SolutionV1 v1;
+    private SolutionV2 v2;
 
     @BeforeEach
     void setUp() {
         v1 = new SolutionV1();
+        v2 = new SolutionV2();
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void testMaxAlternatingSum(int[] nums, long score) {
+    void testV1(int[] nums, long score) {
         assertThat(v1.maxAlternatingSum(nums)).isEqualTo(score);
+    }
+
+    @ParameterizedTest
+    @MethodSource("testSource")
+    void testV2(int[] nums, long score) {
+        assertThat(v2.maxAlternatingSum(nums)).isEqualTo(score);
     }
 
     static Stream<Arguments> testSource() {
