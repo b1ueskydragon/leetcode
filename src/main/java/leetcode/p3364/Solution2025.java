@@ -2,7 +2,7 @@ package leetcode.p3364;
 
 import java.util.List;
 
-class Solution {
+class Solution2025 {
     // Subarray is contiguous
     // Tiny size (1 <= nums.length <= 100); O(N * k) time is acceptable when k is (r − l + 1)
     public int minimumSumSubarray(List<Integer> nums, int l, int r) {
