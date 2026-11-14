@@ -1,6 +1,6 @@
 package leetcode.p0836;
 
-public class Solution2026 implements Solution {
+class Solution2026 implements Solution {
     public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
         // rec1 is always:
         // x-range = [a, b] (width  = b-a)
